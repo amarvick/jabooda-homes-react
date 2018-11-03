@@ -30,11 +30,11 @@ class Header extends Component {
         <MuiThemeProvider>
           <div>
             <ul>              
-              <li style={style} className="active"><a href="/">Home</a></li>
-              <li style={style}><a href="/about">About Us</a></li>
-              <li style={style}><a href="/projects">Projects</a></li>
-              <li style={style}><a href="/careers">Careers</a></li>
-              <li style={style}><a href="/contactus">Contact Us</a></li>
+              <li style={style} className="active"><a href="/"><span class="fa fa-home fa-lg"/>Home</a></li>
+              <li style={style}><a href="/about"><span class="fa fa-info fa-lg"/>About Us</a></li>
+              <li style={style}><a href="/projects"><span class="fa fa-map-o fa-lg"/>Projects</a></li>
+              <li style={style}><a href="/careers"><span class="fa fa-briefcase fa-lg"/>Careers</a></li>
+              <li style={style}><a href="/contactus"><span class="fa fa-address-card fa-lg"/>Contact Us</a></li>
             </ul>
           </div>
         </MuiThemeProvider>

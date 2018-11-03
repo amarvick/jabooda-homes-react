@@ -11,16 +11,16 @@ class HomeSlideshow extends Component {
   render(props) {   
     // Return - these images are not rendering properly 
     const slideImages = [
-        '../images/house1.jpg',
-        '../../images/house2.jpg',
-        '../../images/house3.jpg',
+        require('../../images/house1.jpg'),
+        require('../../images/house2.jpg'),
+        require('../../images/house3.jpg'),
     ]
     
     const properties = {
         duration: 5000,
-        transitionDuration: 500,
+        transitionDuration: 200,
         infinite: true,
-        indicators: true,
+        // indicators: true,
         arrows: true
     }  
     

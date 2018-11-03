@@ -1,5 +1,5 @@
-$color-primary: #515d2b;
-$color-secondary: #2b365d;
+$color-primary-gray: #515d2b;
+$color-primary-blue: #01427c;
 $color-highlight: #0099cc;
 $color-white: #fff;
 
@@ -7,6 +7,11 @@ li {
   display: inline-block;
   margin: auto;
   position: relative;
+  top: -10px;
+}
+
+span {
+  padding-right: 5px;
 }
 
 .headerComponent {
@@ -16,7 +21,7 @@ li {
 }
 
 .App-header {
-  background: $color-highlight;
+  background: $color-primary-blue;
   color: $color-white;
   display: flex; 
   padding: 1rem;
@@ -29,10 +34,10 @@ li {
 
   > li {
     &.active {
-      color: $color-primary;
+      color: $color-white;
 
       &:after {
-        border-bottom: 5px solid $color-primary;
+        border-bottom: 5px solid $color-white;
         bottom: -1rem;
         content: "";
         left: 0;
@@ -45,42 +50,12 @@ li {
       cursor: pointer;
 
       &:after{
-        border-bottom: 5px solid $color-primary;
+        border-bottom: 5px solid $color-white;
         bottom: -1rem;
         content: "";
         left: 0;
         position: absolute;
         width: 100%;
-      }
-    }
-  }
-
-
-  .userMenu {
-
-    &:hover {
-      cursor: pointer;
-    }
-
-    .userMenuContent {
-      background: $color-highlight;
-      box-shadow: 1px 6px 7px rgba(0, 0, 0, .3);
-      margin: 0;
-      min-width: 120px;
-      padding: 0;
-      padding: 1rem;
-      position: absolute;
-      display: none;
-      z-index: 5;
-      margin-left: -1rem;
-
-      &.showMenu {
-        display: block;
-      }
-
-      li {
-        padding: .5rem 0;
-        color: $color-white;
       }
     }
   }
