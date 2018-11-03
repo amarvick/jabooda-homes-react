@@ -2,22 +2,37 @@
  * Description: Error message that would stop the user              */
 
 import React, { Component, StartupActions } from 'react'
-// import { connect } from 'react-redux'
+import ProjectData from '../../data/projects.json'
 
 
 class Projects extends Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
 
     this.state = {
+      selectedProject: 0,
+      selectedImageInProject: 0
     }
   }
 
   // The question template
-  render(props) {    
+  render() {    
     return (
       <div className = 'projectsComponent'>
-        
+        {ProjectData.map(projectDetail => {
+          return (
+            <div>
+              <h2>{projectDetail.address}</h2>
+              <img src={require(projectDetail.images[this.state.selectedImageInProject])}/>
+              
+              <ul>
+                {projectDetail.images.map(image => {
+                  return (<li><img src={require(image)}/></li>)
+                })}
+              </ul>
+            </div>
+          )
+        })}  
       </div>
     )
   }

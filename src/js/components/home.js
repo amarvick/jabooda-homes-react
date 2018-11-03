@@ -2,7 +2,6 @@
  * Description: Error message that would stop the user              */
 
 import React, { Component, StartupActions } from 'react'
-import { Slide } from 'react-slideshow-image'
 // import { connect } from 'react-redux'
 
 import HomeSlideshow from './homeSlideshow'

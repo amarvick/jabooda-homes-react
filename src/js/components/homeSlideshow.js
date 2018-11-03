@@ -9,7 +9,7 @@ import { Slide } from 'react-slideshow-image'
 
 class HomeSlideshow extends Component {
   render(props) {   
-    // Return - these images are not rendering properly 
+
     const slideImages = [
         require('../../images/house1.jpg'),
         require('../../images/house2.jpg'),
