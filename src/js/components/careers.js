@@ -1,39 +1,31 @@
 /* File Name: careers.js                                              *
- * Description: Error message that would stop the user              */
+ * Description: Displays all open positions                           */
 
 import React, { Component, StartupActions } from 'react'
-// import { connect } from 'react-redux'
+import CareerData from '../../data/careers.json'
 
 
 class Careers extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-    }
-  }
-
-  // The question template
+  // Displaying all careers
   render(props) {    
     return (
       <div className = 'careersComponent'>
-        
+        <h1>CAREERS</h1>
+        {CareerData.map((careerDetail, index) => {
+          return (
+            <div>
+              <h2>{careerDetail.jobtitle}</h2>
+              <ul>
+                {careerDetail.requirements.map(criteria => {
+                  return (<li>{criteria}</li>)
+                })}
+              </ul>
+            </div>
+          )
+        })}
       </div>
-
     )
   }
 }
 
-// wraps dispatch to create nicer functions to call within our component
-// Mapping dispatch actions to the props
-const mapDispatchToProps = (dispatch) => ({
-  dispatch: dispatch,
-  startup: () => dispatch(StartupActions.startup())
-})
-
-// Maps the state in to props (for displaying on the front end)
-const mapStateToProps = (state) => ({
-})
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Error)
 export default Careers

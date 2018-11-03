@@ -1,39 +1,66 @@
 /* File Name: contactus.js                                              *
- * Description: Error message that would stop the user              */
+ * Description: Contact jabooda homes                                   */
 
 import React, { Component, StartupActions } from 'react'
-// import { connect } from 'react-redux'
 
+// Design
+import Input from '@material-ui/core/Input';
+import FormLabel from '@material-ui/core/FormLabel';
+import Button from '@material-ui/core/Button';
 
 class Contactus extends Component {
   constructor(props) {
-    super(props)
-
+    super(props);
     this.state = {
-    }
+      value: ''
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // The question template
-  render(props) {    
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    alert('A name was submitted: ' + this.state.value);
+    event.preventDefault();
+  }
+
+  render() {    
     return (
       <div className = 'contactUsComponent'>
-        
-      </div>
+        <h1>Contact Us</h1>
+       
+        <form>
+          <FormLabel>
+            Name <br/>
+            <Input type="text" name="name" autoFocus="true" required />
+          </FormLabel>
 
+          {/* AM - do this in CSS way */}
+          <br/><br/>
+
+          <FormLabel>
+            Email <br/>
+            <Input type="email" name="email" required />
+          </FormLabel>
+
+          <br/><br/>
+
+          <FormLabel>
+            Message <br/>
+            <textarea rows="20" cols="80" required />
+          </FormLabel>
+          
+          <br/><br/>
+
+          <Input type="submit" value="Send" />
+        </form>
+      </div>
     )
   }
 }
 
-// wraps dispatch to create nicer functions to call within our component
-// Mapping dispatch actions to the props
-const mapDispatchToProps = (dispatch) => ({
-  dispatch: dispatch,
-  startup: () => dispatch(StartupActions.startup())
-})
-
-// Maps the state in to props (for displaying on the front end)
-const mapStateToProps = (state) => ({
-})
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Error)
 export default Contactus
