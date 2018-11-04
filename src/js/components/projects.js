@@ -16,14 +16,16 @@ class Projects extends Component {
   }
 
   // The question template
-  render() {    
+  render() {
+    const baseUrl = "../../images/"
+
     return (
       <div className = 'projectsComponent'>
         {ProjectData.map(projectDetail => {
           return (
             <div>
               <h2>{projectDetail.address}</h2>
-              <img src={require(projectDetail.images[this.state.selectedImageInProject])}/>
+              <img src={require(baseUrl + projectDetail.images[this.state.selectedImageInProject])}/>
               
               <ul>
                 {projectDetail.images.map(image => {
@@ -32,7 +34,7 @@ class Projects extends Component {
               </ul>
             </div>
           )
-        })}  
+        })}
       </div>
     )
   }
