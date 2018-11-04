@@ -28,6 +28,10 @@ class App extends Component {
             <Route path='/contactus' component={Contactus}/>
           </div>
         </Router>
+
+        <footer className = 'App-footer'>
+          <Footer/>
+        </footer>
       </div>
     );
   }

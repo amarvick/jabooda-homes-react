@@ -2,6 +2,7 @@
  * Description: Contact jabooda homes                                   */
 
 import React, { Component, StartupActions } from 'react'
+import axios from 'axios'
 
 // Design
 import Input from '@material-ui/core/Input';
@@ -9,23 +10,42 @@ import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
 
 class Contactus extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
+
     this.state = {
-      value: ''
+      name: '',
+      email: '',
+      message: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
+  handleChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
   }
 
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
+  // Asynchronous event
+  async handleSubmit(event) {
     event.preventDefault();
+
+    // Assign variables
+    const { 
+      name, 
+      email, 
+      message 
+    } = this.state
+
+    // AM - look in to 'await' function. Assuming it has to do with asynchronization?
+    const form = await axios.post('/api/sendEmailform', {
+      name, 
+      email,
+      message
+    })
   }
 
   render() {    
@@ -33,10 +53,15 @@ class Contactus extends Component {
       <div className = 'contactUsComponent'>
         <h1>Contact Us</h1>
        
-        <form>
+        <form onSubmit = {this.handleSubmit}>
           <FormLabel>
             Name <br/>
-            <Input type="text" name="name" autoFocus="true" required />
+            <Input 
+              type="text" 
+              name="name" 
+              onChange={this.handleChange}
+              autoFocus="true" 
+              required />
           </FormLabel>
 
           {/* AM - do this in CSS way */}
@@ -44,19 +69,28 @@ class Contactus extends Component {
 
           <FormLabel>
             Email <br/>
-            <Input type="email" name="email" required />
+            <Input 
+              type="email" 
+              name="email"
+              onChange={this.handleChange} 
+              required />
           </FormLabel>
 
           <br/><br/>
 
           <FormLabel>
             Message <br/>
-            <textarea rows="20" cols="80" required />
+            <textarea 
+              name="message"
+              rows="20" 
+              cols="80"
+              onChange={this.handleChange} 
+              required />
           </FormLabel>
           
           <br/><br/>
 
-          <Input type="submit" value="Send" />
+          <Button type="submit">Send</Button>
         </form>
       </div>
     )
