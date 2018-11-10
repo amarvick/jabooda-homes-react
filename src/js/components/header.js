@@ -26,9 +26,9 @@ class Header extends Component {
     };
 
     return (
-      <div className = 'headerComponent'>
+      <div>
         <MuiThemeProvider>
-          <div>
+          <div className = 'headerComponent'>
             <ul>              
               <li style={style} className="active"><a href="/"><span class="fa fa-home fa-lg"/>Home</a></li>
               <li style={style}><a href="/about"><span class="fa fa-info fa-lg"/>About Us</a></li>
