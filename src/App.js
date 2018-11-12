@@ -5,11 +5,11 @@ import './stylesheets/App.scss';
 import Header from './js/components/header'
 import Footer from './js/components/footer'
 
-import Home from './js/components/home'
-import About from './js/components/about'
-import Projects from './js/components/projects'
-import Careers from './js/components/careers'
-import Contactus from './js/components/contactus'
+import Home from './js/components/home/home'
+import About from './js/components/about/about'
+import Projects from './js/components/projects/projects'
+import Careers from './js/components/careers/careers'
+import Contactus from './js/components/contactus/contactus'
 
 class App extends Component {
   render() {

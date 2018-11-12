@@ -2,7 +2,7 @@
  * Description: Displays all open positions                           */
 
 import React, { Component, StartupActions } from 'react'
-import CareerData from '../../data/careers.json'
+import CareerData from '../../../data/careers.json'
 
 
 class Careers extends Component {
