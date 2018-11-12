@@ -5,7 +5,7 @@ import React, { Component, StartupActions } from 'react'
 // import { connect } from 'react-redux'
 
 // Design
-import '../../stylesheets/about.scss'
+import '../../../stylesheets/about.scss'
 
 class About extends Component {
   constructor(props) {
@@ -19,7 +19,7 @@ class About extends Component {
   render(props) {    
     return (
       <div className = 'pageContent'>
-        <img id="backToBackImg" src={require("../../images/Executive.png")} height="600px"/>
+        <img id="backToBackImg" src={require("../../../images/Executive.png")} height="600px"/>
 
         <p>
           Jabooda Homes Inc is based in Mercer Island, WA and holds JABOOHI853D7 (Construction Contractor, General) licenses according to the Washington license board. 

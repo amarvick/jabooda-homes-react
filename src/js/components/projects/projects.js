@@ -2,7 +2,7 @@
  * Description: Error message that would stop the user              */
 
 import React, { Component, StartupActions } from 'react'
-import ProjectData from '../../data/projects.json'
+import ProjectData from '../../../data/projects.json'
 
 
 class Projects extends Component {
@@ -17,7 +17,7 @@ class Projects extends Component {
 
   // The question template
   render() {
-    const baseUrl = "../../images/"
+    const baseUrl = "../../../images/"
 
     return (
       <div className = 'projectsComponent'>
