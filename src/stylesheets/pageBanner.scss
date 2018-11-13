@@ -1,4 +1,5 @@
 .pageBannerContainer {
+    background-color: black;
     height: 250px;
     width: 100%;
     overflow: hidden;
@@ -10,5 +11,11 @@
         margin: 80px;
         left: 30px;
         font-size: 54px;
+        z-index: 9999;
+        color: white;
+    }
+
+    img {
+        opacity: 0.3;
     }
 }

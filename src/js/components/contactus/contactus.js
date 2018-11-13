@@ -4,6 +4,8 @@
 import React, { Component, StartupActions } from 'react'
 import axios from 'axios'
 
+import PageBanner from '../pageBanner'
+
 // Design
 import Input from '@material-ui/core/Input';
 import FormLabel from '@material-ui/core/FormLabel';
@@ -50,48 +52,53 @@ class Contactus extends Component {
 
   render() {    
     return (
-      <div className = 'contactUsComponent'>
-        <h1>Contact Us</h1>
-       
-        <form onSubmit = {this.handleSubmit}>
-          <FormLabel>
-            Name <br/>
-            <Input 
-              type="text" 
-              name="name" 
-              onChange={this.handleChange}
-              autoFocus="true" 
-              required />
-          </FormLabel>
+      <div>
+        <PageBanner
+          header="CONTACT US"
+          image="house4.jpg"
+        />
 
-          {/* AM - do this in CSS way */}
-          <br/><br/>
+        <div className="pageContent contactUsComponent">
+          <p>* = Required</p><br/><br/>
+          <form onSubmit = {this.handleSubmit}>
+            <FormLabel>
+              Name*<br/>
+              <Input 
+                type="text" 
+                name="name" 
+                onChange={this.handleChange}
+                autoFocus="true" 
+                required />
+            </FormLabel>
 
-          <FormLabel>
-            Email <br/>
-            <Input 
-              type="email" 
-              name="email"
-              onChange={this.handleChange} 
-              required />
-          </FormLabel>
+            {/* AM - do this in CSS way */}
+            <br/><br/>
 
-          <br/><br/>
+            <FormLabel>
+              Email*<br/>
+              <Input 
+                type="email" 
+                name="email"
+                onChange={this.handleChange} 
+                required />
+            </FormLabel>
 
-          <FormLabel>
-            Message <br/>
-            <textarea 
-              name="message"
-              rows="20" 
-              cols="80"
-              onChange={this.handleChange} 
-              required />
-          </FormLabel>
-          
-          <br/><br/>
+            <br/><br/>
 
-          <Button type="submit">Send</Button>
-        </form>
+            <FormLabel>
+              Message*<br/>
+              <textarea 
+                name="message"
+                rows="20" 
+                cols="80"
+                onChange={this.handleChange} 
+                required />
+            </FormLabel>
+            
+            <br/><br/>
+            <Button type="submit">Send</Button>
+          </form>
+        </div>
       </div>
     )
   }

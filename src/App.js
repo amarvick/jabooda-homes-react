@@ -29,7 +29,7 @@ class App extends Component {
           </div>
         </Router>
 
-        <footer className = 'App-footer'>
+        <footer className="App-footer">
           <Footer/>
         </footer>
       </div>

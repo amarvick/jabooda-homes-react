@@ -29,7 +29,6 @@ class About extends Component {
         />
 
         <div className = 'pageContent'>
-          <img id="backToBackImg" src={require("../../../images/Executive.png")} height="600px"/>
 
           <p>
             Jabooda Homes Inc is based in Mercer Island, WA and holds JABOOHI853D7 (Construction Contractor, General) licenses according to the Washington license board. 
@@ -40,9 +39,12 @@ class About extends Component {
           </p>
 
           <div id="theTeam">
-            <h1>
-              Meet Our Team
-            </h1>
+            <img id="backToBackImg" src={require("../../../images/Executive.png")} height="600px"/>
+            <div id="aboutBanner">  
+              <h1>
+                Meet Our Team
+              </h1>
+            </div>
 
             <ul>
               {StaffData.map(sd => {
