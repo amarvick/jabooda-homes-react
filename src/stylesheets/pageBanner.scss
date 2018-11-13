@@ -1,0 +1,14 @@
+.pageBannerContainer {
+    height: 250px;
+    width: 100%;
+    overflow: hidden;
+
+    margin-bottom: 40px;
+
+    h1 {
+        position: absolute;
+        margin: 80px;
+        left: 30px;
+        font-size: 54px;
+    }
+}

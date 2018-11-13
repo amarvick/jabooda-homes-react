@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 // Design + React Material UI
 import '../../stylesheets/header.scss'
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
+import Grid from '@material-ui/core/Grid';
 
 
 class Header extends Component {
@@ -27,17 +27,15 @@ class Header extends Component {
 
     return (
       <div>
-        <MuiThemeProvider>
-          <div className = 'headerComponent'>
-            <ul>              
-              <li style={style} className="active"><a href="/"><span class="fa fa-home fa-lg"/>Home</a></li>
-              <li style={style}><a href="/about"><span class="fa fa-info fa-lg"/>About Us</a></li>
-              <li style={style}><a href="/projects"><span class="fa fa-map-o fa-lg"/>Projects</a></li>
-              <li style={style}><a href="/careers"><span class="fa fa-briefcase fa-lg"/>Careers</a></li>
-              <li style={style}><a href="/contactus"><span class="fa fa-address-card fa-lg"/>Contact Us</a></li>
-            </ul>
-          </div>
-        </MuiThemeProvider>
+        <div className = 'headerComponent'>
+          <ul>              
+            <li style={style} className="active"><a href="/"><span class="fa fa-home fa-lg"/>Home</a></li>
+            <li style={style}><a href="/about"><span class="fa fa-info fa-lg"/>About Us</a></li>
+            <li style={style}><a href="/projects"><span class="fa fa-map-o fa-lg"/>Projects</a></li>
+            <li style={style}><a href="/careers"><span class="fa fa-briefcase fa-lg"/>Careers</a></li>
+            <li style={style}><a href="/contactus"><span class="fa fa-address-card fa-lg"/>Contact Us</a></li>
+          </ul>
+        </div>
       </div>
     )
   }

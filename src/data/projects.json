@@ -20,7 +20,7 @@
         "id": 1,
         "address": "13600 NE 85th ST, Bellevue WA 98008",
         "images": [
-            "/house1.jpg"
+            "house1.jpg"
         ],
         "price": "$2,500,000",
         "featured": true,

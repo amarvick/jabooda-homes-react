@@ -2,3 +2,15 @@
     display: block;
     margin: 0px auto;
 }
+
+#theTeam {
+    text-align: center;
+
+    ul {
+        padding: 0;
+        list-style-type: none;
+        li {
+            margin: 0px 20px;
+        }
+    }
+}

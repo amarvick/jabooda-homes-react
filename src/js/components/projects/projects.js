@@ -6,8 +6,8 @@ import ProjectData from '../../../data/projects.json'
 
 
 class Projects extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.state = {
       selectedProject: 0,
@@ -15,21 +15,38 @@ class Projects extends Component {
     }
   }
 
-  // The question template
-  render() {
-    const baseUrl = "../../../images/"
+  handleProjectUpdate() {
+    this.setState({
 
+    })
+  }
+
+  handleImageUpdate(e) {
+    this.setState({
+      [e.target.selectedImageInProject]: e.target.index
+    })
+  }
+
+  render(props) {
     return (
       <div className = 'projectsComponent'>
         {ProjectData.map(projectDetail => {
           return (
             <div>
               <h2>{projectDetail.address}</h2>
-              <img src={require(baseUrl + projectDetail.images[this.state.selectedImageInProject])}/>
+              <img height="100" width="100" src={require("../../../images/" + projectDetail.images[this.state.selectedImageInProject])}/>
               
+
               <ul>
                 {projectDetail.images.map(image => {
-                  return (<li><img src={require(image)}/></li>)
+                  return (
+                    <li>
+                      <img 
+                        height="100" 
+                        width="100"
+                        src={require("../../../images/" + image)}/>
+                    </li>
+                  )
                 })}
               </ul>
             </div>
