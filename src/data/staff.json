@@ -1,0 +1,25 @@
+[
+    {
+        "name": "Alex Marvick",
+        "image": "AlexMarvick.jpg",
+        "title": "Web & App Developer"
+    },
+
+    {
+        "name": "Kaitlyn Huynh",
+        "image": "AlexMarvick.jpg",
+        "title": "CEO"
+    },
+
+    {
+        "name": "Nghia Pham",
+        "image": "AlexMarvick.jpg",
+        "title": "CEO"
+    },
+
+    {
+        "name": "Tran Nguyen",
+        "image": "AlexMarvick.jpg",
+        "title": "CEO"
+    }
+]

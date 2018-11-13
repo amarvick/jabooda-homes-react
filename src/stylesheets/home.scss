@@ -8,11 +8,23 @@ $color-white-background: #f1f4f9;
 #slideshowContents {
     position: absolute;
     width: 100%;
-    top: 160px;
+    top: 140px;
 
     .wrapper {
         text-align: center;
     
+        #homeLogo {
+            height: 120px;
+            width: 750px;
+        }
+
+        @media only screen and (max-width: 790px) {
+            #homeLogo {
+                height: 100%;
+                width: 100%;
+            }
+        }
+
         hr {
             width: 60%;
         }
@@ -92,8 +104,8 @@ $color-white-background: #f1f4f9;
     }
 }
 
-// About,
-.Container {
+// About, hiring sections...
+.pageContent .Container {
     padding: 50px 0px;
 
     hr {
@@ -104,4 +116,53 @@ $color-white-background: #f1f4f9;
         border: none;
         background-color: $color-jabooda-blue;
     }
+
+}
+
+// Subcontracting
+#bidContainer {
+    text-align: center;
+    height: 300px;
+    background-color: black;
+    overflow-y: hidden;
+    z-index:-10;
+
+    hr {
+        width: 60%;
+    }
+
+    #bidOnProjects {
+        position: relative;
+        top: -300px;
+        height: 100vh;
+        background-image: url("../images/house4.jpg");
+        background-size: cover;
+        background-position: 0% 30%;
+        opacity: 0.3;
+    }
+}
+
+#bidText {
+    color: white;
+    z-index: 1000;
+
+    .MuiButtonBase-root-27 {
+        z-index: 1000;
+    }
+
+    .buttonContainer {
+        a {
+            width: 150px;
+            text-align: center;
+            margin: 0px 20px;
+            border-radius: 8px;
+        }
+    }
+}
+
+#careersLink {
+    background-color: $color-jabooda-blue;
+    color: $color-white-background;
+    position: relative;
+    top: -140px;
 }

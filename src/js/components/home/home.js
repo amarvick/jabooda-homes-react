@@ -24,17 +24,14 @@ class Home extends Component {
 
   // The question template
   render(props) {
-    
+      
     return (
       <div>
         <HomeSlideshow/>
 
         <div id="slideshowContents">
-            <div class="wrapper">
-                {/* <img src={require("../../images/largelogo.PNG")} /> */}
-                <h1>
-                    Jabooda Homes, Inc.
-                </h1>
+            <div className="wrapper">
+                <img id="homeLogo" src={require("../../../images/largelogo2.png")} />
                 <hr/>
                 <p>
                     At Jabooda, we believe in a home for every family.
@@ -80,24 +77,47 @@ class Home extends Component {
                 paragraph2="Many of our homes include Green Four Star certifications. As members of the Master Builders Association, we have one objective
                             in mind: to fulfill and satisfy everyone's needs inside their home. Our projects include both custom and spec residential homes, and
                             both multi-family and single family homes. We take proud responsibility for all of our work."
-                image=""
+                imageUrl={require("../../../images/house2.jpg")}
             />
+        </div>
 
-            <ContentContainer
-                header="BID ON OUR PROJECTS"
-                paragraph1="We are building 30-40 units per year, and we are interested in looking for more subcontractors to establish great relationships 
-                            with. If you are interested, please get in contact and take a look at what we have in our projects tab."
-                paragraph2=" Email: jaboodahomes@yahoo.com."
-                image=""
-            />
+        <div id="bidContainer">
+            <span id="bidText">
+                <h1>
+                    BID ON OUR PROJECTS
+                </h1>
 
+                <hr/>
+                
+                <p>
+                    We are building 30-40 units per year, and we are interested in looking for more subcontractors to establish great relationships 
+                    with. If you are interested, please get in contact and take a look at what we have in our projects tab.
+                </p>
+                
+                <div class="buttonContainer">
+                    <Button variant="contained" href="./Contactus">
+                        Contact
+                    </Button>
 
+                    <Button variant="contained" href="./Projects">
+                        View Projects
+                    </Button>
+                </div>
+            </span> 
+            <div id="bidOnProjects"></div>      
+        </div> 
+
+        <div className="pageContent">
             <ContentContainer
                 header="WE'RE HIRING!"
                 paragraph1="Are you enthusiastic about all things construction? Are you passionate about the direction of where residential real estate is headed in Seattle? If so, come check out our current open positions. We are always looking for electrifying and innovative candidates to push forward our mission."
-                image=""
+                imageUrl={require("../../../images/house1.jpg")}
                 link="./Careers"
             />
+
+            <Button id="careersLink" variant="contained" href="./Careers">
+                View Openings
+            </Button>
         </div>
       </div>
     )

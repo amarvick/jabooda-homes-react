@@ -3,6 +3,7 @@ $color-white-background: #f1f4f9;
 
 body {
     background-color: $color-white-background;
+    overflow-x: hidden;
     margin: 0;
     font-family: 'Quicksand', Arial, Helvetica, sans-serif;
 }
