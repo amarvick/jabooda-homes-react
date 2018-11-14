@@ -1,5 +1,5 @@
 /* File Name: header.js                                              *
- * Description: Error message that would stop the user              */
+ * Description: Header displayed on the website. Includes nav menu   */
 
 import React, { Component, StartupActions } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -7,7 +7,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 // Design + React Material UI
 import '../../stylesheets/header.scss'
-import Grid from '@material-ui/core/Grid';
 
 
 class Header extends Component {
@@ -26,16 +25,14 @@ class Header extends Component {
     };
 
     return (
-      <div>
-        <div className = 'headerComponent'>
-          <ul>              
-            <li style={style} className="active"><a href="/"><span class="fa fa-home fa-lg"/>Home</a></li>
-            <li style={style}><a href="/about"><span class="fa fa-info fa-lg"/>About Us</a></li>
-            <li style={style}><a href="/projects"><span class="fa fa-map-o fa-lg"/>Projects</a></li>
-            <li style={style}><a href="/careers"><span class="fa fa-briefcase fa-lg"/>Careers</a></li>
-            <li style={style}><a href="/contactus"><span class="fa fa-address-card fa-lg"/>Contact Us</a></li>
-          </ul>
-        </div>
+      <div className = 'headerComponent'>
+        <ul>              
+          <li style={style} className="active"><a href="/"><span class="fa fa-home fa-lg"/>Home</a></li>
+          <li style={style}><a href="/about"><span class="fa fa-info fa-lg"/>About Us</a></li>
+          <li style={style}><a href="/projects"><span class="fa fa-map-o fa-lg"/>Projects</a></li>
+          <li style={style}><a href="/careers"><span class="fa fa-briefcase fa-lg"/>Careers</a></li>
+          <li style={style}><a href="/contactus"><span class="fa fa-address-card fa-lg"/>Contact Us</a></li>
+        </ul>
       </div>
     )
   }
