@@ -14,6 +14,8 @@ class Footer extends Component {
   }
 
   render(props) {
+    var currentYear = new Date().getFullYear()
+
     const style = {
       marginLeft: 15,
       marginRight: 15,
@@ -43,9 +45,17 @@ class Footer extends Component {
           </li>
         </ul>
 
-        <ul id="menu">
-          <li></li>
+        <ul id="footerNavMenu">
+          <li style={style}><a href="/">Home</a></li>
+          <li style={style}><a href="/about">About Us</a></li>
+          <li style={style}><a href="/projects">Projects</a></li>
+          <li style={style}><a href="/careers">Careers</a></li>
+          <li style={style}><a href="/contactus">Contact Us</a></li>
         </ul>
+        
+        <img id="combinedLogos" src={require("../../images/combinedlogos.png")} />
+
+        <p>Jabooda Homes, Inc - {currentYear}</p>
       </div>
     )
   }
