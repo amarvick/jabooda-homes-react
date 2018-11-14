@@ -1,9 +1,9 @@
 /* File Name: footer.js                                              *
- * Description: Error message that would stop the user              */
+ * Description: Footer displayed on the website                      */
 
 import React, { Component, StartupActions } from 'react'
 // import { connect } from 'react-redux'
-
+import '../../stylesheets/footer.scss'
 
 class Footer extends Component {
   constructor(props) {
@@ -13,11 +13,39 @@ class Footer extends Component {
     }
   }
 
-  // The question template
-  render(props) {    
+  render(props) {
+    const style = {
+      marginLeft: 15,
+      marginRight: 15,
+    };
+
     return (
-      <div className = 'footerComponent'>
-        
+      <div className="footerComponent">
+
+        {/* AM - componentize */}
+        <ul id="socialMediaLinks">
+          <li style={style} className="socialMedia">
+            <a href="/">
+              <span class="fa fa-facebook-f fa-2x" />
+            </a>
+          </li>
+
+          <li style={style} className="socialMedia">
+            <a href="/">
+              <span class="fa fa-instagram fa-2x" />
+            </a>
+          </li>
+
+          <li style={style} className="socialMedia">
+            <a href="/">
+              <span class="fa fa-linkedin fa-2x" />
+            </a>
+          </li>
+        </ul>
+
+        <ul id="menu">
+          <li></li>
+        </ul>
       </div>
     )
   }
@@ -34,5 +62,4 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => ({
 })
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Error)
 export default Footer
