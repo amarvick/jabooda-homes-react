@@ -3,6 +3,7 @@
         "id": 0,
         "identifier": "Superintendent", 
         "jobtitle": "SUPERINTENDENT",
+        "description": "As a superintendent, you will oversee the operations of construction sites from planning to completion, be responsible daily scheduling, supervising all activities and tasks, and ensuring the safety and compliance of the site.",
         "requirements": [ 
             "Supervising construction activities",
             "Must be able to develop positive relationships betwen customers and suppliers; both orally and written",
@@ -19,6 +20,7 @@
         "id": 1,
         "identifier": "PROJECT_MANAGER", 
         "jobtitle": "PROJECT MANAGER",
+        "description": "",
         "requirements": [ 
             "Strong listening skills; being able to address clients needs with understanding",
             "Build rapport with clients, sales representatives and other peers",
@@ -35,6 +37,7 @@
         "id": 2,
         "identifier": "EXCAVATOR_OPERATOR", 
         "jobtitle": "EXCAVATOR OPERATOR",
+        "description": "",
         "requirements": [ 
             "Conduct operation of excavators and additional associated equipment",
             "Working in accordance to plans and specifications",
@@ -55,6 +58,7 @@
         "id": 3,
         "identifier": "FOREMAN", 
         "jobtitle": "FOREMAN",
+        "description": "",
         "requirements": [ 
             "Train, direct, supervise and discipline crews on a given project",
             "Present strong leadership roles while maintaining a positive attitude",
@@ -71,6 +75,7 @@
         "id": 4,
         "identifier": "FRAMER", 
         "jobtitle": "FRAMER",
+        "description": "",
         "requirements": [ 
             "Build and repair wooden structures",
             "Measure, cut and assemble lumber with precision",
