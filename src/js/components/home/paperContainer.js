@@ -3,6 +3,7 @@
 
 import React, { Component, StartupActions } from 'react'
 
+import '../../../stylesheets/paperContainer.scss'
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 

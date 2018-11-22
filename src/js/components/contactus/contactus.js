@@ -18,6 +18,7 @@ class Contactus extends Component {
     this.state = {
       name: '',
       email: '',
+      subject: '',
       message: ''
     };
 
@@ -39,6 +40,7 @@ class Contactus extends Component {
     const { 
       name, 
       email, 
+      subject,
       message 
     } = this.state
 
@@ -46,11 +48,16 @@ class Contactus extends Component {
     const form = await axios.post('/api/sendEmailform', {
       name, 
       email,
+      subject,
       message
     })
   }
 
   render() {    
+    const padding = {
+      paddingBottom: 50
+    };
+
     return (
       <div>
         <PageBanner
@@ -58,7 +65,11 @@ class Contactus extends Component {
           image="house4.jpg"
         />
 
-        <div className="pageContent contactUsComponent">
+        <div style={padding} className="pageContent contactUsComponent">
+          <p style={padding}>
+            Have anything you'd like to let us know about? Please fill out the form with your information and we will get back to you shortly!
+          </p>
+
           <p>* = Required</p><br/><br/>
           <form onSubmit = {this.handleSubmit}>
             <FormLabel>
@@ -79,6 +90,17 @@ class Contactus extends Component {
               <Input 
                 type="email" 
                 name="email"
+                onChange={this.handleChange} 
+                required />
+            </FormLabel>
+
+            <br/><br/>
+
+            <FormLabel>
+              Subject*<br/>
+              <Input 
+                type="text" 
+                name="subject"
                 onChange={this.handleChange} 
                 required />
             </FormLabel>

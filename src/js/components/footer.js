@@ -55,7 +55,7 @@ class Footer extends Component {
         
         <img id="combinedLogos" src={require("../../images/combinedlogos.png")} />
 
-        <p>Jabooda Homes, Inc - {currentYear}</p>
+        <p>Jabooda Homes, Inc. {currentYear}</p>
       </div>
     )
   }

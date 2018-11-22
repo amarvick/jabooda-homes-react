@@ -6,7 +6,9 @@ import CareerData from '../../../data/careers.json'
 
 import Grid from '@material-ui/core/Grid';
 
-import PaperContainer from '../home/paperContainer'
+import '../../../stylesheets/careers.scss'
+
+import CareerTemplate from './careerTemplate'
 import PageBanner from '../pageBanner'
 
 class Careers extends Component {
@@ -19,24 +21,20 @@ class Careers extends Component {
           image="house4.jpg"
         />
         <div className="pageContent careersComponent">
-          <Grid container spacing={24}>
-            {CareerData.map((careerDetail, index) => {
-              return (
-                <div>
-                  {/* <h2>{careerDetail.jobtitle}</h2>
-                  <ul>
-                    {careerDetail.requirements.map(criteria => {
-                      return (<li>{criteria}</li>)
-                    })}
-                  </ul> */}
-                  <PaperContainer
+          <div className="boxContainer">
+            <Grid container spacing={24}>
+              {CareerData.map((careerDetail, index) => {
+                return (
+                  <CareerTemplate
+                    faClass="fas fa-user-tie fa-5x"
+                    description={careerDetail.description}
+                    requirements={careerDetail.requirements}
                     header={careerDetail.jobtitle}
-                    // footerText=
                   />
-                </div>
-              )
-            })}
-          </Grid>
+                )
+              })}
+            </Grid>
+          </div>
         </div>
       </div>
     )

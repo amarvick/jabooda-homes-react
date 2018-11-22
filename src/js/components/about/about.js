@@ -1,26 +1,13 @@
 /* File Name: about.js                                              *
- * Description: Error message that would stop the user              */
+ * Description: About the team & company                            */
 
 import React, { Component, StartupActions } from 'react'
 import StaffData from '../../../data/staff.json'
-// import { connect } from 'react-redux'
-
 import PageBanner from '../pageBanner'
-
-// Design
 import '../../../stylesheets/about.scss'
 
 class About extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-    }
-  }
-
-  // The question template
-  render(props) {    
-
+  render() {    
     return (
       <div>
         <PageBanner
@@ -48,7 +35,6 @@ class About extends Component {
 
             <ul>
               {StaffData.map(sd => {
-                // var baseLine = '../../../images/staff/'
                 return (
                   <li>
                     <img 
@@ -68,16 +54,4 @@ class About extends Component {
   }
 }
 
-// wraps dispatch to create nicer functions to call within our component
-// Mapping dispatch actions to the props
-const mapDispatchToProps = (dispatch) => ({
-  dispatch: dispatch,
-  startup: () => dispatch(StartupActions.startup())
-})
-
-// Maps the state in to props (for displaying on the front end)
-const mapStateToProps = (state) => ({
-})
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Error)
 export default About
