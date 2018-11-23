@@ -3,11 +3,12 @@
 
 import React, { Component, StartupActions } from 'react'
 import ProjectData from '../../../data/projects.json'
+import MainProject from './mainProject'
 
 
 class Projects extends Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
 
     this.state = {
       selectedProject: 0,
@@ -15,58 +16,36 @@ class Projects extends Component {
     }
   }
 
-  handleProjectUpdate() {
+  handleProjectUpdate(index) {
     this.setState({
-
+      selectedImageInProject: 0,
+      selectedProject: index
     })
   }
 
-  handleImageUpdate(e) {
-    this.setState({
-      [e.target.selectedImageInProject]: e.target.index
-    })
-  }
+  render() {
+    var selectedProject = this.state.selectedProject
 
-  render(props) {
     return (
       <div className = 'projectsComponent'>
-        {ProjectData.map(projectDetail => {
-          return (
-            <div>
-              <h2>{projectDetail.address}</h2>
-              <img height="100" width="100" src={require("../../../images/" + projectDetail.images[this.state.selectedImageInProject])}/>
-              
-
-              <ul>
-                {projectDetail.images.map(image => {
-                  return (
-                    <li>
-                      <img 
-                        height="100" 
-                        width="100"
-                        src={require("../../../images/" + image)}/>
-                    </li>
-                  )
-                })}
-              </ul>
-            </div>
-          )
-        })}
+        <div> {/* Grid component */}
+          <MainProject
+            selectedProject={ProjectData[selectedProject]}
+            selectedImageInProject={0}
+          />
+        </div>
+        <div> {/* Grid component */}
+          {ProjectData.map((projectDetail, index) => {
+            return (
+              <div>
+                <h1 onClick={() => this.handleProjectUpdate(index)}>{ projectDetail.address }</h1>
+              </div>
+            ) 
+          })}
+        </div>
       </div>
     )
   }
 }
 
-// wraps dispatch to create nicer functions to call within our component
-// Mapping dispatch actions to the props
-const mapDispatchToProps = (dispatch) => ({
-  dispatch: dispatch,
-  startup: () => dispatch(StartupActions.startup())
-})
-
-// Maps the state in to props (for displaying on the front end)
-const mapStateToProps = (state) => ({
-})
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Error)
 export default Projects
