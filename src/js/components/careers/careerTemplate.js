@@ -2,6 +2,8 @@
  * Description: Displays all open positions                           */
 
 import React, { Component, StartupActions } from 'react'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import AnimateHeight from 'react-animate-height';
 import CareerData from '../../../data/careers.json'
 
 import CareerModalApply from './careerModalApply.js'
@@ -43,34 +45,34 @@ class CareerTemplate extends Component {
       faClass: '',
       description: '',
       requirements: [],
-      showDescription: false,
       arrowFATag: 'fa fa-arrow-circle-down fa-2x',
       header: '',
+      height: 0,
       footerText: '',
-      open: false
+      openModal: false
     }
 
     this.toggleDescription = this.toggleDescription.bind(this);
-    this.handleOpen = this.handleOpen.bind(this);
-    this.handleClose = this.handleClose.bind(this);
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
   toggleDescription() {
-    var showDescription = !this.state.showDescription;
     var newTag = (this.state.arrowFATag == 'fa fa-arrow-circle-down fa-2x' ? 'fa fa-arrow-circle-up fa-2x' : 'fa fa-arrow-circle-down fa-2x')
-
+    var height = this.state.height;
+ 
     this.setState({
-      showDescription: showDescription,
+      height: height === 0 ? 'auto' : 0,
       arrowFATag: newTag
-    })
+    });
   }
 
-  handleOpen() {
-    this.setState({ open: true })
+  handleOpenModal() {
+    this.setState({ openModal: true })
   }
 
-  handleClose() {
-    this.setState({ open: false })
+  handleCloseModal() {
+    this.setState({ openModal: false })
   }
 
   render(props) {
@@ -79,34 +81,11 @@ class CareerTemplate extends Component {
     var arrowFATag = this.state.arrowFATag
     var description = this.props.description
     var requirements = this.props.requirements
-
-    var descriptionDisplay;
-
-    if (showDescription) {
-      descriptionDisplay = (
-        <div id="description">
-          <p>
-            {description}
-          </p>
-          <div id="requirementsList">
-            <ul>
-              {requirements.map(rq => {
-                return (
-                  <li>
-                    - {rq}
-                  </li>
-                )
-              })}
-            </ul>
-          </div>
-          <Button variant="contained" onClick={this.handleOpen}>Apply</Button>
-        </div>
-      )
-    }
+    var height = this.state.height;
 
     return (
       <Grid src={this.props.link} item xs={12}>
-        <div class="paper-container">
+        <div class="paper-container" onClick={this.toggleDescription}> {/* This will close when clicking on the button; prevent this. */}
 
           <h1>
             {this.props.header}
@@ -115,23 +94,44 @@ class CareerTemplate extends Component {
 
           <br />
 
-          {descriptionDisplay}
-          <span id="arrow" onClick={this.toggleDescription} className={arrowFATag} />
+          <AnimateHeight
+            duration={ 500 }
+            height={ height }
+          >
+            <div id="description">
+              <p>
+                {description}
+              </p>
+              <div id="requirementsList">
+                <ul>
+                  {requirements.map(rq => {
+                    return (
+                      <li>
+                        - {rq} {/* AM - Don't use '-' on the side. Go back to CSS and use !important selector*/}
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
+              <Button variant="contained" onClick={this.handleOpenModal}>Apply</Button>
+            </div>
+          </AnimateHeight>
 
+          <span id="arrow" className={arrowFATag} />
         </div>
 
         <Modal
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
-          open={this.state.open}
-          onClose={this.handleClose}
+          open={this.state.openModal}
+          onClose={this.handleCloseModal}
           disableBackdropClick={true}
         >
           <CareerModalApply
             style={getModalStyle()}
             className={classes.paper}
             jobTitle={this.props.header}
-            handleClose={this.handleClose} />
+            handleClose={this.handleCloseModal} />
         </Modal>
       </Grid>
     )
