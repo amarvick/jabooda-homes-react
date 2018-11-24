@@ -2,9 +2,13 @@
  * Description: Contact jabooda homes                                   */
 
 import React, { Component, StartupActions } from 'react'
+import { connect } from 'react-redux';
 import axios from 'axios'
 
 import PageBanner from '../pageBanner'
+
+// Actions
+import { handleSubmit } from '../../actions/contactUsActions'
 
 // Design
 import Input from '@material-ui/core/Input';
@@ -71,7 +75,7 @@ class Contactus extends Component {
           </p>
 
           <p>* = Required</p><br/><br/>
-          <form onSubmit = {this.handleSubmit}>
+          <form onSubmit = {this.props.dispatch(handleSubmit(this.state))}>
             <FormLabel>
               Name*<br/>
               <Input 
@@ -126,4 +130,16 @@ class Contactus extends Component {
   }
 }
 
-export default Contactus
+// wraps dispatch to create nicer functions to call within our component
+// Mapping dispatch actions to the props
+const mapDispatchToProps = (dispatch) => ({
+  dispatch: dispatch,
+  startup: () => dispatch(StartupActions.startup())
+})
+
+// Maps the state in to props (for displaying on the front end)
+const mapStateToProps = (state) => ({
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Contactus)
+// export default Contactus
