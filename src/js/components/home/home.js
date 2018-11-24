@@ -12,18 +12,9 @@ import ContentContainer from './contentContainer.js';
 import '../../../stylesheets/home.scss'
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 
 class Home extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-    }
-  }
-
-  // The question template
-  render(props) {
+  render() {
       
     return (
       <div>

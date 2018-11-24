@@ -5,6 +5,10 @@ import React, { Component, StartupActions } from 'react'
 import axios from 'axios'
 import CareerData from '../../../data/careers.json'
 
+// // Actions
+// import { handleSubmit } from '../../actions/contactUsActions'
+
+// Design
 import '../../../stylesheets/careerModalApply.scss'
 import Modal from '@material-ui/core/Modal'
 import Input from '@material-ui/core/Input';

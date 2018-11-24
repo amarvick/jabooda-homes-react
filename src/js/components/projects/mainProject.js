@@ -29,11 +29,12 @@ class MainProject extends Component {
   render(props) {
     var selectedProject = this.props.selectedProject
 
+    // AM - Do this via Redux
     var image
     try {
         image = require("../../../images/" + selectedProject.images[this.state.selectedImageInProject])
     } catch (e) {
-        return null
+        image = require("../../../images/" + selectedProject.images[this.state.selectedImageInProject])
     }
 
     return (
