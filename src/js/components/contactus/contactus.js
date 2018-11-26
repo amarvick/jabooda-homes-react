@@ -27,34 +27,12 @@ class Contactus extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value
     });
-  }
-
-  // Asynchronous event
-  async handleSubmit(event) {
-    event.preventDefault();
-
-    // Assign variables
-    const { 
-      name, 
-      email, 
-      subject,
-      message 
-    } = this.state
-
-    // AM - look in to 'await' function. Assuming it has to do with asynchronization?
-    const form = await axios.post('/api/sendEmailform', {
-      name, 
-      email,
-      subject,
-      message
-    })
   }
 
   render() {    
@@ -75,7 +53,7 @@ class Contactus extends Component {
           </p>
 
           <p>* = Required</p><br/><br/>
-          <form onSubmit = {this.props.dispatch(handleSubmit(this.state))}>
+          <form onSubmit = {(e) => this.props.dispatch(handleSubmit(e, this.state))}>
             <FormLabel>
               Name*<br/>
               <Input 
@@ -142,4 +120,3 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Contactus)
-// export default Contactus

@@ -85,7 +85,7 @@ class CareerTemplate extends Component {
 
     return (
       <Grid src={this.props.link} item xs={12}>
-        <div class="paper-container" onClick={this.toggleDescription}> {/* This will close when clicking on the button; prevent this. */}
+        <div className="paper-container" onClick={this.toggleDescription}> {/* This will close when clicking on the button; prevent this. */}
 
           <h1>
             {this.props.header}

@@ -2,11 +2,13 @@
  * Description: Displays all open positions                           */
 
 import React, { Component, StartupActions } from 'react'
+import { connect } from 'react-redux';
 import axios from 'axios'
+
 import CareerData from '../../../data/careers.json'
 
 // // Actions
-// import { handleSubmit } from '../../actions/contactUsActions'
+import { handleSubmit } from '../../actions/careerActions'
 
 // Design
 import '../../../stylesheets/careerModalApply.scss'
@@ -27,11 +29,10 @@ class CareerModalApply extends Component {
       summary: '', 
       style: '',
       className: '',
-      handleClose: function(){}
+      handleCloseModal: function(){}
     }
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
@@ -40,50 +41,18 @@ class CareerModalApply extends Component {
     });
   }
 
-  // Asynchronous event
-  async handleSubmit(e) {
-    e.preventDefault();
-
-    // Assign variables
-    const { 
-      name, 
-      email, 
-      jobTitle,
-      resume,
-      summary 
-    } = this.state
-
-    alert(resume)
-
-    const form = await axios.post('/api/submitApplication', {
-      name, 
-      email, 
-      jobTitle,
-      resume,
-      summary 
-    }).then(response => {
-        if (response.ok) {
-          this.props.handleClose()
-          
-          this.setState({
-            // Bind with previous component, get the other modal to pop up
-          })
-        }
-    })
-  }
-
   render(props) {
     var header = 'APPLICATION: ' + this.props.jobTitle
 
     return (
       <div className={this.props.className + " careerModal"} style={this.props.style}>
-        <span onClick={this.props.handleClose} id="exitModal" class="fa fa-times-circle fa-2x" /> <br/>
+        <span onClick={this.props.handleCloseModal} id="exitModal" class="fa fa-times-circle fa-2x" /> <br/>
 
         <h1>
           {header}
         </h1>
 
-        <form onSubmit = {this.handleSubmit}>
+        <form onSubmit = {(e) => this.props.dispatch(handleSubmit(e, this.state))}>
           <FormLabel>
             Name*<br/>
             <Input 
@@ -141,4 +110,23 @@ class CareerModalApply extends Component {
   }
 }
 
-export default CareerModalApply
+// wraps dispatch to create nicer functions to call within our component
+// Mapping dispatch actions to the props
+const mapDispatchToProps = (dispatch) => ({
+  dispatch: dispatch,
+  startup: () => dispatch(StartupActions.startup())
+})
+
+// Maps the state in to props (for displaying on the front end)
+const mapStateToProps = (state) => ({
+  faClass: state.faClass,
+  description: state.description,
+  requirements: state.requirements,
+  arrowFATag: state.arrowFATag,
+  header: state.header,
+  height: state.height,
+  footerText: state.footerText,
+  openAppModal: state.openAppModal,
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CareerModalApply)
