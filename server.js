@@ -13,6 +13,10 @@ app.listen(PORT, () => {
     console.log(`Server listening on Port: ${PORT}`)
 })
 
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 // Creating the transporter for emails
 var createTransport = function() {
     return nodemailer.createTransport({
