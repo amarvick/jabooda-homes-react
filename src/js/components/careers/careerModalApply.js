@@ -26,10 +26,7 @@ class CareerModalApply extends Component {
       email: '',
       jobTitle: '',
       resume: '',
-      summary: '', 
-      style: '',
-      className: '',
-      handleCloseModal: function(){}
+      summary: ''
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -117,16 +114,5 @@ const mapDispatchToProps = (dispatch) => ({
   startup: () => dispatch(StartupActions.startup())
 })
 
-// Maps the state in to props (for displaying on the front end)
-const mapStateToProps = (state) => ({
-  faClass: state.faClass,
-  description: state.description,
-  requirements: state.requirements,
-  arrowFATag: state.arrowFATag,
-  header: state.header,
-  height: state.height,
-  footerText: state.footerText,
-  openAppModal: state.openAppModal,
-})
 
-export default connect(mapStateToProps, mapDispatchToProps)(CareerModalApply)
+export default connect(mapDispatchToProps)(CareerModalApply)

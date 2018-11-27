@@ -41,14 +41,9 @@ class CareerTemplate extends Component {
     super(props)
 
     this.state = {
-      link: '',
-      faClass: '',
-      description: '',
-      requirements: [],
       arrowFATag: 'fa fa-arrow-circle-down fa-2x',
       header: '',
       height: 0,
-      footerText: '',
       openModal: false
     }
 
@@ -131,7 +126,7 @@ class CareerTemplate extends Component {
             style={getModalStyle()}
             className={classes.paper}
             jobTitle={this.props.header}
-            handleClose={this.handleCloseModal} />
+            handleCloseModal={this.handleCloseModal} />
         </Modal>
       </Grid>
     )
