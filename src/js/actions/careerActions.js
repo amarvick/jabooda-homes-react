@@ -5,15 +5,9 @@
 import CareerActionTypes from '../actiontypes/careerActionTypes'
 import axios from 'axios'
 
-export function handleOpenModal() {
+export function loadData() {
     return function action(dispatch) {
-        dispatch({ type: CareerActionTypes.HANDLE_OPEN_APP_MODAL })
-    }
-}
-
-export function handleCloseModal() {
-    return function action(dispatch) {
-        dispatch({ type: CareerActionTypes.HANDLE_CLOSE_APP_MODAL })
+        // Do an axios request to get all data from DB. If success, good; otherwise, populate a modal. Also make loading state
     }
 }
 

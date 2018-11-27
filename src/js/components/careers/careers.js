@@ -17,6 +17,7 @@ class Careers extends Component {
   // Displaying all careers
   render(props) {    
     var careerData = this.props.careerData || []
+    console.log(this.props.state)
 
     return (
       <div>
@@ -27,7 +28,7 @@ class Careers extends Component {
         <div className="pageContent careersComponent">
           <div className="boxContainer">
             <Grid container spacing={24}>
-              {CareerData.map((careerDetail, index) => {
+              {careerData.map((careerDetail, index) => {
                 return (
                   <CareerTemplate
                     faClass="fas fa-user-tie fa-5x"
@@ -53,7 +54,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 // Maps the state in to props (for displaying on the front end)
 const mapStateToProps = (state) => ({
-  careerData: state.careerData
+  state: state,
+  careerData: state.career.careerData
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Careers);
