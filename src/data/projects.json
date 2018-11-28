@@ -12,7 +12,7 @@
             "13979se1st/Photo-50.jpg"
         ],
         "price": "$2,500,000",
-        "featured": true,
+        "status": "For Sale",
         "description": "The best house on the block!"
     },
 
@@ -23,7 +23,40 @@
             "house1.jpg"
         ],
         "price": "$2,500,000",
-        "featured": true,
+        "status": "For Sale",
+        "description": "The best house on the block!"
+    },
+
+    {
+        "id": 2,
+        "address": "13600 NE 85th ST, Bellevue WA 98007",
+        "images": [
+            "house1.jpg"
+        ],
+        "price": "$2,500,000",
+        "status": "For Sale",
+        "description": "The best house on the block!"
+    },
+
+    {
+        "id": 1,
+        "address": "13600 NE 85th ST, Bellevue WA 98006",
+        "images": [
+            "house1.jpg"
+        ],
+        "price": "$2,500,000",
+        "status": "Sold",
+        "description": "The best house on the block!"
+    },
+
+    {
+        "id": 2,
+        "address": "13600 NE 85th ST, Bellevue WA 98005",
+        "images": [
+            "house1.jpg"
+        ],
+        "price": "$2,500,000",
+        "status": "In Progress",
         "description": "The best house on the block!"
     }
 ]

@@ -12,7 +12,13 @@ import '../../../stylesheets/careers.scss'
 import CareerTemplate from './careerTemplate'
 import PageBanner from '../pageBanner'
 
+import { loadData } from '../../actions/careerActions'
+
 class Careers extends Component {
+
+  componentDidMount() {
+    this.props.dispatch(loadData())
+  }
 
   // Displaying all careers
   render(props) {    
