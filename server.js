@@ -1,6 +1,7 @@
 const nodemailer = require('nodemailer')
 const express = require('express')
 const bodyParser = require('body-parser')
+const path = require('path');
 const fs = require('fs')
 const app = express()
 
@@ -8,6 +9,8 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 const PORT = process.env.PORT || 3001
+
+app.use(express.static(__dirname + '/public/emailAppReceived.css'));
 
 app.listen(PORT, () => {
     console.log(`Server listening on Port: ${PORT}`)
@@ -19,6 +22,10 @@ app.get('', function(req, res) {
 
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.get('/emailTemplate', function(req, res) {
+    res.sendFile(path.join(__dirname, 'public', 'emailAppReceived.html'));
 });
 
 // Creating the transporter for emails
