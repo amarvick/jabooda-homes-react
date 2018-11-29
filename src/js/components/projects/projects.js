@@ -8,8 +8,9 @@ import MainProject from './mainProject'
 import { connect } from 'react-redux'
 
 import '../../../stylesheets/projects.scss'
-
-import Grid from '@material-ui/core/Grid';
+import Tabs from '@material-ui/core/Tabs'
+import Tab from '@material-ui/core/Tab'
+import Grid from '@material-ui/core/Grid'
 
 class Projects extends Component {
   constructor() {
@@ -17,19 +18,34 @@ class Projects extends Component {
 
     this.state = {
       selectedProject: 0,
-      selectedImageInProject: 0
+      selectedImageInProject: 0,
+      selectedTab: 'Sold'
     }
   }
 
-  handleProjectUpdate(index) {
+  handleProjectUpdate(id) {
     this.setState({
       selectedImageInProject: 0,
-      selectedProject: index
+      selectedProject: id
     })
+  }
+
+  updateTab(tab) {
+    this.setState({ selectedTab: tab })
   }
 
   render() {
     var selectedProject = this.state.selectedProject
+    var selectedTab = this.state.selectedTab
+    var theProjectData = this.props.projectData
+    var projectsInTab = [];
+
+    // AM - better way of doing this??
+    for (var i = 0; i < theProjectData.length; i++) {
+      if (theProjectData[i].status === selectedTab) {
+        projectsInTab.push(theProjectData[i])
+      }
+    }
 
     return (
       <div className = 'projectsComponent'>
@@ -41,10 +57,15 @@ class Projects extends Component {
             />
           </Grid>
           <Grid item sm={4}>
-            <div>AM - put the project type selector here, between sold, in progress and on sale projects</div>
-            {ProjectData.map((projectDetail, index) => {
+            <Tabs>
+              <Tab onClick={() => this.updateTab('Sold')} label="Sold"/>
+              <Tab onClick={() => this.updateTab('For Sale')} label="For Sale"/>
+              <Tab onClick={() => this.updateTab('In Progress')} label="In Progress"/>
+            </Tabs>
+            <hr/>
+            {projectsInTab.map((projectDetail, index) => {
               return (
-                <div className="projectContainer" onClick={() => this.handleProjectUpdate(index)}>
+                <div className="projectContainer" onClick={() => this.handleProjectUpdate(projectDetail.id)}>
                   <Grid container spacing={24}>
                     <Grid item xs={4}>
                       <img height="90" width="120" src={require('../../../images/' + projectDetail.images[0])} />
@@ -53,6 +74,8 @@ class Projects extends Component {
                       <h3>{ projectDetail.address }</h3>
                     </Grid>
                   </Grid>
+
+                  <hr/>
                 </div>
               ) 
             })}

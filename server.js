@@ -21,6 +21,10 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+app.get('/emailTemplate', function(req, res) {
+    res.sendFile(path.join(__dirname + '/src/js', 'components', 'emailAppReceived.html'));
+});
+
 // Creating the transporter for emails
 var createTransport = function() {
     return nodemailer.createTransport({
