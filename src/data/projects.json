@@ -39,7 +39,7 @@
     },
 
     {
-        "id": 1,
+        "id": 3,
         "address": "13600 NE 85th ST, Bellevue WA 98006",
         "images": [
             "house1.jpg"
@@ -50,7 +50,7 @@
     },
 
     {
-        "id": 2,
+        "id": 4,
         "address": "13600 NE 85th ST, Bellevue WA 98005",
         "images": [
             "house1.jpg"
