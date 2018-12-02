@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 const PORT = process.env.PORT || 3001
 
-app.use(express.static(__dirname + '/public/emailAppReceived.css'));
+app.use(express.static(__dirname + '/public'));
 
 app.listen(PORT, () => {
     console.log(`Server listening on Port: ${PORT}`)
