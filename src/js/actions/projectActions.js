@@ -11,9 +11,21 @@ export function loadData() {
     }
 }
 
+export function handleProjectUpdate(id) {
+    return function action(dispatch) {
+        dispatch({ 
+            type: ProjectActionTypes.UPDATE_MAIN_PROJECT,
+            payload: id
+        })
+    }
+}
 
-export function handleSubmit(e, state) {
-    return async function action(dispatch) {
-       
+export function updateTab(tab) {
+    return function action(dispatch) {
+        dispatch({ 
+            type: ProjectActionTypes.UPDATE_PROJECTS_TO_DISPLAY,
+            payload: tab
+        })
+        debugger
     }
 }

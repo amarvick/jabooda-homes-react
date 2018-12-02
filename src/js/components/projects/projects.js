@@ -2,7 +2,6 @@
  * Description: Error message that would stop the user              */
 
 import React, { Component, StartupActions } from 'react'
-import ProjectData from '../../../data/projects.json'
 import MainProject from './mainProject'
 
 import { connect } from 'react-redux'
@@ -12,37 +11,23 @@ import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import Grid from '@material-ui/core/Grid'
 
+import { loadData, handleProjectUpdate, updateTab } from '../../actions/projectActions'
+
 class Projects extends Component {
-  constructor() {
-    super()
-
-    this.state = {
-      selectedProject: 0,
-      selectedImageInProject: 0,
-      selectedTab: 'Sold'
-    }
-  }
-
-  handleProjectUpdate(id) {
-    this.setState({
-      selectedImageInProject: 0,
-      selectedProject: id
-    })
-  }
 
   updateTab(tab) {
     this.setState({ selectedTab: tab })
   }
 
   render() {
-    var selectedProject = this.state.selectedProject
-    var selectedTab = this.state.selectedTab
+    var selectedProject = this.props.selectedProject
+    var projectsToDisplay = this.props.projectsToDisplay
     var theProjectData = this.props.projectData
     var projectsInTab = [];
 
     // AM - better way of doing this??
     for (var i = 0; i < theProjectData.length; i++) {
-      if (theProjectData[i].status === selectedTab) {
+      if (theProjectData[i].status === projectsToDisplay) {
         projectsInTab.push(theProjectData[i])
       }
     }
@@ -52,20 +37,20 @@ class Projects extends Component {
         <Grid container spacing={24}>
           <Grid item sm={8}>
             <MainProject
-              selectedProject={ProjectData[selectedProject]}
+              selectedProject={theProjectData[selectedProject]}
               selectedImageInProject={0}
             />
           </Grid>
           <Grid item sm={4}>
             <Tabs>
-              <Tab onClick={() => this.updateTab('Sold')} label="Sold"/>
-              <Tab onClick={() => this.updateTab('For Sale')} label="For Sale"/>
-              <Tab onClick={() => this.updateTab('In Progress')} label="In Progress"/>
+              <Tab onClick={() => this.props.dispatch(updateTab('Sold'))} label="Sold"/>
+              <Tab onClick={() => this.props.dispatch(updateTab('For Sale'))} label="For Sale"/>
+              <Tab onClick={() => this.props.dispatch(updateTab('In Progress'))} label="In Progress"/>
             </Tabs>
             <hr/>
             {projectsInTab.map((projectDetail, index) => {
               return (
-                <div className="projectContainer" onClick={() => this.handleProjectUpdate(projectDetail.id)}>
+                <div className="projectContainer" onClick={() => this.props.dispatch(handleProjectUpdate(projectDetail.id))}> 
                   <Grid container spacing={24}>
                     <Grid item xs={4}>
                       <img height="90" width="120" src={require('../../../images/' + projectDetail.images[0])} />
@@ -96,7 +81,10 @@ const mapDispatchToProps = (dispatch) => ({
 // Maps the state in to props (for displaying on the front end)
 const mapStateToProps = (state) => ({
   state: state,
-  projectData: state.project.projectData
+  projectData: state.project.projectData,
+  projectsToDisplay: state.project.projectsToDisplay,
+  selectedProject: state.project.selectedProject,
+  selectedImageInProject: state.project.selectedImageInProject
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Projects);
