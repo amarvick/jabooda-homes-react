@@ -51,11 +51,11 @@ class Header extends Component {
     if (displayMenuButton) {
       displayMenuItems = (
         <ul>              
-          <li style={style} className="active"><NavLink to="/"><span class="fa fa-home fa-lg"/><span class="menuText">Home</span></NavLink></li>
-          <li style={style}><NavLink to="/about"><span class="fa fa-info fa-lg"/><span class="menuText">About Us</span></NavLink></li>
-          <li style={style}><NavLink to="/projects"><span class="fa fa-map-o fa-lg"/><span class="menuText">Projects</span></NavLink></li>
-          <li style={style}><NavLink to="/careers"><span class="fa fa-briefcase fa-lg"/><span class="menuText">Careers</span></NavLink></li>
-          <li style={style}><NavLink to="/contactus"><span class="fa fa-address-card fa-lg"/><span class="menuText">Contact Us</span></NavLink></li>
+          <li style={style} className="active"><a href="/"><span class="fa fa-home fa-lg"/><span class="menuText">Home</span></a></li>
+          <li style={style}><a href="/about"><span class="fa fa-info fa-lg"/><span class="menuText">About Us</span></a></li>
+          <li style={style}><a href="/projects"><span class="fa fa-map-o fa-lg"/><span class="menuText">Projects</span></a></li>
+          <li style={style}><a href="/careers"><span class="fa fa-briefcase fa-lg"/><span class="menuText">Careers</span></a></li>
+          <li style={style}><a href="/contactus"><span class="fa fa-address-card fa-lg"/><span class="menuText">Contact Us</span></a></li>
         </ul>
       )
     }
@@ -77,11 +77,11 @@ class Header extends Component {
         <div id="expandedMenu">
         {/* <Router>  */}
           <ul>             
-            <li style={style} className="active"><NavLink to="/"><span class="fa fa-home fa-lg"/>Home</NavLink></li>
-            <li style={style}><NavLink to="/about"><span class="fa fa-info fa-lg"/>About Us</NavLink></li>
-            <li style={style}><NavLink to="/projects"><span class="fa fa-map-o fa-lg"/>Projects</NavLink></li>
-            <li style={style}><NavLink to="/careers"><span class="fa fa-briefcase fa-lg"/>Careers</NavLink></li>
-            <li style={style}><NavLink to="/contactus"><span class="fa fa-address-card fa-lg"/>Contact Us</NavLink></li>
+            <li style={style} className="active"><a href="/"><span class="fa fa-home fa-lg"/>Home</a></li>
+            <li style={style}><a href="/about"><span class="fa fa-info fa-lg"/>About Us</a></li>
+            <li style={style}><a href="/projects"><span class="fa fa-map-o fa-lg"/>Projects</a></li>
+            <li style={style}><a href="/careers"><span class="fa fa-briefcase fa-lg"/>Careers</a></li>
+            <li style={style}><a href="/contactus"><span class="fa fa-address-card fa-lg"/>Contact Us</a></li>
           </ul>
           {/* </Router> */}
         </div>
