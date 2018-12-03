@@ -4,12 +4,15 @@
 import React, { Component, StartupActions } from 'react'
 import ProjectData from '../../../data/projects.json'
 
+// AM - Make sure to update this with the new modal. Here to verify this works
+import CareerModalApply from '../careers/careerModalApply.js'
 
 class MainProject extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
+      // AM - will make sure this is in redux
       selectedImageInProject: 0
     }
 
@@ -57,6 +60,20 @@ class MainProject extends Component {
             })}
           </ul>
         </div>
+
+        <Modal
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+          open={this.state.openModal}
+          onClose={this.handleCloseModal}
+          disableBackdropClick={true}
+        >
+          <CareerModalApply
+            style={getModalStyle()}
+            className={classes.paper}
+            jobTitle={this.props.header}
+            handleCloseModal={this.handleCloseModal} />
+        </Modal>
       </div>
     )
   }
