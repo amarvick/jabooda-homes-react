@@ -26,6 +26,27 @@ export function updateTab(tab) {
             type: ProjectActionTypes.UPDATE_PROJECTS_TO_DISPLAY,
             payload: tab
         })
-        debugger
+    }
+}
+
+export function seeLeftImage(index) {
+    return function action(dispatch) {
+        if (index !== 0) {
+            dispatch({ 
+                type: ProjectActionTypes.UPDATE_PROJECTS_TO_DISPLAY,
+                payload: index - 1
+            })
+        }
+    }
+}
+
+export function seeRightImage(index, maxArraySize) {
+    return function action(dispatch) {
+        if (index < maxArraySize) {
+            dispatch({ 
+                type: ProjectActionTypes.UPDATE_PROJECTS_TO_DISPLAY,
+                payload: index + 1
+            })
+        }
     }
 }
