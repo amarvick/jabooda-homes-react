@@ -1,0 +1,48 @@
+$color-jabooda-blue: #01427c;
+
+.maxSizeImage {
+    position: relative;
+    background-color: white;
+    text-align: center;
+    width: 110vh !important;
+    top: 10%;
+    // height: 100%;
+    // left: 0;
+    // right: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin: 0px auto;
+
+    #exitModal {
+        position: relative;
+        margin: auto;
+        left: 48%;
+        top: 10px;
+        text-align: right;
+        transition: .5s ease;
+
+        &:hover {
+            transition: .5s ease;
+            color: $color-jabooda-blue;
+        }
+    }
+
+    .modalMaxArrow {
+        position: relative;
+        top: -300px;
+        padding: 10px;
+
+        &:hover {
+            transition: .5s ease;
+            color: $color-jabooda-blue;
+        }
+    }
+    
+    #leftArrow {
+
+    }
+
+    #rightArrow {
+
+    }
+}
