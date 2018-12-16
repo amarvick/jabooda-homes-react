@@ -11,48 +11,66 @@ import Input from '@material-ui/core/Input';
 import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
 
+// Actions
+import { seeLeftImage, seeRightImage } from '../../actions/projectActions'
+
 class ModalMaxSizeImg extends Component {
-  leftKeyPress(e) {
-      if(e.keyCode === 37) {
-        alert('Left Key Press detected')
-      } else {
-          alert('Not left key!')
-      }
-  }
 
-  render(props) {
+    keyPressShiftImage(e, index) {
+        alert(index)
+        if (e.keyCode === 37) {
+            alert('Left Key Press detected')
+            seeLeftImage(index)
+        } else if (e.keyCode == 39) {
+            alert('Right Key Press detected')
+            this.props.dispatch(seeRightImage(index, 0))
+        }
+    }
 
-    var imageSRC = require('../../../images/' + this.props.imageSrc)
-    // var fakeImageSRC = require('../../../images/13979se1st/Photo-28.jpg')
+    render(props) {
+        var imageSRC = require('../../../images/' + this.props.imageSrc)
+        var selectedImageInProject = this.props.selectedImageInProject
+        var state = this.props.state
 
-    return (
-      <div 
-        className="maxSizeImage" 
-        style={this.props.style}
-        onKeyDown={(e) => this.leftKeyPress(e)}>
-        <span onClick={this.props.handleCloseModal} id="exitModal" class="fa fa-times-circle fa-2x" /> <br/>
-        
-        <span 
-            id="leftArrow" 
-            className="fa fa-chevron-circle-left fa-2x modalMaxArrow"
-            onClick={this.props.seeLeftImage} /> 
+        console.log(state)
 
-        <img height="600" src={imageSRC}/>
+        return (
+            <div className="maxSizeImage"
+                 style={this.props.style}
+                 onKeyDown={(e) => this.keyPressShiftImage(e, selectedImageInProject)}>
 
-        <span 
-            id="rightArrow" 
-            className="fa fa-chevron-circle-right fa-2x modalMaxArrow"
-            onClick={this.props.seeRightImage} /> 
-      </div>
-    )
-  }
+                <span onClick={this.props.handleCloseModal}
+                      id="exitModal" 
+                      class="fa fa-times-circle fa-2x" /> 
+                      
+                <br />
+
+                <span id="leftArrow"
+                      className="fa fa-chevron-circle-left fa-2x modalMaxArrow"
+                      onClick={() => this.props.dispatch(seeLeftImage(selectedImageInProject))} />
+
+                <img height="600" 
+                     src={imageSRC} />
+
+                <span id="rightArrow"
+                      className="fa fa-chevron-circle-right fa-2x modalMaxArrow"
+                      onClick={() => this.props.dispatch(seeRightImage(selectedImageInProject, 0))} />
+            </div>
+        )
+    }
 }
 
 // wraps dispatch to create nicer functions to call within our component
 // Mapping dispatch actions to the props
 const mapDispatchToProps = (dispatch) => ({
-  dispatch: dispatch,
-  startup: () => dispatch(StartupActions.startup())
+    dispatch: dispatch,
+    startup: () => dispatch(StartupActions.startup())
 })
 
-export default connect(mapDispatchToProps)(ModalMaxSizeImg)
+// Maps the state in to props (for displaying on the front end)
+const mapStateToProps = (state) => ({
+    state: state
+    // selectedImageInProject: state.project.selectedImageInProject
+})
+
+export default connect(mapDispatchToProps, mapStateToProps)(ModalMaxSizeImg)

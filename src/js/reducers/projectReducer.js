@@ -16,12 +16,14 @@ export default function reducer(state={
 }, action) {
 
     switch(action.type) {
+        // Currently fetching projects
         case ProjectActionTypes.FETCHING_PROJECTS: {
             return {...state,
                 fetching: true
             }
         }
 
+        // If fetchinig projects from DB was a success
         case ProjectActionTypes.FETCH_PROJECTS_SUCCESS: {
             return {...state,
                 fetching: false,
@@ -29,12 +31,14 @@ export default function reducer(state={
             }
         }
     
+        // If there was an error in fetching projects from DB
         case ProjectActionTypes.FETCH_PROJECTS_ERROR: {
             return {...state,
                 fetching: false
             }
         }
 
+        // Clicking on a new project from right menu to display in the main section 
         case ProjectActionTypes.UPDATE_MAIN_PROJECT: {
             return {...state,
                 selectedImageInProject: 0,
@@ -42,13 +46,14 @@ export default function reducer(state={
             }
         }
 
+        // When user selects any image in a given main project. This will be 0 when switching to a new project
         case ProjectActionTypes.UPDATE_PROJECT_IMAGE_INDEX: {
             return {...state,
-                selectedImageInProject: 0,
-                selectedProject: action.payload
+                selectedImageInProject: action.payload
             }
         }
-
+        
+        // When user switches between 'sold', 'for sale' and 'in progress' tabs
         case ProjectActionTypes.UPDATE_PROJECTS_TO_DISPLAY: {
             return {...state,
                 projectsToDisplay: action.payload
