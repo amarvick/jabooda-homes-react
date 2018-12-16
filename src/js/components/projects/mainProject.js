@@ -2,6 +2,8 @@
  * Description: Error message that would stop the user              */
 
 import React, { Component, StartupActions } from 'react'
+import { connect } from 'react-redux'
+
 import Modal from '@material-ui/core/Modal'
 import Paper from '@material-ui/core/Paper'
 
@@ -9,6 +11,8 @@ import Paper from '@material-ui/core/Paper'
 import ModalMaxSizeImg from './modalMaxSizeImg'
 
 import { withStyles } from '@material-ui/core/styles';
+
+import { updateImage } from '../../actions/projectActions'
 
 function getModalStyle() {
   // const top = 10
@@ -36,24 +40,11 @@ class MainProject extends Component {
     super(props)
 
     this.state = {
-      // AM - will make sure this is in redux
-      selectedImageInProject: 0,
       openModal: false
     }
 
-    this.updateImage = this.updateImage.bind(this)
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.selectedProject != this.props.selectedProject) {
-        this.setState({ selectedImageInProject: 0 })
-    }
-  }
-
-  updateImage(index) {
-      this.setState({ selectedImageInProject: index })
   }
 
   handleOpenModal() {
@@ -64,34 +55,42 @@ class MainProject extends Component {
     this.setState({ openModal: false })
   }
 
+  keyPressShiftImage(e) {
+    if (e.keyCode === 37) {
+      alert('Left Key Press detected')
+    } else if (e.keyCode == 39) {
+      alert('Right Key Press detected')
+    }
+  }
 
   render(props) {
     const { classes } = this.props;
     var selectedProject = this.props.selectedProject
+    var selectedImageInProject = this.props.selectedImageInProject
 
     // AM - Do this via Redux
     var image
     try {
-        image = require("../../../images/" + selectedProject.images[this.state.selectedImageInProject])
+      image = require("../../../images/" + selectedProject.images[selectedImageInProject])
     } catch (e) {
-        image = require("../../../images/" + selectedProject.images[0])
+      image = require("../../../images/" + selectedProject.images[0])
     }
 
     return (
-      <div className = 'projectsComponent'>
-        <div>
+      <div className='projectsComponent'>
+        <div onKeyDown={(e) => this.keyPressShiftImage(e)}>
           <h2>{selectedProject.address}</h2>
-          <img onClick={() => this.handleOpenModal()} height="500" src={image}/>
-            
+          <img onClick={() => this.handleOpenModal()} height="500" src={image} />
+
           <ul>
             {selectedProject.images.map((img, index) => {
               return (
                 <li>
-                  <img 
-                    onClick={() => this.updateImage(index)}
-                    height="100" 
+                  <img
+                    onClick={() => this.props.dispatch(updateImage(index))}
+                    height="100"
                     width="100"
-                    src={require("../../../images/" + img)}/>
+                    src={require("../../../images/" + img)} />
                 </li>
               )
             })}
@@ -109,7 +108,7 @@ class MainProject extends Component {
             style={getModalStyle()}
             className={classes.paper}
             jobTitle={this.props.header}
-            imageSrc={selectedProject.images[this.state.selectedImageInProject]}
+            imageSrc={selectedProject.images[selectedImageInProject]}
             handleCloseModal={this.handleCloseModal} />
         </Modal>
       </div>
@@ -117,4 +116,16 @@ class MainProject extends Component {
   }
 }
 
-export default withStyles(styles)(MainProject)
+// wraps dispatch to create nicer functions to call within our component
+// Mapping dispatch actions to the props
+const mapDispatchToProps = (dispatch) => ({
+  dispatch: dispatch,
+  startup: () => dispatch(StartupActions.startup())
+})
+
+// Maps the state in to props (for displaying on the front end)
+const mapStateToProps = (state) => ({
+  selectedImageInProject: state.project.selectedImageInProject
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(MainProject))
