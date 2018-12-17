@@ -11,8 +11,9 @@ import Paper from '@material-ui/core/Paper'
 import ModalMaxSizeImg from './modalMaxSizeImg'
 
 import { withStyles } from '@material-ui/core/styles';
+import '../../../stylesheets/mainProject.scss'
 
-import { updateImage } from '../../actions/projectActions'
+import { updateImage, seeLeftImage, seeRightImage } from '../../actions/projectActions'
 
 function getModalStyle() {
   // const top = 10
@@ -43,8 +44,9 @@ class MainProject extends Component {
       openModal: false
     }
 
-    this.handleOpenModal = this.handleOpenModal.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
+    this.handleOpenModal = this.handleOpenModal.bind(this)
+    this.handleCloseModal = this.handleCloseModal.bind(this)
+    this.keyPressShiftImage = this.keyPressShiftImage.bind(this)
   }
 
   handleOpenModal() {
@@ -55,11 +57,11 @@ class MainProject extends Component {
     this.setState({ openModal: false })
   }
 
-  keyPressShiftImage(e) {
+  keyPressShiftImage(e, index, max) {
     if (e.keyCode === 37) {
-      alert('Left Key Press detected')
+      this.props.dispatch(seeLeftImage(index, 0))
     } else if (e.keyCode == 39) {
-      alert('Right Key Press detected')
+      this.props.dispatch(seeRightImage(index, max))
     }
   }
 
@@ -77,8 +79,8 @@ class MainProject extends Component {
     }
 
     return (
-      <div className='projectsComponent'>
-        <div onKeyDown={(e) => this.keyPressShiftImage(e)}>
+      <div tabIndex={0} onKeyDown={(e) => this.keyPressShiftImage(e, selectedImageInProject, selectedProject.images.length - 1)} className='projectsComponent'>
+        <div>
           <h2>{selectedProject.address}</h2>
           <img onClick={() => this.handleOpenModal()} height="500" src={image} />
 
@@ -125,6 +127,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 // Maps the state in to props (for displaying on the front end)
 const mapStateToProps = (state) => ({
+  state: state,
   selectedImageInProject: state.project.selectedImageInProject
 })
 

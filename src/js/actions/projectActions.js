@@ -41,9 +41,7 @@ export function updateTab(tab) {
 
 export function seeLeftImage(index) {
     return function action(dispatch) {
-        alert('testing')
-        if (index !== 0) {
-            alert(index)
+        if (index > 0) {
             dispatch({ 
                 type: ProjectActionTypes.UPDATE_PROJECT_IMAGE_INDEX,
                 payload: index - 1

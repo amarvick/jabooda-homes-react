@@ -16,28 +16,29 @@ import { seeLeftImage, seeRightImage } from '../../actions/projectActions'
 
 class ModalMaxSizeImg extends Component {
 
-    keyPressShiftImage(e, index) {
-        alert(index)
-        if (e.keyCode === 37) {
-            alert('Left Key Press detected')
-            seeLeftImage(index)
-        } else if (e.keyCode == 39) {
-            alert('Right Key Press detected')
-            this.props.dispatch(seeRightImage(index, 0))
-        }
-    }
+    // keyPressShiftImage(e, index) {
+    //     alert(index)
+    //     if (e.keyCode === 37) {
+    //         alert('Left Key Press detected')
+    //         seeLeftImage(index)
+    //     } else if (e.keyCode == 39) {
+    //         alert('Right Key Press detected')
+    //         // this.props.dispatch(seeRightImage(index, 10))
+    //         // seeRightImage(index, 10)
+    //     }
+    // }
 
     render(props) {
+        console.log(this.props.state)
         var imageSRC = require('../../../images/' + this.props.imageSrc)
         var selectedImageInProject = this.props.selectedImageInProject
         var state = this.props.state
 
-        console.log(state)
-
         return (
             <div className="maxSizeImage"
                  style={this.props.style}
-                 onKeyDown={(e) => this.keyPressShiftImage(e, selectedImageInProject)}>
+                //  onKeyDown={(e) => this.keyPressShiftImage(e, selectedImageInProject)}
+                 >
 
                 <span onClick={this.props.handleCloseModal}
                       id="exitModal" 
@@ -70,7 +71,6 @@ const mapDispatchToProps = (dispatch) => ({
 // Maps the state in to props (for displaying on the front end)
 const mapStateToProps = (state) => ({
     state: state
-    // selectedImageInProject: state.project.selectedImageInProject
 })
 
 export default connect(mapDispatchToProps, mapStateToProps)(ModalMaxSizeImg)
