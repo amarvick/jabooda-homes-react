@@ -4,7 +4,6 @@
 import React, { Component, StartupActions } from 'react'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import AnimateHeight from 'react-animate-height';
-import CareerData from '../../../data/careers.json'
 
 import CareerModalApply from './careerModalApply.js'
 

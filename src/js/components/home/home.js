@@ -2,7 +2,6 @@
  * Description: Jabooda home page                                  */
 
 import React, { Component, StartupActions } from 'react'
-// import { connect } from 'react-redux'
 
 import HomeSlideshow from './homeSlideshow'
 import PaperContainer from './paperContainer.js';
@@ -38,21 +37,21 @@ class Home extends Component {
         <div className="boxContainer">
             <Grid container spacing={24}>
                 <PaperContainer
-                    link="./Projects"
                     faClass="fa fa-list-alt fa-5x"
                     header="Sold Projects"
+                    tab="Sold"
                     footerText="View all of our sold projects"
                 />
                 <PaperContainer
-                    link="./Projects"
                     faClass="fa fa-home fa-5x"
                     header="For Sale"
+                    tab="For Sale"
                     footerText="View all of our homes currently for sale"
                 />
                 <PaperContainer
-                    link="./Projects"
                     faClass="fa fa-wrench fa-5x"
                     header="In Progress"
+                    tab="In Progress"
                     footerText="View all of our homes currently under construction"
                 />
             </Grid>
