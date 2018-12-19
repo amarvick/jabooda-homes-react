@@ -2,7 +2,7 @@
  * Description: Header displayed on the website. Includes nav menu   */
 
 import React, { Component, StartupActions } from 'react'
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 // Design + React Material UI
@@ -48,14 +48,15 @@ class Header extends Component {
     var displayMenuButton = this.state.displayMenuButton
     var displayMenuItems;
 
+    // AM - componentize these links
     if (displayMenuButton) {
       displayMenuItems = (
         <ul>              
-          <li style={style} className="active"><a href="/"><span class="fa fa-home fa-lg"/><span class="menuText">Home</span></a></li>
-          <li style={style}><a href="/about"><span class="fa fa-info fa-lg"/><span class="menuText">About Us</span></a></li>
-          <li style={style}><a href="/projects"><span class="fa fa-map-o fa-lg"/><span class="menuText">Projects</span></a></li>
-          <li style={style}><a href="/careers"><span class="fa fa-briefcase fa-lg"/><span class="menuText">Careers</span></a></li>
-          <li style={style}><a href="/contactus"><span class="fa fa-address-card fa-lg"/><span class="menuText">Contact Us</span></a></li>
+          <li style={style} className="active"><NavLink to="/"><span class="fa fa-home fa-lg"/><span class="menuText">Home</span></NavLink></li>
+          <li style={style}><NavLink to="/about"><span class="fa fa-info fa-lg"/><span class="menuText">About Us</span></NavLink></li>
+          <li style={style}><NavLink to="/projects"><span class="fa fa-map-o fa-lg"/><span class="menuText">Projects</span></NavLink></li>
+          <li style={style}><NavLink to="/careers"><span class="fa fa-briefcase fa-lg"/><span class="menuText">Careers</span></NavLink></li>
+          <li style={style}><NavLink to="/contactus"><span class="fa fa-address-card fa-lg"/><span class="menuText">Contact Us</span></NavLink></li>
         </ul>
       )
     }
@@ -75,15 +76,37 @@ class Header extends Component {
         </div>
   
         <div id="expandedMenu">
-        {/* <Router>  */}
           <ul>             
-            <li style={style} className="active"><a href="/"><span class="fa fa-home fa-lg"/>Home</a></li>
-            <li style={style}><a href="/about"><span class="fa fa-info fa-lg"/>About Us</a></li>
-            <li style={style}><a href="/projects"><span class="fa fa-map-o fa-lg"/>Projects</a></li>
-            <li style={style}><a href="/careers"><span class="fa fa-briefcase fa-lg"/>Careers</a></li>
-            <li style={style}><a href="/contactus"><span class="fa fa-address-card fa-lg"/>Contact Us</a></li>
+            <li style={style} className="active">
+              <Link to="/">
+                <span class="fa fa-home fa-lg"/>Home
+              </Link>
+            </li>
+
+            <li style={style}>
+              <Link to="/about">
+                <span class="fa fa-info fa-lg"/>About Us
+              </Link>
+            </li>
+            
+            <li style={style}>
+              <Link to="/projects">
+                <span class="fa fa-map-o fa-lg"/>Projects
+              </Link>
+            </li>
+            
+            <li style={style}>
+              <Link to="/careers">
+                <span class="fa fa-briefcase fa-lg"/>Careers
+              </Link>
+            </li>
+            
+            <li style={style}>
+              <Link to="/contactus">
+                <span class="fa fa-address-card fa-lg"/>Contact Us
+              </Link>
+            </li>
           </ul>
-          {/* </Router> */}
         </div>
       </div>
     )

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter, Switch, Router, Route, Redirect, NavLink } from 'react-router-dom';
 import './stylesheets/App.scss';
 
 import Header from './js/components/header'
@@ -14,25 +14,26 @@ import Contactus from './js/components/contactus/contactus'
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <Header/>
-        </header>
+      <BrowserRouter>
+        <div className="App">
+          <header className="App-header">
+            <Header/>
+          </header>
 
-        <Router>
-          <div>
+          <Switch>
             <Route exact path='/' component={Home}/>
             <Route path='/about' component={About}/>
             <Route path='/projects' component={Projects}/>
             <Route path='/careers' component={Careers}/>
             <Route path='/contactus' component={Contactus}/>
-          </div>
-        </Router>
+            <Redirect to="/"/>
+          </Switch>
 
-        <footer className="App-footer">
-          <Footer/>
-        </footer>
-      </div>
+          <footer className="App-footer">
+            <Footer/>
+          </footer>
+        </div>
+      </BrowserRouter>
     );
   }
 }

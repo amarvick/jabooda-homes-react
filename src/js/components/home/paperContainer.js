@@ -3,6 +3,7 @@
 
 import React, { Component, StartupActions } from 'react'
 import { connect } from 'react-redux'
+import { NavLink, Link } from 'react-router-dom';
 
 import { loadData, handleProjectUpdate, updateTab } from '../../actions/projectActions'
 
@@ -16,23 +17,26 @@ class PaperContainer extends Component {
         var tab = this.props.tab
 
         return (
-            <Grid src={this.props.link} item xs={12} sm={4}>
-                <Paper square="false">
-                    <div class="paper-container">
-                        <span class={this.props.faClass}/>
+            <Grid className="the-paper" src={this.props.link} item xs={12} sm={4}>
+                <div className="paper-container">
+                    <span class={this.props.faClass}/>
 
-                        <h1>
+                    <h1>
                         {this.props.header}
-                        </h1>
-                        <hr/>
-                        
-                        <p class="footerText">
-                            {this.props.footerText} <br/><br/>
+                    </h1>
 
-                            <Button onClick={() => this.props.dispatch(updateTab(tab))} href="./Projects">View</Button>
-                        </p>
-                    </div>
-                </Paper>
+                    <hr/>
+                    
+                    <p class="footerText">
+                        {this.props.footerText} <br/><br/>
+
+                        <NavLink className="button" onClick={() => this.props.dispatch(updateTab(tab))} to="/Projects">
+                            <Button>
+                                View
+                            </Button>
+                        </NavLink>
+                    </p>
+                </div>
             </Grid>
         )
     }

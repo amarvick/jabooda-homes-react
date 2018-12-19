@@ -5,11 +5,13 @@ $color-black: #0C0C0C;
 
 // 'Sold Projects', 'For Sale' and 'In Progress' boxes
 .boxContainer {
-    .MuiGrid-spacing-xs-24-54 > .MuiGrid-item-31 {
+    .the-paper {
         transition: .5s ease;
-        padding: 0px;
+        margin: 0px auto;
         text-align: center;
         position: relative;
+        background-color: $color-jabooda-blue;
+        height: 400px;
 
         color: $color-jabooda-gray;
 
@@ -26,7 +28,6 @@ $color-black: #0C0C0C;
             hr {
                 position: relative;
                 top: 30px;
-                margin: 0;
                 width: 50px;
                 height: 3px;
                 border: none; 
@@ -40,12 +41,23 @@ $color-black: #0C0C0C;
                 top: 40px;
                 text-align: center;
                 bottom: 10px;
+
+                button {
+                    background-color: $color-jabooda-blue-2;
+                    span {
+                        text-decoration: none;
+                    }
+                }
             }
         }
     }
 
+    .the-paper:nth-child(2) {
+        background-color: $color-jabooda-blue-2;
+    }
+
     // Hovering over will turn text black
-    .MuiGrid-spacing-xs-24-54 > .MuiGrid-item-31:hover {
+    .the-paper:hover {
         transition: .5s ease;
         color: $color-black;
 
@@ -55,12 +67,4 @@ $color-black: #0C0C0C;
         }
     }
 
-    .MuiPaper-root-127 {
-        background-color: $color-jabooda-blue;
-        height: 400px;
-    }
-
-    .MuiGrid-item-31:nth-child(2) .MuiPaper-root-127 {
-        background-color: $color-jabooda-blue-2;
-    }
 }
