@@ -4,14 +4,56 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="/src/stylesheets/emailAppReceived.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>Jabooda Homes, Inc</title>
 
     <style type="text/css">
-      #theEmailTemplate {
-        color: blue;
+    *{
+      background-color: #e7e7e7; 
+    }
+      #header {
+        color: white;
+        background-color: #01427c; 
+        text-align: center; 
+        padding: 40px 0; 
+        font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+        font-size: 30px;
       }
+      #body{
+        position: relative;
+        background-color: #e7e7e7; 
+        width: 700px; 
+        padding: 10% 0; 
+        font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+         margin: auto;
+
+      }
+      @media only screen and (max-width: 700px) {
+        #body{
+          width: 100%;
+      }
+
+}
+  
+
+      #footer {
+        color: white;
+        background-color: #01427c; 
+        text-align: center; 
+        padding: 40px 0; 
+        position: fixed;
+       bottom: 0;
+        width: 100%;
+      }
+
+     img{
+      background-color: #01427c; 
+}
+
+}
+
     </style>
 
   </head>
@@ -20,10 +62,28 @@
       You need to enable JavaScript to run this app.
     </noscript>
 
-    <div id="theEmailTemplate">
-      Write Code here
+    <div id="header">
+      Thank You For Applying
+    </div>
 
+    <div id="body">
+    <p>Hello [Applicant],</p>
+
+      <p>We appreciate your interest in Jabooda Homes and the position of [position] that you applied for. </p>
+
+      <p>We are currently reviewing applications and will contact you if we require additional information or would like to schedule an interview. </p>
+
+      <p>Regards, </br>
+      Jabooda Homes</p>
+
+         
+    </div>
+
+    <div id="footer">
+   <img src="http://localhost:3000/static/media/combinedlogos.329d73a2.png">
     </div>
     
   </body>
 </html>
+
+<!-- #01427c --> 
