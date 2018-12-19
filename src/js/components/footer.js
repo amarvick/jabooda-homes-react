@@ -45,12 +45,37 @@ class Footer extends Component {
           </li>
         </ul>
 
+        {/* AM - componentize */}
         <ul id="footerNavMenu">
-          <li style={style}><a href="/">Home</a></li>
-          <li style={style}><a href="/about">About Us</a></li>
-          <li style={style}><a href="/projects">Projects</a></li>
-          <li style={style}><a href="/careers">Careers</a></li>
-          <li style={style}><a href="/contactus">Contact Us</a></li>
+          <li style={style}>
+            <Link to="/">
+              Home
+            </Link>
+          </li>
+          
+          <li style={style}>
+            <Link to="/about">
+              About Us
+            </Link>
+          </li>
+          
+          <li style={style}>
+            <Link to="/projects">
+              Projects
+            </Link>
+          </li>
+          
+          <li style={style}>
+            <Link to="/careers">
+              Careers
+            </Link>
+          </li>
+          
+          <li style={style}>
+            <Link to="/contactus">
+              Contact Us
+            </Link>
+          </li>
         </ul>
         
         <img id="combinedLogos" src={require("../../images/combinedlogos.png")} />
