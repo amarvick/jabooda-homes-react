@@ -42,4 +42,11 @@ class PaperContainer extends Component {
     }
 }
 
-export default PaperContainer
+// wraps dispatch to create nicer functions to call within our component
+// Mapping dispatch actions to the props
+const mapDispatchToProps = (dispatch) => ({
+    dispatch: dispatch,
+    startup: () => dispatch(StartupActions.startup())
+})
+
+export default connect(mapDispatchToProps)(PaperContainer);

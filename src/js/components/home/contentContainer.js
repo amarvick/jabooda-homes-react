@@ -2,10 +2,12 @@
  * Description: Container for the content on home page              */
 
 import React, { Component, StartupActions } from 'react'
+import { NavLink, Link } from 'react-router-dom';
 
 // Design
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import Hidden from '@material-ui/core/Hidden';
 
 class ContentContainer extends Component {
   constructor(props) {
@@ -19,9 +21,11 @@ class ContentContainer extends Component {
 
     if (button != null) {
         buttonView = (
-            <Button variant="contained" href={this.props.link}>
-                View Openings
-            </Button>
+            <Link to={this.props.link}>
+                <Button variant="contained">
+                    View Openings
+                </Button>
+            </Link>
         )  
     }
     
@@ -43,9 +47,11 @@ class ContentContainer extends Component {
     )
 
     var theImage = (
-        <Grid item xs={0} sm={4}>
-            <img src={this.props.imageUrl} />
-        </Grid>
+        <Hidden xsDown>
+            <Grid item xs={12} sm={4}>
+                <img src={this.props.imageUrl} />
+            </Grid>
+        </Hidden>
     )
     
     return (
