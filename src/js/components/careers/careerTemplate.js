@@ -78,7 +78,7 @@ class CareerTemplate extends Component {
     var height = this.state.height;
 
     return (
-      <Grid src={this.props.link} item xs={12}>
+      <Grid className="grid-container" src={this.props.link} item xs={12}>
         <div className="paper-container" onClick={this.toggleDescription}> {/* This will close when clicking on the button; prevent this. */}
 
           <h1>

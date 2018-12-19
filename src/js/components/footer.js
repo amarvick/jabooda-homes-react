@@ -2,6 +2,7 @@
  * Description: Footer displayed on the website                      */
 
 import React, { Component } from 'react'
+import { NavLink, Link } from 'react-router-dom';
 import '../../stylesheets/footer.scss'
 
 class Footer extends Component {
