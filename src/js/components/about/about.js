@@ -26,7 +26,8 @@ class About extends Component {
           </p>
 
           <div id="theTeam">
-            <img id="backToBackImg" src={require("../../../images/Executive.png")} height="600px"/>
+            <img id="backToBackImg" src={require("../../../images/Executive.png")}/>
+            
             <div id="aboutBanner">  
               <h1>
                 Meet Our Team

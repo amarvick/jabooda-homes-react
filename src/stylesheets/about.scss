@@ -3,6 +3,8 @@ $color-jabooda-blue: #01427c;
 #backToBackImg {
     display: block;
     margin: 0px auto;
+    height: 60%;
+    width: 60%;
 }
 
 #theTeam {
@@ -10,11 +12,14 @@ $color-jabooda-blue: #01427c;
 
     #aboutBanner {
         height: 70px;
-        margin-right: -250px;
+        margin: 0px -7.4vw;
+        padding: 0;
+        width: 100vw;
 
         position: relative;
+        padding: 0px;
+        // left: -127px;
         top: -26px;
-        left: -115px;
         background-color: $color-jabooda-blue;
         color: white;
 
