@@ -42,21 +42,4 @@ class PaperContainer extends Component {
     }
 }
 
-// wraps dispatch to create nicer functions to call within our component
-// Mapping dispatch actions to the props
-const mapDispatchToProps = (dispatch) => ({
-    dispatch: dispatch,
-    startup: () => dispatch(StartupActions.startup())
-})
-
-// Maps the state in to props (for displaying on the front end)
-const mapStateToProps = (state) => ({
-    state: state,
-    projectData: state.project.projectData,
-    projectsToDisplay: state.project.projectsToDisplay,
-    selectedProject: state.project.selectedProject,
-    selectedImageInProject: state.project.selectedImageInProject
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(PaperContainer);
-// export default PaperContainer
+export default PaperContainer

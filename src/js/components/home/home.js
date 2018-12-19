@@ -2,6 +2,7 @@
  * Description: Jabooda home page                                  */
 
 import React, { Component, StartupActions } from 'react'
+import { NavLink, Link } from 'react-router-dom';
 
 import HomeSlideshow from './homeSlideshow'
 import PaperContainer from './paperContainer.js';
@@ -28,8 +29,17 @@ class Home extends Component {
                 </p>
 
                 <div class="buttonContainer">
-                    <Button variant="contained" href="./About">About</Button>
-                    <Button variant="contained" href="./Contactus">Contact</Button>
+                    <Link to="/About">
+                        <Button variant="contained">
+                            About
+                        </Button>
+                    </Link>
+
+                    <Link to="/Contactus">
+                        <Button variant="contained">
+                            Contact
+                        </Button>
+                    </Link>
                 </div>
             </div>
         </div>
@@ -79,22 +89,26 @@ class Home extends Component {
 
                 <hr/>
                 
-                <p>
+                <p id="bid-text">
                     We are building 30-40 units per year, and we are interested in looking for more subcontractors to establish great relationships 
                     with. If you are interested, please get in contact and take a look at what we have in our projects tab.
                 </p>
                 
                 <div class="buttonContainer">
-                    <Button variant="contained" href="./Contactus">
-                        Contact
-                    </Button>
+                    <Link to="/Contactus">
+                        <Button variant="contained">
+                            Contact
+                        </Button>
+                    </Link>
 
-                    <Button variant="contained" href="./Projects">
-                        View Projects
-                    </Button>
+                    <Link to="/Projects">
+                        <Button variant="contained">
+                            View Projects
+                        </Button>
+                    </Link>
                 </div>
             </span> 
-            <div id="bidOnProjects"></div>      
+            <div id="bidOnProjects"></div>  
         </div> 
 
         <div className="pageContent">
@@ -103,11 +117,8 @@ class Home extends Component {
                 paragraph1="Are you enthusiastic about all things construction? Are you passionate about the direction of where residential real estate is headed in Seattle? If so, come check out our current open positions. We are always looking for electrifying and innovative candidates to push forward our mission."
                 imageUrl={require("../../../images/house1.jpg")}
                 link="./Careers"
+                button="View Openings"
             />
-
-            <Button id="careersLink" variant="contained" href="./Careers">
-                View Openings
-            </Button>
         </div>
       </div>
     )

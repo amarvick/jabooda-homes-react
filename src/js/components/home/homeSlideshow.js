@@ -2,28 +2,28 @@
  * Description: Error message that would stop the user              */
 
 import React, { Component, StartupActions } from 'react'
-import { Slide } from 'react-slideshow-image'
+import { Fade } from 'react-slideshow-image'
 
 class HomeSlideshow extends Component {
   render(props) {   
 
     const slideImages = [
-        require('../../../images/house1.jpg'),
-        require('../../../images/house2.jpg'),
-        require('../../../images/house3.jpg'),
+        require('../../../images/homebanner.jpg'),
+        require('../../../images/13979se1st/Photo-9.jpg'),
+        require('../../../images/13979se1st/Photo-16.jpg'),
     ]
     
     const properties = {
         duration: 5000,
-        transitionDuration: 200,
+        transitionDuration: 400,
         infinite: true,
-        // indicators: true,
-        arrows: true
+        indicators: false,
+        arrows: false
     }  
     
     return (
       <div className = 'homeSlideshowComponent'>
-        <Slide {...properties}>
+        <Fade {...properties}>
           <div className="each-slide">
             <img src={slideImages[0]}/>
           </div>
@@ -33,7 +33,7 @@ class HomeSlideshow extends Component {
           <div className="each-slide">
             <img src={slideImages[2]}/>
           </div>
-        </Slide>
+        </Fade>
       </div>
     )
   }

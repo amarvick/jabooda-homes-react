@@ -41,12 +41,9 @@ $color-black: #0C0C0C;
                 top: 40px;
                 text-align: center;
                 bottom: 10px;
-
-                button {
-                    background-color: $color-jabooda-blue-2;
-                    span {
-                        text-decoration: none;
-                    }
+                 
+                a {
+                    text-decoration: none;
                 }
             }
         }

@@ -5,21 +5,25 @@ import React, { Component, StartupActions } from 'react'
 
 // Design
 import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 
 class ContentContainer extends Component {
   constructor(props) {
     super(props)
-
-    this.state = {
-        header: '',
-        paragrpah1: '',
-        paragraph2: '',
-        imageUrl: ''
-    }
   }
 
   // The question template
   render(props) { 
+    var button = this.props.button || null
+    var buttonView
+
+    if (button != null) {
+        buttonView = (
+            <Button variant="contained" href={this.props.link}>
+                View Openings
+            </Button>
+        )  
+    }
     
     var textSection = (
         <Grid item xs={12} sm={8}>
@@ -32,6 +36,8 @@ class ContentContainer extends Component {
                 <p>
                     {this.props.paragraph2}
                 </p>
+
+                { buttonView }
             </div>
         </Grid>
     )
@@ -43,7 +49,7 @@ class ContentContainer extends Component {
     )
     
     return (
-        <Grid container spacing={24}>
+        <Grid className="contentClass" container spacing={24}>
             { textSection }
             { theImage }
         </Grid>
