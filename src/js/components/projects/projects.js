@@ -35,13 +35,13 @@ class Projects extends Component {
     return (
       <div className = 'projectsComponent'>
         <Grid container spacing={24}>
-          <Grid item sm={8}>
+          <Grid item xs={12} lg={8}>
             <MainProject
               selectedProject={theProjectData[selectedProject]}
               selectedImageInProject={0}
             />
           </Grid>
-          <Grid item sm={4}>
+          <Grid item lg={4}>
             <Tabs>
               <Tab onClick={() => this.props.dispatch(updateTab('Sold'))} label="Sold"/>
               <Tab onClick={() => this.props.dispatch(updateTab('For Sale'))} label="For Sale"/>
@@ -52,10 +52,10 @@ class Projects extends Component {
               return (
                 <div className="projectContainer" onClick={() => this.props.dispatch(handleProjectUpdate(projectDetail.id))}> 
                   <Grid container spacing={24}>
-                    <Grid item xs={4}>
-                      <img height="90" width="120" src={require('../../../images/' + projectDetail.images[0])} />
+                    <Grid item>
+                      <img height="90" src={require('../../../images/' + projectDetail.images[0])} />
                     </Grid>
-                    <Grid item xs={8}>
+                    <Grid item>
                       <h3>{ projectDetail.address }</h3>
                     </Grid>
                   </Grid>

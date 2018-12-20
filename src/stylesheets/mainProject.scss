@@ -1,3 +1,23 @@
 .projectsComponent {
-    outline: none;
+    // outline: none;
+    margin: 20px;
+    // padding: 0px 20px;
+}
+
+#subImageContainer {
+    width: 100%;
+    overflow-x: scroll;
+
+    #allSubImages {
+        white-space: nowrap;
+        height: 80px;
+
+        li {
+            display: inline;
+            padding: 0;
+            position: relative;
+            left: -42px;
+            margin: 0px 5px;
+        }
+    }
 }
