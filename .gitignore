@@ -23,3 +23,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # AM - turn this back on when email templating is ready
+server.js
