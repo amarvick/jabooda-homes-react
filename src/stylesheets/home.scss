@@ -13,7 +13,7 @@ a {
 // Slideshow
 .homeSlideshowComponent {
     height: $slideshow-height;
-    padding-bottom: 11px;
+    padding-bottom: 0vh;
     z-index: -99999;
 
     .each-slide {
@@ -22,7 +22,7 @@ a {
 
         img {
             width: 100vw;
-            height: 100vh;
+            height: $slideshow-height;
         }
     }
 }

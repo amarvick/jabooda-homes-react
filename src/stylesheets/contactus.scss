@@ -1,0 +1,10 @@
+textarea {
+    height: 300px;
+    width: 500px;
+}
+
+@media only screen and (max-width: 550px) {
+    textarea {
+        width: 90vw;
+    }
+}

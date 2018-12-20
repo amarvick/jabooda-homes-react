@@ -51,7 +51,7 @@ class CareerModalApply extends Component {
 
         <form onSubmit = {(e) => this.props.dispatch(handleSubmit(e, this.state))}>
           <FormLabel>
-            Name*<br/>
+            <span>Name*</span><br/>
             <Input 
               type="text" 
               name="name" 
@@ -64,7 +64,7 @@ class CareerModalApply extends Component {
           <br/><br/>
 
           <FormLabel>
-            Email*<br/>
+            <span>Email*</span><br/>
             <Input 
               type="email" 
               name="email"
@@ -75,7 +75,7 @@ class CareerModalApply extends Component {
           <br/><br/>
 
           <FormLabel>
-            Resume (.pdf, .doc)*<br/>
+            <span>Resume (.pdf, .doc)*</span><br/>
             <Input
               type="file" 
               name="resume" 
@@ -89,11 +89,9 @@ class CareerModalApply extends Component {
           <br/><br/>
 
           <FormLabel>
-            Please tell us why you would be a good fit in a few sentences*<br/>
+            <span>Please tell us why you would be a good fit in a few sentences*</span><br/>
             <textarea 
               name="summary"
-              rows="20" 
-              cols="80"
               reize="none"
               onChange={this.handleChange} 
               required />

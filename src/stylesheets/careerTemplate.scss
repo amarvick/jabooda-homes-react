@@ -44,11 +44,8 @@ $color-white-background: #f1f4f9;
                 #requirementsList {
                     text-align: left;
 
-                    ul {
-                        li {
-                            display: block;
-                            // list-style-type: circle !important;
-                        }
+                    li {
+                        display: list-item;
                     }
                 }
 

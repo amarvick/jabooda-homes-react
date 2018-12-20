@@ -11,14 +11,12 @@ $color-jabooda-blue: #01427c;
     text-align: center;
 
     #aboutBanner {
-        height: 70px;
-        margin: 0px -7.4vw;
-        padding: 0;
+        height: 100%;
         width: 100vw;
+        margin: 0px -7.4vw;
 
         position: relative;
         padding: 0px;
-        // left: -127px;
         top: -26px;
         background-color: $color-jabooda-blue;
         color: white;
