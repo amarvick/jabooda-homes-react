@@ -16,18 +16,6 @@ import { seeLeftImage, seeRightImage } from '../../actions/projectActions'
 
 class ModalMaxSizeImg extends Component {
 
-    // keyPressShiftImage(e, index) {
-    //     alert(index)
-    //     if (e.keyCode === 37) {
-    //         alert('Left Key Press detected')
-    //         seeLeftImage(index)
-    //     } else if (e.keyCode == 39) {
-    //         alert('Right Key Press detected')
-    //         // this.props.dispatch(seeRightImage(index, 10))
-    //         // seeRightImage(index, 10)
-    //     }
-    // }
-
     render(props) {
         console.log(this.props.state)
         var imageSRC = require('../../../images/' + this.props.imageSrc)
@@ -37,7 +25,6 @@ class ModalMaxSizeImg extends Component {
         return (
             <div className="maxSizeImage"
                  style={this.props.style}
-                //  onKeyDown={(e) => this.keyPressShiftImage(e, selectedImageInProject)}
                  >
 
                 <span onClick={this.props.handleCloseModal}
@@ -46,16 +33,16 @@ class ModalMaxSizeImg extends Component {
                       
                 <br />
 
-                <span id="leftArrow"
+                {/* <span id="leftArrow"
                       className="fa fa-chevron-circle-left fa-2x modalMaxArrow"
-                      onClick={() => this.props.dispatch(seeLeftImage(selectedImageInProject))} />
+                      onClick={() => this.props.dispatch(seeLeftImage(selectedImageInProject))} /> */}
 
-                <img height="600" 
+                <img height="100%"
                      src={imageSRC} />
 
-                <span id="rightArrow"
+                {/* <span id="rightArrow"
                       className="fa fa-chevron-circle-right fa-2x modalMaxArrow"
-                      onClick={() => this.props.dispatch(seeRightImage(selectedImageInProject, 0))} />
+                      onClick={() => this.props.dispatch(seeRightImage(selectedImageInProject, 0))} /> */}
             </div>
         )
     }

@@ -80,11 +80,11 @@ class MainProject extends Component {
 
     return (
       <div tabIndex={0} onKeyDown={(e) => this.keyPressShiftImage(e, selectedImageInProject, selectedProject.images.length - 1)} className='projectsComponent'>
-        <div>
-          <h2>{selectedProject.address}</h2>
-          <img onClick={() => this.handleOpenModal()} height="500" src={image} />
+        <h2>{selectedProject.address}</h2>
+        <img onClick={() => this.handleOpenModal()} width="100%" src={image} />
 
-          <ul>
+        <div id="subImageContainer">
+          <ul id="allSubImages">
             {selectedProject.images.map((img, index) => {
               return (
                 <li>
