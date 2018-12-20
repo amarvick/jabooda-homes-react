@@ -61,7 +61,8 @@ class CareerTemplate extends Component {
     });
   }
 
-  handleOpenModal() {
+  handleOpenModal(e) {
+    e.stopPropagation();
     this.setState({ openModal: true })
   }
 
@@ -94,20 +95,20 @@ class CareerTemplate extends Component {
           >
             <div id="description">
               <p>
-                {description}
+                {description} Tasks include:
               </p>
               <div id="requirementsList">
                 <ul>
                   {requirements.map(rq => {
                     return (
                       <li>
-                        - {rq} {/* AM - Don't use '-' on the side. Go back to CSS and use !important selector*/}
+                        {rq}
                       </li>
                     )
                   })}
                 </ul>
               </div>
-              <Button variant="contained" onClick={this.handleOpenModal}>Apply</Button>
+              <Button variant="contained" onClick={(e) => this.handleOpenModal(e)}>Apply</Button>
             </div>
           </AnimateHeight>
 

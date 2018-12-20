@@ -11,6 +11,7 @@ import PageBanner from '../pageBanner'
 import { handleSubmit } from '../../actions/contactUsActions'
 
 // Design
+import '../../../stylesheets/contactus.scss'
 import Input from '@material-ui/core/Input';
 import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
@@ -93,8 +94,6 @@ class Contactus extends Component {
               Message*<br/>
               <textarea 
                 name="message"
-                rows="20" 
-                cols="80"
                 onChange={this.handleChange} 
                 required />
             </FormLabel>
@@ -115,8 +114,4 @@ const mapDispatchToProps = (dispatch) => ({
   startup: () => dispatch(StartupActions.startup())
 })
 
-// Maps the state in to props (for displaying on the front end)
-const mapStateToProps = (state) => ({
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Contactus)
+export default connect(mapDispatchToProps)(Contactus)
