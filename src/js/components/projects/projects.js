@@ -35,13 +35,13 @@ class Projects extends Component {
     return (
       <div className = 'projectsComponent'>
         <Grid container spacing={24}>
-          <Grid item xs={12} lg={8}>
+          <Grid item xs={12} md={8}>
             <MainProject
               selectedProject={theProjectData[selectedProject]}
               selectedImageInProject={0}
             />
           </Grid>
-          <Grid item lg={4}>
+          <Grid item md={4}>
             <Tabs>
               <Tab onClick={() => this.props.dispatch(updateTab('Sold'))} label="Sold"/>
               <Tab onClick={() => this.props.dispatch(updateTab('For Sale'))} label="For Sale"/>
