@@ -38,6 +38,13 @@ $color-white-background: #f1f4f9;
   #combinedLogos {
       padding: 5px;
   }
+
+  @media only screen and (max-width: 300px) {
+    #combinedLogos {
+      width: 100%;
+      height: 100%
+    }
+  }
 }
   
 .App-footer {
