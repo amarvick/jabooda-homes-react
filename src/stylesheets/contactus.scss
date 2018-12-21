@@ -1,9 +1,9 @@
 textarea {
     height: 300px;
-    width: 500px;
+    width: 800px;
 }
 
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 900px) {
     textarea {
         width: 90vw;
     }
