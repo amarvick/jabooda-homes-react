@@ -1,5 +1,5 @@
 [
-    {
+    "0": {
         "id": 0,
         "identifier": "Superintendent", 
         "jobtitle": "SUPERINTENDENT",
@@ -16,7 +16,7 @@
         ]
     },
 
-    {
+    "1":{
         "id": 1,
         "identifier": "PROJECT_MANAGER", 
         "jobtitle": "PROJECT MANAGER",
@@ -33,7 +33,7 @@
         ]
     },
 
-    {
+    "2": {
         "id": 2,
         "identifier": "EXCAVATOR_OPERATOR", 
         "jobtitle": "EXCAVATOR OPERATOR",
@@ -54,7 +54,7 @@
         ]
     },
 
-    {
+    "3": {
         "id": 3,
         "identifier": "FOREMAN", 
         "jobtitle": "FOREMAN",
@@ -71,7 +71,7 @@
         ]
     },
 
-    {
+    "4": {
         "id": 4,
         "identifier": "FRAMER", 
         "jobtitle": "FRAMER",
