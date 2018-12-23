@@ -1,9 +1,15 @@
 const nodemailer = require('nodemailer')
+const mongoose = require('mongoose')
 const express = require('express')
 const bodyParser = require('body-parser')
 const path = require('path');
 const fs = require('fs')
 const app = express()
+const router = express.Router()
+
+const Careers = require('./src/data/careersdb.js')
+const Staff = require('./src/data/staffdb.js')
+const Projects = require('./src/data/projectsdb.js')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -16,6 +22,73 @@ app.listen(PORT, () => {
     console.log(`Server listening on Port: ${PORT}`)
 })
 
+// Setting up MongoDB Database
+const dbRoute = "mongodb://userandpassword@ds141924.mlab.com:41924/jabooda"
+
+// Connect back end code with DB
+mongoose.connect(
+    dbRoute,
+    { useNewUrlParser: true }
+);
+
+let db = mongoose.connection;
+db.once("open", () => console.log('Connected to the Database'));
+
+// Check if error in connection
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
+
+// Update Method
+router.get('/getData', (req, res) => {
+    Data.find((err, data) => {
+        if (err) return res.json({ 
+                success: false,
+                error: err
+        })
+
+        return res.json({
+            success: true,
+            data: data
+        })
+    })
+})
+
+// Delete Method
+router.post('/updateData', (req, res) => {
+    const { id } = req.body;
+    Data.findOneAndDelete(id, err => {
+        if (err) return res.send(err);
+        return res.json({ 
+            success: true 
+        })
+    })
+})
+
+// Create Method
+router.post('/putData', (req, res) => {
+    let data = new Data()
+
+    const { id, message } = req.body
+
+    if ((!id && id !== 0) || !message) {
+        return res.json({
+            success: false,
+            error: "Either your ID or Message is invalid"
+        })
+    }
+
+    data.message = message
+    data.id = id
+    data.save(err => {
+        if (err) return res.json({ 
+            success: false, 
+            error: err
+        })
+
+        return res.json({ success: true })
+    })
+})
+
+// What's rendered on the browser
 app.get('', function(req, res) {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
@@ -24,6 +97,7 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+// AM - to get rid of later
 app.get('/emailTemplate', function(req, res) {
     res.sendFile(path.join(__dirname, 'public', 'emailAppReceived.html'));
 });
@@ -37,7 +111,7 @@ var createTransport = function() {
         auth: {
             // AM - you are logging in as you? Maybe we do not need this? Look in to...
             user: 'amarvick94@gmail.com',
-            pass: ''
+            pass: 'Nice try, freeloader! You aren\'t getting my email password...'
         },
         tls: {
             rejectUnauthorized: false

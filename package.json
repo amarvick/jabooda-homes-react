@@ -12,6 +12,8 @@
     "font-awesome": "^4.7.0",
     "http-proxy-middleware": "^0.19.1",
     "material-ui-popup-state": "^1.0.1",
+    "mongoose": "^5.4.0",
+    "morgan": "^1.9.1",
     "node-sass": "^4.9.4",
     "nodemailer": "^4.6.8",
     "react": "^16.6.0",
