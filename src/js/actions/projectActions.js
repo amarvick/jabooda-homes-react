@@ -8,6 +8,24 @@ import axios from 'axios'
 export function loadData() {
     return function action(dispatch) {
         dispatch({ type: ProjectActionTypes.FETCHING_PROJECTS })
+
+        fetch("/api/getProjectData")
+            .then(data => data.json())
+            .then(function(response) {
+                dispatch({
+                    type: ProjectActionTypes.FETCH_PROJECTS_SUCCESS,
+                    payload: response.data
+                })
+            })
+    
+            // AM - make this in to an error screen?
+            .catch(function(error) {
+                dispatch({
+                    type: ProjectActionTypes.FETCH_PROJECTS_ERROR,
+                    payload: error
+                })
+            })
+
     }
 }
 

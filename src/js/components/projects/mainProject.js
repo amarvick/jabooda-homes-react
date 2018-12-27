@@ -128,6 +128,7 @@ const mapDispatchToProps = (dispatch) => ({
 // Maps the state in to props (for displaying on the front end)
 const mapStateToProps = (state) => ({
   state: state,
+  // selectedProject: state.project.selectedProject,
   selectedImageInProject: state.project.selectedImageInProject
 })
 

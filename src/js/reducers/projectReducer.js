@@ -7,9 +7,9 @@ import ProjectData from '../../data/projects.json'
 export default function reducer(state={
     fetching: false,
     fetched: false,
-    projectData: ProjectData,
+    projectData: [],
     projectsToDisplay: 'Sold',
-    selectedProject: 0,
+    selectedProjectIndex: 0,
     selectedImageInProject: 0,
     submitted: false,
     error: null
@@ -18,7 +18,7 @@ export default function reducer(state={
     switch(action.type) {
         // Currently fetching projects
         case ProjectActionTypes.FETCHING_PROJECTS: {
-            return {...state,
+                return {...state,
                 fetching: true
             }
         }
@@ -27,14 +27,16 @@ export default function reducer(state={
         case ProjectActionTypes.FETCH_PROJECTS_SUCCESS: {
             return {...state,
                 fetching: false,
-                fetched: true
+                fetched: true,
+                projectData: action.payload
             }
         }
     
         // If there was an error in fetching projects from DB
         case ProjectActionTypes.FETCH_PROJECTS_ERROR: {
             return {...state,
-                fetching: false
+                fetching: false,
+                error: action.payload
             }
         }
 
@@ -42,7 +44,7 @@ export default function reducer(state={
         case ProjectActionTypes.UPDATE_MAIN_PROJECT: {
             return {...state,
                 selectedImageInProject: 0,
-                selectedProject: action.payload
+                selectedProjectIndex: action.payload
             }
         }
 

@@ -12,4 +12,4 @@ const CareersSchema = new Schema(
     { timestamps: true }
 );
 
-module.exports = mongoose.model("Careers", CareersSchema)
+module.exports = mongoose.model("Careers", CareersSchema, "careers")

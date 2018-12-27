@@ -7,7 +7,26 @@ import axios from 'axios'
 
 export function loadData() {
     return function action(dispatch) {
-        // Do an axios request to get all data from DB. If success, good; otherwise, populate a modal. Also make loading state
+        dispatch({
+            type: CareerActionTypes.FETCHING_CAREERS
+        })
+
+        fetch("/api/getCareerData")
+            .then(data => data.json())
+            .then(res => 
+                dispatch({
+                    type: CareerActionTypes.FETCH_CAREERS_SUCCESS,
+                    payload: res.data
+                })
+            ) 
+    
+            // AM - make this in to an error screen?
+            .catch(function(error) {
+                dispatch({
+                    type: CareerActionTypes.FETCH_CAREERS_ERROR,
+                    payload: error
+                })
+            })
     }
 }
 
