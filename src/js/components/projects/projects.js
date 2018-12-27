@@ -10,19 +10,24 @@ import '../../../stylesheets/projects.scss'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import Grid from '@material-ui/core/Grid'
+import LoadingScreen from '../loadingScreen'
 
 import { loadData, handleProjectUpdate, updateTab } from '../../actions/projectActions'
 
 class Projects extends Component {
+
+  componentWillMount() {
+    this.props.dispatch(loadData())
+  }
 
   updateTab(tab) {
     this.setState({ selectedTab: tab })
   }
 
   render() {
-    var selectedProject = this.props.selectedProject
-    var projectsToDisplay = this.props.projectsToDisplay
-    var theProjectData = this.props.projectData
+    var projectsToDisplay = this.props.projectsToDisplay || ''
+    var theProjectData = this.props.projectData || []
+    var selectedProjectIndex = this.props.selectedProjectIndex
     var projectsInTab = [];
 
     // AM - better way of doing this??
@@ -32,42 +37,48 @@ class Projects extends Component {
       }
     }
 
-    return (
-      <div className = 'projectsComponent'>
-        <Grid container spacing={24}>
-          <Grid item xs={12} md={8}>
-            <MainProject
-              selectedProject={theProjectData[selectedProject]}
-              selectedImageInProject={0}
-            />
-          </Grid>
-          <Grid item md={4}>
-            <Tabs>
-              <Tab onClick={() => this.props.dispatch(updateTab('Sold'))} label="Sold"/>
-              <Tab onClick={() => this.props.dispatch(updateTab('For Sale'))} label="For Sale"/>
-              <Tab onClick={() => this.props.dispatch(updateTab('In Progress'))} label="In Progress"/>
-            </Tabs>
-            <hr/>
-            {projectsInTab.map((projectDetail, index) => {
-              return (
-                <div className="projectContainer" onClick={() => this.props.dispatch(handleProjectUpdate(projectDetail.id))}> 
-                  <Grid container spacing={24}>
-                    <Grid item>
-                      <img height="90" src={require('../../../images/' + projectDetail.images[0])} />
+    if (theProjectData !== null && theProjectData.length > 0) {
+      return (
+        <div className = 'projectsComponent'>
+          <Grid container spacing={24}>
+            <Grid item xs={12} md={8}>
+              <MainProject
+                selectedProject={theProjectData[selectedProjectIndex]}
+                selectedImageInProject={0}
+              />
+            </Grid>
+            <Grid item md={4}>
+              <Tabs>
+                <Tab onClick={() => this.props.dispatch(updateTab('Sold'))} label="Sold"/>
+                <Tab onClick={() => this.props.dispatch(updateTab('For Sale'))} label="For Sale"/>
+                <Tab onClick={() => this.props.dispatch(updateTab('In Progress'))} label="In Progress"/>
+              </Tabs>
+              <hr/>
+              {projectsInTab.map((projectDetail, index) => {
+                return (
+                  <div className="projectContainer" onClick={() => this.props.dispatch(handleProjectUpdate(projectDetail.id))}> 
+                    <Grid container spacing={24}>
+                      <Grid item>
+                        <img height="90" src={require('../../../images/' + projectDetail.images[0])} />
+                      </Grid>
+                      <Grid item>
+                        <h3>{ projectDetail.address }</h3>
+                      </Grid>
                     </Grid>
-                    <Grid item>
-                      <h3>{ projectDetail.address }</h3>
-                    </Grid>
-                  </Grid>
 
-                  <hr/>
-                </div>
-              ) 
-            })}
+                    <hr/>
+                  </div>
+                ) 
+              })}
+            </Grid>
           </Grid>
-        </Grid>
-      </div>
-    )
+        </div>
+      )
+    } else {
+      return (
+        <LoadingScreen />
+      )
+    }
   }
 }
 
@@ -83,8 +94,7 @@ const mapStateToProps = (state) => ({
   state: state,
   projectData: state.project.projectData,
   projectsToDisplay: state.project.projectsToDisplay,
-  selectedProject: state.project.selectedProject,
-  selectedImageInProject: state.project.selectedImageInProject
+  selectedProjectIndex: state.project.selectedProjectIndex
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Projects);

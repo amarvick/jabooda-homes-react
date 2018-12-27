@@ -3,13 +3,11 @@ const Schema = mongoose.Schema;
 
 const StaffSchema = new Schema(
     {
-        id: Number,
+        id: String,
         name: String,
         image: String,
         title: String
-    },
-
-    { timestamps: true }
+    }
 );
 
-module.exports = mongoose.model("Staff", StaffSchema)
+module.exports = mongoose.model("Staff", StaffSchema, "staff")

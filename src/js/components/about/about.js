@@ -3,11 +3,46 @@
 
 import React, { Component, StartupActions } from 'react'
 import StaffData from '../../../data/staff.json'
+import { connect } from 'react-redux'
 import PageBanner from '../pageBanner'
 import '../../../stylesheets/about.scss'
+import LoadingScreen from '../loadingScreen'
+
+import { loadData } from '../../actions/staffActions'
 
 class About extends Component {
+  
+  componentDidMount() {
+    this.props.dispatch(loadData())
+  }
+
   render() {    
+    var staffData = this.props.staffData || []
+
+    var displayScreen
+    if (staffData !== null && staffData.length > 0) {
+      displayScreen = (
+        <ul>
+          {staffData.map(sd => {
+            return (
+              <li>
+                <img 
+                  src={require('../../../images/staff/' + sd.image )} 
+                  height="150" 
+                  width="150" />
+                <h2>{sd.name}</h2>
+                <p>{sd.title}</p>
+              </li>
+            )
+          })}
+        </ul>
+      )
+    } else {
+      displayScreen = (
+        <LoadingScreen/>
+      )
+    }
+    
     return (
       <div>
         <PageBanner
@@ -34,20 +69,7 @@ class About extends Component {
               </h1>
             </div>
 
-            <ul>
-              {StaffData.map(sd => {
-                return (
-                  <li>
-                    <img 
-                      src={require('../../../images/staff/' + sd.image )} 
-                      height="150" 
-                      width="150" />
-                    <h2>{sd.name}</h2>
-                    <p>{sd.title}</p>
-                  </li>
-                )
-              })}
-            </ul>
+            { displayScreen }
           </div>
         </div>
       </div>
@@ -55,4 +77,18 @@ class About extends Component {
   }
 }
 
-export default About
+// wraps dispatch to create nicer functions to call within our component
+// Mapping dispatch actions to the props
+const mapDispatchToProps = (dispatch) => ({
+  dispatch: dispatch,
+  startup: () => dispatch(StartupActions.startup())
+})
+
+// Maps the state in to props (for displaying on the front end)
+const mapStateToProps = (state) => ({
+  state: state,
+  staffData: state.staff.staffData
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(About)

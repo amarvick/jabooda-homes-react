@@ -2,7 +2,6 @@
  * Description: Displays all open positions                           */
 
 import React, { Component, StartupActions } from 'react'
-import CareerData from '../../../data/careers.json'
 import { connect } from 'react-redux'
 
 import Grid from '@material-ui/core/Grid';
@@ -11,6 +10,8 @@ import '../../../stylesheets/careers.scss'
 
 import CareerTemplate from './careerTemplate'
 import PageBanner from '../pageBanner'
+import LoadingScreen from '../loadingScreen'
+import ErrorScreen from '../errorScreen'
 
 import { loadData } from '../../actions/careerActions'
 
@@ -20,10 +21,45 @@ class Careers extends Component {
     this.props.dispatch(loadData())
   }
 
+  // AM - Component will unmount?
+
   // Displaying all careers
-  render(props) {    
+  render(props) {
     var careerData = this.props.careerData || []
-    console.log(this.props.state)
+    var error = this.props.error || null
+    var displayScreen
+
+    if (error) {
+      displayScreen = (
+        <Grid container spacing={24}>
+          <ErrorScreen error={error}/>
+        </Grid>
+      )
+    }
+
+    if (careerData !== null && careerData.length > 0) {
+      displayScreen = (
+        <Grid container spacing={24}>
+          {careerData.map((careerDetail, index) => {
+            return (
+              <CareerTemplate
+                faClass="fas fa-user-tie fa-5x"
+                description={careerDetail.description}
+                requirements={careerDetail.requirements}
+                header={careerDetail.jobtitle}
+              />
+            )
+          })}
+        </Grid>
+      )
+    } else {
+      displayScreen = (
+        <Grid container spacing={24}>
+          <LoadingScreen/>
+        </Grid>
+      )
+    }
+
 
     return (
       <div>
@@ -33,18 +69,7 @@ class Careers extends Component {
         />
         <div className="pageContent careersComponent">
           <div className="boxContainer">
-            <Grid container spacing={24}>
-              {careerData.map((careerDetail, index) => {
-                return (
-                  <CareerTemplate
-                    faClass="fas fa-user-tie fa-5x"
-                    description={careerDetail.description}
-                    requirements={careerDetail.requirements}
-                    header={careerDetail.jobtitle}
-                  />
-                )
-              })}
-            </Grid>
+            { displayScreen }
           </div>
         </div>
       </div>

@@ -1,7 +1,6 @@
 [
-    "0": {
+    {
         "id": 0,
-        "identifier": "Superintendent", 
         "jobtitle": "SUPERINTENDENT",
         "description": "As a superintendent, you will oversee the operations of construction sites from planning to completion, be responsible daily scheduling, supervising all activities and tasks, and ensuring the safety and compliance of the site.",
         "requirements": [ 
@@ -16,9 +15,8 @@
         ]
     },
 
-    "1":{
+    {
         "id": 1,
-        "identifier": "PROJECT_MANAGER", 
         "jobtitle": "PROJECT MANAGER",
         "description": "",
         "requirements": [ 
@@ -33,9 +31,8 @@
         ]
     },
 
-    "2": {
+    {
         "id": 2,
-        "identifier": "EXCAVATOR_OPERATOR", 
         "jobtitle": "EXCAVATOR OPERATOR",
         "description": "",
         "requirements": [ 
@@ -54,9 +51,8 @@
         ]
     },
 
-    "3": {
+    {
         "id": 3,
-        "identifier": "FOREMAN", 
         "jobtitle": "FOREMAN",
         "description": "",
         "requirements": [ 
@@ -71,9 +67,8 @@
         ]
     },
 
-    "4": {
+    {
         "id": 4,
-        "identifier": "FRAMER", 
         "jobtitle": "FRAMER",
         "description": "",
         "requirements": [ 
