@@ -1,26 +1,39 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Switch, Router, Route, Redirect, NavLink } from 'react-router-dom';
+import './stylesheets/App.scss';
+
+import Header from './js/components/header'
+import Footer from './js/components/footer'
+
+import Home from './js/components/home/home'
+import About from './js/components/about/about'
+import Projects from './js/components/projects/projects'
+import Careers from './js/components/careers/careers'
+import Contactus from './js/components/contactus/contactus'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <header className="App-header">
+            <Header/>
+          </header>
+
+          <Switch>
+            <Route exact path='/' component={Home}/>
+            <Route path='/about' component={About}/>
+            <Route path='/projects' component={Projects}/>
+            <Route path='/careers' component={Careers}/>
+            <Route path='/contactus' component={Contactus}/>
+            <Redirect to="/"/>
+          </Switch>
+
+          <footer className="App-footer">
+            <Footer/>
+          </footer>
+        </div>
+      </BrowserRouter>
     );
   }
 }

@@ -1,0 +1,38 @@
+$color-jabooda-blue: #01427c;
+
+#backToBackImg {
+    display: block;
+    margin: 0px auto;
+    height: 60%;
+    width: 60%;
+}
+
+#theTeam {
+    text-align: center;
+
+    #aboutBanner {
+        height: 100%;
+        width: 100vw;
+        margin: 0px -7.4vw;
+
+        position: relative;
+        padding: 0px;
+        top: -26px;
+        background-color: $color-jabooda-blue;
+        color: white;
+
+        h1 {
+            position: relative;
+            top: 10px;
+            font-size: 38px;
+        }
+    }
+
+    ul {
+        padding: 0;
+        list-style-type: none;
+        li {
+            margin: 0px 20px;
+        }
+    }
+}

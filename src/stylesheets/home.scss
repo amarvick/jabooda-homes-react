@@ -1,0 +1,142 @@
+$color-jabooda-blue: #01427c;
+$color-jabooda-blue-2: #1363a8;
+$color-jabooda-gray: #9e9e9e;
+$color-black: #0C0C0C;
+$color-white-background: #f1f4f9;
+
+$slideshow-height: 450px;
+
+a {
+    text-decoration: none;
+}
+
+// Slideshow
+.homeSlideshowComponent {
+    height: $slideshow-height;
+    padding-bottom: 0vh;
+    z-index: -99999;
+
+    .each-slide {
+        overflow-y: hidden;
+        height: $slideshow-height;
+
+        img {
+            width: 100vw;
+            height: $slideshow-height;
+        }
+    }
+}
+
+// Slideshow contents
+#slideshowContents {
+    position: absolute;
+    width: 100%;
+    top: 140px;
+    z-index: 999;
+
+    .wrapper {
+        text-align: center;
+    
+        #homeLogo {
+            height: 120px;
+            width: 750px;
+            box-shadow: 2px 2px 5px black;
+        }
+
+        @media only screen and (max-width: 790px) {
+            #homeLogo {
+                height: 100%;
+                width: 100%;
+            }
+        }
+
+        hr {
+            width: 60%;
+            box-shadow: 2px 2px 5px black;
+        }
+
+        p {
+            color: white;
+            text-shadow: 2px 2px 5px black;
+        }
+
+        .buttonContainer {
+            a {
+                width: 100px;
+                text-align: center;
+                margin: 0px 20px;
+                border-radius: 8px;
+                background-color: $color-jabooda-blue;
+                color: $color-white-background;
+            }
+        }
+    }
+}
+
+// About, hiring sections...
+.pageContent .Container {
+    padding: 50px 0px;
+
+    hr {
+        position: static;
+        margin: 0;
+        width: 50px;
+        height: 3px;
+        border: none;
+        background-color: $color-jabooda-blue;
+    }
+
+    a {
+        z-index: 9999;
+        background-color: $color-jabooda-blue;
+        color: $color-white-background;
+    }
+}
+
+// Subcontracting
+#bidContainer {
+    text-align: center;
+    height: 300px;
+    background-color: black;
+    overflow-y: hidden;
+    z-index:-10;
+
+    hr {
+        width: 60%;
+    }
+    
+    #bid-text {
+        margin: auto;
+        padding: 10px 10px 30px 10px;
+        width: 90%;
+    }
+
+    #bidOnProjects {
+        position: relative;
+        top: -200%;
+        height: 200vh;
+        background-image: url("../images/house4.jpg");
+        background-size: cover;
+        background-position: 0% 30%;
+        opacity: 0.3;
+    }
+}
+
+#bidText {
+    color: white;
+    z-index: 1000;
+
+    .buttonContainer {
+        a {
+            width: 170px;
+            text-align: center;
+            margin: 0px 20px;
+            border-radius: 8px;
+            z-index: 9000;
+        }
+
+        button {
+            z-index: 9000;
+        }
+    }
+}

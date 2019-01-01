@@ -1,0 +1,81 @@
+$color-jabooda-blue: #01427c;
+$color-jabooda-gray: #9e9e9e;
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+  
+  /* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px black; 
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: $color-jabooda-gray; 
+    border-radius: 10px;
+}
+
+.careerModal {
+    text-align: center;
+    width: 900px !important;
+    height: 80% !important;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    #exitModal {
+        position: relative;
+        margin: auto;
+        left: 50%;
+        top: -20px;
+        text-align: right;
+        transition: .5s ease;
+
+        &:hover {
+            transition: .5s ease;
+            color: $color-jabooda-blue;
+        }
+    }
+
+    form {
+        text-align: left;
+        margin: 0px auto;
+        width: 600px;
+        
+        span {
+            width: 100vw;
+            display: inline-block;
+            word-wrap: break-word;
+        }
+
+        textarea {
+            height: 300px;
+            width: 500px;
+        }
+
+        button {
+            text-align: left;
+            width: 50px;
+
+            span {
+                padding: 0;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 950px) {
+    .careerModal {
+        width: 90% !important;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .careerModal > form {
+        textarea {
+            width: 90vw;
+        }
+    }
+}
