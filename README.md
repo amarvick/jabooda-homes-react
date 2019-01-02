@@ -27,7 +27,7 @@ Back-end Technologies include:
 * [MongoDB](https://www.mongodb.com/) - Database containing Staff Members, Projects and Careers
 
 Other technologies include: 
-* [axios](https://github.com/axios) - Client <----> Server communication
+* [Axios](https://github.com/axios) - Client <----> Server communication
 * [React-Redux](https://react-redux.js.org/) - State Management
 
 
