@@ -1,5 +1,5 @@
-/* File Name: careerReducer.js                                      *
- * Description: Redux reducer for the artist                        */
+/* File Name: careerReducer.js                                              *
+ * Description: Redux reducer for the careers                               */
 
 import CareerActionTypes from '../actiontypes/careerActionTypes'
 

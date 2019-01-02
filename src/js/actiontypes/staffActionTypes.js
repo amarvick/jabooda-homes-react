@@ -1,5 +1,5 @@
-/* File Name: staffActionTypes.js                                  *
- * Description: Action Types for the staff members                 */
+/* File Name: staffActionTypes.js                                           *
+ * Description: Action Types for staff members                              */
 
 const StaffActionTypes = {
     FETCHING_STAFF: 'FETCHING_STAFF',

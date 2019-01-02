@@ -1,5 +1,5 @@
-/* File Name: contactUsActionType.js                                *
- * Description: Action Types for the artist                         */
+/* File Name: projectActionTypes.js                                         *
+ * Description: Action Types for projects                                   */
 
 const ProjectActionTypes = {
     FETCHING_PROJECTS: 'FETCHING_PROJECTS',
