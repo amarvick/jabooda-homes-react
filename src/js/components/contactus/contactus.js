@@ -1,20 +1,20 @@
-/* File Name: contactus.js                                              *
- * Description: Contact jabooda homes                                   */
+/* File Name: contactus.js                                                  *
+ * Description: Contact jabooda homes                                       */
 
 import React, { Component, StartupActions } from 'react'
 import { connect } from 'react-redux';
 import axios from 'axios'
-
-import PageBanner from '../pageBanner'
-
-// Actions
-import { handleSubmit } from '../../actions/contactUsActions'
 
 // Design
 import '../../../stylesheets/contactus.scss'
 import Input from '@material-ui/core/Input';
 import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
+
+import PageBanner from '../pageBanner'
+
+// Actions
+import { handleSubmit } from '../../actions/contactUsActions'
 
 class Contactus extends Component {
   constructor() {

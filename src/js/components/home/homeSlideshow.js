@@ -1,5 +1,5 @@
 /* File Name: homeSlideshow.js                                              *
- * Description: Error message that would stop the user              */
+ * Description: Slideshow on home page                                      */
 
 import React, { Component, StartupActions } from 'react'
 import { Fade } from 'react-slideshow-image'

@@ -1,16 +1,16 @@
-/* File Name: projects.js                                              *
- * Description: Error message that would stop the user              */
+/* File Name: projects.js                                                   *
+ * Description: Displays all available projects                             */
 
 import React, { Component, StartupActions } from 'react'
-import MainProject from './mainProject'
-
 import { connect } from 'react-redux'
 
 import '../../../stylesheets/projects.scss'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import Grid from '@material-ui/core/Grid'
+
 import LoadingScreen from '../loadingScreen'
+import MainProject from './mainProject'
 
 import { loadData, handleProjectUpdate, updateTab } from '../../actions/projectActions'
 

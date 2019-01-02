@@ -1,5 +1,5 @@
-/* File Name: errorScreen.js                                              *
- * Description: Placeholder for errors in loading data                    */
+/* File Name: errorScreen.js                                                *
+ * Description: Placeholder for errors in loading data                      */
 
 import React, { Component } from 'react'
 

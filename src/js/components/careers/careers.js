@@ -1,12 +1,11 @@
-/* File Name: careers.js                                              *
- * Description: Displays all open positions                           */
+/* File Name: careers.js                                                    *
+ * Description: Displays all open positions                                 */
 
 import React, { Component, StartupActions } from 'react'
 import { connect } from 'react-redux'
 
-import Grid from '@material-ui/core/Grid';
-
 import '../../../stylesheets/careers.scss'
+import Grid from '@material-ui/core/Grid';
 
 import CareerTemplate from './careerTemplate'
 import PageBanner from '../pageBanner'

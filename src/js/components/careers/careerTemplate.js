@@ -1,18 +1,18 @@
-/* File Name: careerTemplate.js                                       *
- * Description: Displays all open positions                           */
+/* File Name: careerTemplate.js                                             *
+ * Description: Template for a career on careers page                       */
 
 import React, { Component, StartupActions } from 'react'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import AnimateHeight from 'react-animate-height';
-
-import CareerModalApply from './careerModalApply.js'
 
 import '../../../stylesheets/careerTemplate.scss'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import AnimateHeight from 'react-animate-height';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import Modal from '@material-ui/core/Modal'
+
+import CareerModalApply from './careerModalApply.js'
 
 function getModalStyle() {
   const top = 50

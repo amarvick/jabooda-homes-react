@@ -1,7 +1,7 @@
 /* File Name: loadingScreen.js                                              *
  * Description: Placeholder for loading data                                */
 
-import React, { Component, StartupActions } from 'react'
+import React, { Component } from 'react'
 
 class LoadingScreen extends Component {
   render() {   

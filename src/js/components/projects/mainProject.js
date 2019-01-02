@@ -1,17 +1,16 @@
-/* File Name: mainProject.js                                        *
- * Description: Error message that would stop the user              */
+/* File Name: mainProject.js                                                *
+ * Description: Main project displayed on left side of the projects         *
+ * page                                                                     */
 
 import React, { Component, StartupActions } from 'react'
 import { connect } from 'react-redux'
 
+import '../../../stylesheets/mainProject.scss'
+import { withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal'
 import Paper from '@material-ui/core/Paper'
 
-// AM - Make sure to update this with the new modal. Here to verify this works
 import ModalMaxSizeImg from './modalMaxSizeImg'
-
-import { withStyles } from '@material-ui/core/styles';
-import '../../../stylesheets/mainProject.scss'
 
 import { updateImage, seeLeftImage, seeRightImage } from '../../actions/projectActions'
 

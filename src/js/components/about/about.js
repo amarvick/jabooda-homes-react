@@ -1,16 +1,18 @@
-/* File Name: about.js                                              *
- * Description: About the team & company                            */
+/* File Name: about.js                                                      *
+ * Description: About the team & company                                    */
 
 import React, { Component, StartupActions } from 'react'
-import StaffData from '../../../data/staff.json'
 import { connect } from 'react-redux'
-import PageBanner from '../pageBanner'
+
 import '../../../stylesheets/about.scss'
 
+import PageBanner from '../pageBanner'
 import LoadingScreen from '../loadingScreen'
 import ErrorScreen from '../errorScreen'
 
 import { loadData } from '../../actions/staffActions'
+
+import StaffData from '../../../data/staff.json'
 
 class About extends Component {
   

@@ -1,17 +1,17 @@
-/* File Name: home.js                                              *
- * Description: Jabooda home page                                  */
+/* File Name: home.js                                                       *
+ * Description: Jabooda home page                                           */
 
 import React, { Component, StartupActions } from 'react'
-import { NavLink, Link } from 'react-router-dom';
-
-import HomeSlideshow from './homeSlideshow'
-import PaperContainer from './paperContainer.js';
-import ContentContainer from './contentContainer.js';
+import { Link } from 'react-router-dom';
 
 // Design
 import '../../../stylesheets/home.scss'
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+
+import HomeSlideshow from './homeSlideshow'
+import PaperContainer from './paperContainer.js';
+import ContentContainer from './contentContainer.js';
 
 class Home extends Component {
   render() {

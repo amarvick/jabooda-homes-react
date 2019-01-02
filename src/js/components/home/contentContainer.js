@@ -1,8 +1,8 @@
-/* File Name: contentContainer.js                                              *
- * Description: Container for the content on home page              */
+/* File Name: contentContainer.js                                           *
+ * Description: Container for the content on home page                      */
 
 import React, { Component, StartupActions } from 'react'
-import { NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // Design
 import Grid from '@material-ui/core/Grid';

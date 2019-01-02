@@ -1,5 +1,5 @@
-/* File Name: modalMaxSizeImg.js                                      *
- * Description: If user wants to see bigger image of project          */
+/* File Name: modalMaxSizeImg.js                                            *
+ * Description: If user wants to see bigger image of project                */
 
 import React, { Component, StartupActions } from 'react'
 import { connect } from 'react-redux';

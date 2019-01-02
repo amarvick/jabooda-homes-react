@@ -1,7 +1,7 @@
-/* File Name: paperContainer.js                                              *
- * Description: Container for the project boxes on home page              */
+/* File Name: pageBanner.js                                                 *
+ * Description: Page banner for pages on the website                        */
 
-import React, { Component, StartupActions } from 'react'
+import React, { Component } from 'react'
 
 import '../../stylesheets/pageBanner.scss'
 
