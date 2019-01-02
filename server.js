@@ -21,7 +21,7 @@ app.listen(PORT, () => {
 })
 
 // Setting up MongoDB Database
-const dbRoute = "mongodb://amarvick:bluekittycats999@ds141924.mlab.com:41924/jabooda"
+const dbRoute = "mongodb://***:***@ds141924.mlab.com:41924/jabooda"
 
 // Connect back end code with DB
 mongoose.connect(

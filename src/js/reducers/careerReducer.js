@@ -2,10 +2,9 @@
  * Description: Redux reducer for the artist                        */
 
 import CareerActionTypes from '../actiontypes/careerActionTypes'
-import CareerData from '../../data/careers.json'
 
 export default function reducer(state={
-    careerData: CareerData,
+    careerData: [],
     loading: false,
     submitted: false,
     error: null

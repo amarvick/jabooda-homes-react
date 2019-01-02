@@ -16,9 +16,9 @@ import { loadData } from '../../actions/careerActions'
 
 class Careers extends Component {
 
-  // componentDidMount() {
-  //   this.props.dispatch(loadData())
-  // }
+  componentDidMount() {
+    this.props.dispatch(loadData())
+  }
 
   // AM - Component will unmount?
 
