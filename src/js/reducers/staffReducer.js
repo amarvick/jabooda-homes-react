@@ -2,10 +2,11 @@
  * Description: Redux reducer for the team members                          */
 
 import StaffActionTypes from '../actiontypes/staffActionTypes'
+import StaffData from '../../data/staff.json'
 
 export default function reducer(state={
     loading: false,
-    staffData: [],
+    staffData: StaffData,
     error: null
 }, action) {
 

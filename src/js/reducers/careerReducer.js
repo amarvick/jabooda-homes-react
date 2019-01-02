@@ -2,9 +2,10 @@
  * Description: Redux reducer for the careers                               */
 
 import CareerActionTypes from '../actiontypes/careerActionTypes'
+import CareerData from '../../data/careers.json'
 
 export default function reducer(state={
-    careerData: [],
+    careerData: CareerData,
     loading: false,
     submitted: false,
     error: null
