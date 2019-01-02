@@ -15,56 +15,13 @@ What things you need to install the software and how to install them
 Give examples
 ```
 
-### Installing
+### Previewing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-
-
-## `npm start`
+`npm start`
 
 Runs the app concurrently in the development mode as well as the server. Other users cannot successfully run the back-end due to username & passwords being hidden on server.js<br>
 
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
 ## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
 Front-end Technologies include:
 * HTML
 * [SASS](https://sass-lang.com/) - Design Language
@@ -73,33 +30,21 @@ Front-end Technologies include:
 
 
 Back-end Technologies include: 
-* Node.js - For submitting job applications, direct inquiries and importing back-end data
-* MongoDB - Database containing Staff Members, Projects and Careers
+* [Node.js](https://nodejs.org/) - For submitting job applications, direct inquiries and importing back-end data
+* [Express](http://expressjs.com/) - Web Hosting
+* [MongoDB](https://www.mongodb.com/) - Database containing Staff Members, Projects and Careers
 
 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Alex Marvick** - Lead Developer - [amarvick](https://github.com/amarvick)
+* **Norell Tagle** - Front-end developer & Designer - [norelltagle](https://github.com/norelltagle)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Hat tip to [Wordpress](https://wordpress.org/themes/blue-construction/) templates for the inspiration
+* **Michael Marvick** - For code reviews and his overall assistance for making this project possible
