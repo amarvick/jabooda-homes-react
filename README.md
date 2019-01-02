@@ -40,11 +40,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Authors
 
-* **Alex Marvick** - Lead Developer - [amarvick](https://github.com/amarvick)
-* **Norell Tagle** - Front-end developer & Designer - [norelltagle](https://github.com/norelltagle)
+* [**Alex Marvick** @amarvick](https://github.com/amarvick) - Lead Developer
+* [**Norell Tagle** @norelltagle](https://github.com/norelltagle) - Front-end developer & Designer
 
 
 ## Acknowledgments
 
 * Hat tip to [Wordpress](https://wordpress.org/themes/blue-construction/) templates for the inspiration
-* **Michael Marvick** - For code reviews and his overall assistance for making this project possible
+* [**Michael Marvick** @mmarvick]() - For code reviews and his overall assistance for making this project possible
