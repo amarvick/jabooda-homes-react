@@ -17,7 +17,7 @@ import StaffData from '../../../data/staff.json'
 class About extends Component {
   
   componentDidMount() {
-    this.props.dispatch(loadData())
+    // this.props.dispatch(loadData())
   }
 
   render() {    
