@@ -4,22 +4,14 @@ Jabooda Homes, Inc. is a Construction company based out of Mercer Island, WA whi
 
 ## Getting Started
 
-Once downloaded, ensure node modules are downloaded via ```npm init```.
+Once downloaded, ensure node modules are downloaded via ```npm install```. All dependencies should be included in package.json
 
-
-### Prerequisites
-
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
 
 ### Previewing
 
 `npm start`
 
-Runs the app concurrently in the development mode as well as the server. Other users cannot successfully run the back-end due to username & passwords being hidden on server.js<br>
+Runs the app concurrently in the development mode as well as the server. Other users will have limitations running the back-end (cannot submit job apps, emails or fetch data) due to username & passwords being hidden on server.js<br>
 
 ## Built With
 Front-end Technologies include:
@@ -34,6 +26,9 @@ Back-end Technologies include:
 * [Express](http://expressjs.com/) - Web Hosting
 * [MongoDB](https://www.mongodb.com/) - Database containing Staff Members, Projects and Careers
 
+Other technologies include: 
+* [axios](https://github.com/axios) - Client <----> Server communication
+* [React-Redux](https://react-redux.js.org/) - State Management
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
