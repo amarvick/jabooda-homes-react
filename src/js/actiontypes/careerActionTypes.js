@@ -1,5 +1,5 @@
-/* File Name: careerActionTypes.js                                  *
- * Description: Action Types for the artist                         */
+/* File Name: careerActionTypes.js                                          *
+ * Description: Action Types for careers                                    */
 
 const CareerActionTypes = {
     FETCHING_CAREERS: 'FETCHING_CAREERS',

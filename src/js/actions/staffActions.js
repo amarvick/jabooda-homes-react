@@ -1,6 +1,5 @@
-/* File Name: careerActions.js                                      *
- * Description: Retrieves the user's top artists, then immediately  *
- *              calls to get that artist's top songs.               */
+/* File Name: staffActions.js                                               *
+ * Description: Retrieves all staff members                                 */
 
 import StaffActionTypes from '../actiontypes/staffActionTypes'
 import axios from 'axios'

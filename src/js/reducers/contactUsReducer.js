@@ -1,5 +1,5 @@
-/* File Name: contactUsReducer.js                                   *
- * Description: Redux reducer for the artist                        */
+/* File Name: contactUsReducer.js                                           *
+ * Description: Redux reducer for sending emails                            */
 
 import ContactUsActionType from '../actiontypes/contactUsActionTypes'
 

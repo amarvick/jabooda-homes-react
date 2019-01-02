@@ -1,5 +1,5 @@
-/* File Name: contactUsReducer.js                                   *
- * Description: Redux reducer for the artist                        */
+/* File Name: contactUsReducer.js                                           *
+ * Description: Redux reducer for the team members                          */
 
 import StaffActionTypes from '../actiontypes/staffActionTypes'
 

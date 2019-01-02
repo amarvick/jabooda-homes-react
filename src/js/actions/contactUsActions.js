@@ -1,6 +1,5 @@
-/* File Name: contactUsActions.js                                   *
- * Description: Retrieves the user's top artists, then immediately  *
- *              calls to get that artist's top songs.               */
+/* File Name: contactUsActions.js                                           *
+ * Description: Enables user to submit emails to Jabooda Admins             */
 
 import ContactUsActionTypes from '../actiontypes/contactUsActionTypes'
 import axios from 'axios'
