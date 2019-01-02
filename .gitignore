@@ -22,4 +22,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+<<<<<<< HEAD
+=======
+# AM - turn this back on when email templating is ready
+>>>>>>> 4f6cefaa8b6d06a5e33fdc058d984a4de87492a4
 server.js
