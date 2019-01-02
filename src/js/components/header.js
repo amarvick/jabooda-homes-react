@@ -10,7 +10,6 @@ import '../../stylesheets/header.scss'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import Button from '@material-ui/core/Button'
-import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state/index';
 
 class Header extends Component {
   constructor() {
