@@ -7,7 +7,7 @@ import ProjectData from '../../data/projects.json'
 export default function reducer(state={
     fetching: false,
     fetched: false,
-    projectData: [],
+    projectData: ProjectData,
     projectsToDisplay: 'Sold',
     selectedProjectIndex: 0,
     selectedImageInProject: 0,

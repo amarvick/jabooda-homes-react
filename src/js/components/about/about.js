@@ -15,7 +15,7 @@ import { loadData } from '../../actions/staffActions'
 class About extends Component {
   
   componentDidMount() {
-    this.props.dispatch(loadData())
+    // this.props.dispatch(loadData())
   }
 
   render() {    

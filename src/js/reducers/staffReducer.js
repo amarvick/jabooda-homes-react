@@ -2,10 +2,11 @@
  * Description: Redux reducer for the artist                        */
 
 import StaffActionTypes from '../actiontypes/staffActionTypes'
+import StaffData from '../../data/staff.json'
 
 export default function reducer(state={
     loading: false,
-    staffData: [],
+    staffData: StaffData, // Change back to empty array
     error: null
 }, action) {
 

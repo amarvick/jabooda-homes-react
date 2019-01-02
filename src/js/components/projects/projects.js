@@ -17,7 +17,7 @@ import { loadData, handleProjectUpdate, updateTab } from '../../actions/projectA
 class Projects extends Component {
 
   componentWillMount() {
-    this.props.dispatch(loadData())
+    // this.props.dispatch(loadData())
   }
 
   updateTab(tab) {
