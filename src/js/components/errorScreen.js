@@ -7,7 +7,8 @@ class ErrorScreen extends Component {
   render(props) {   
     return (
       <p>
-        { this.props.error }
+        An error loading the data occured. Please check your internet connection and try again. <br/><br/>
+        Message: { this.props.error }
       </p>
     )
   }
