@@ -11,7 +11,7 @@ const Careers = require('./src/data/careersdb')
 const Projects = require('./src/data/projectsdb')
 const Staff = require('./src/data/staffdb')
 
-const PORT = process.env.PORT || 3001
+const PORT = 80
 
 // app.use(express.static(__dirname + '/dist'));
 app.use(express.static(__dirname + '/public'));
