@@ -17,7 +17,6 @@ export function loadData() {
                 })
             })
     
-            // AM - make this in to an error screen?
             .catch(function(error) {
                 dispatch({
                     type: ProjectActionTypes.FETCH_PROJECTS_ERROR,

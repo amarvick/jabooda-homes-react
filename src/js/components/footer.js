@@ -6,6 +6,9 @@ import { NavLink, Link } from 'react-router-dom';
 
 import '../../stylesheets/footer.scss'
 
+import MenuLink from './menuLink'
+import SocialMediaLink from './socialMediaLink'
+
 class Footer extends Component {
   constructor(props) {
     super(props)
@@ -24,61 +27,55 @@ class Footer extends Component {
 
     return (
       <div className="footerComponent">
-
-        {/* AM - componentize */}
         <ul id="socialMediaLinks">
-          <li style={style} className="socialMedia">
-            <a href="/">
-              <span class="fa fa-facebook-f fa-2x" />
-            </a>
-          </li>
+          <SocialMediaLink
+            link="/"
+            icon="fa fa-facebook-f fa-2x"
+          />
 
-          <li style={style} className="socialMedia">
-            <a href="/">
-              <span class="fa fa-instagram fa-2x" />
-            </a>
-          </li>
+          <SocialMediaLink
+            link="/"
+            icon="fa fa-instagram fa-2x"
+          />
 
-          <li style={style} className="socialMedia">
-            <a href="/">
-              <span class="fa fa-linkedin fa-2x" />
-            </a>
-          </li>
+          <SocialMediaLink
+            link="/"
+            icon="fa fa-linkedin fa-2x"
+          />
         </ul>
 
-        {/* AM - componentize */}
         <ul id="footerNavMenu">
-          <li style={style}>
-            <Link to="/">
-              Home
-            </Link>
-          </li>
-          
-          <li style={style}>
-            <Link to="/about">
-              About Us
-            </Link>
-          </li>
-          
-          <li style={style}>
-            <Link to="/projects">
-              Projects
-            </Link>
-          </li>
-          
-          <li style={style}>
-            <Link to="/careers">
-              Careers
-            </Link>
-          </li>
-          
-          <li style={style}>
-            <Link to="/contactus">
-              Contact Us
-            </Link>
-          </li>
+          <MenuLink
+            style={style}
+            link="/"
+            page="Home"
+          />
+
+          <MenuLink
+            style={style}
+            link="/about"
+            page="About Us"
+          />
+
+          <MenuLink
+            style={style}
+            link="/projects"
+            page="Projects"
+          />
+
+          <MenuLink
+            style={style}
+            link="/careers"
+            page="Careers"
+          />
+
+          <MenuLink
+            style={style}
+            link="/contactus"
+            page="Contact Us"
+          />
         </ul>
-        
+
         <img id="combinedLogos" src={require("../../images/combinedlogos.png")} />
 
         <p>Jabooda Homes, Inc. {currentYear}</p>
