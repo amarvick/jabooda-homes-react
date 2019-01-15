@@ -10,11 +10,22 @@ import About from './js/components/about/about'
 import Projects from './js/components/projects/projects'
 import Careers from './js/components/careers/careers'
 import Contactus from './js/components/contactus/contactus'
+import Admin from './js/components/admin/admin'
 
 class App extends Component {
+  constructor() {
+    super()
+
+    this.state = {
+      adminLogin: false
+    }
+  }
+
   render() {
-    return (
-      <BrowserRouter>
+    var screenDisplay
+
+    if (this.state.adminLogin) {
+      screenDisplay = (
         <div className="App">
           <header className="App-header">
             <Header/>
@@ -26,6 +37,7 @@ class App extends Component {
             <Route path='/projects' component={Projects}/>
             <Route path='/careers' component={Careers}/>
             <Route path='/contactus' component={Contactus}/>
+            <Route path='/admin' component={Admin}/>
             <Redirect to="/"/>
           </Switch>
 
@@ -33,6 +45,17 @@ class App extends Component {
             <Footer/>
           </footer>
         </div>
+      )
+    } else {
+      screenDisplay = (
+        <Admin/>
+      )
+    }
+
+
+    return (
+      <BrowserRouter>
+        { screenDisplay }
       </BrowserRouter>
     );
   }
