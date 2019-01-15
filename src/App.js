@@ -17,14 +17,19 @@ class App extends Component {
     super()
 
     this.state = {
-      adminLogin: false
+      isAdminLoggedIn: false
     }
   }
+
+  // displayAdminLoginOrNo(adminLoginModalStatus) {
+  //   var newAdminLoginModalStatus = !adminLoginModalStatus
+  //   this.setState({ adminLoginModal: newAdminLoginModalStatus })
+  // }
 
   render() {
     var screenDisplay
 
-    if (this.state.adminLogin) {
+    if (!this.state.isAdminLoggedIn) {
       screenDisplay = (
         <div className="App">
           <header className="App-header">

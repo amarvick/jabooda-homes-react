@@ -13,11 +13,7 @@ const UserSchema = new Schema({
   password: {
     type: String,
     required: true
-  },
-  passwordConfirm: {
-    type: String,
-    required: true
   }
 });
 
-module.exports = mongoose.model("User", UserSchema, "user")
+module.exports = User = mongoose.model("users", UserSchema)
