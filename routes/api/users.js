@@ -4,6 +4,8 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const keys = require('../../config/keys')
 const passport = require('passport')
+// const salt = await bcrypt.genSaltSync(10)
+// const password = await req.body.password
 
 // Load input validation
 const validateRegisterInput = require('../../validation/register')
@@ -18,7 +20,7 @@ router.post('/register', (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body)
 
     if (!isValid) {
-        return res.status(400).json(errors);
+        return res.status(400).json(errors)
     }
 
     // Check if email already exists
@@ -36,12 +38,12 @@ router.post('/register', (req, res) => {
         // Hash password before saving in database
         bcrypt.genSalt(10, (err, salt) => {
             bcrypt.hash(newUser.password, salt, (err, hash) => {
-                if (err) throw err;
-                newUser.password = hash;
+                if (err) throw err
+                newUser.password = hash
                 newUser
                     .save()
                     .then(user => res.json(user))
-                    .catch(err => console.log(err)); // AM - could make in to modal
+                    .catch(err => console.log(err)) // AM - could make in to modal?
             })
         })
     })
@@ -57,11 +59,12 @@ router.post('/login', (req, res) => {
         return res.status(400).json(errors)
     }
 
-    const email = req.body.email;
-    const password = req.body.passwordl
+    const email = req.body.email
+    const password = req.body.password
 
     // Find user by email
     User.findOne({ email }).then(user => {
+        console.log('finding user')
         // Check if user exists
         if (!user) {
             return res.status(404).json({ emailnotfound: "Email not found!"})
@@ -96,6 +99,8 @@ router.post('/login', (req, res) => {
                         .status(400)
                         .json({ passwordincorrect: 'Password is Incorrect'})
             }
+        }).catch(err => {
+            console.log(err)
         })
     })
 })
