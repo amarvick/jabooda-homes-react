@@ -10,15 +10,9 @@ import PageBanner from '../pageBanner'
 import LoadingScreen from '../loadingScreen'
 import ErrorScreen from '../errorScreen'
 
-import { loadData } from '../../actions/staffActions'
-
-import StaffData from '../../../data/staff.json'
+// import StaffData from '../../../data/staff.json'
 
 class About extends Component {
-  
-  componentDidMount() {
-    // this.props.dispatch(loadData())
-  }
 
   render() {    
     var staffData = this.props.staffData || []
@@ -38,6 +32,7 @@ class About extends Component {
               return (
                 <li>
                   <img 
+                    alt="Person"
                     src={require('../../../images/staff/' + sd.image )} 
                     height="150" 
                     width="150" />
@@ -74,7 +69,7 @@ class About extends Component {
           </p>
 
           <div id="theTeam">
-            <img id="backToBackImg" src={require("../../../images/Executive.png")}/>
+            <img alt="People" id="backToBackImg" src={require("../../../images/Executive.png")}/>
             
             <div id="aboutBanner">  
               <h1>

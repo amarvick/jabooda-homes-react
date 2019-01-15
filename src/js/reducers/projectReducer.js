@@ -61,6 +61,8 @@ export default function reducer(state={
                 projectsToDisplay: action.payload
             }
         }
+
+        default: {}
     }
     return state
 }

@@ -3,7 +3,6 @@
 
 import React, { Component, StartupActions } from 'react'
 import { connect } from 'react-redux';
-import axios from 'axios'
 
 // Design
 import '../../../stylesheets/contactus.scss'

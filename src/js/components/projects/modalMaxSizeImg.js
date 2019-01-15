@@ -6,21 +6,15 @@ import { connect } from 'react-redux';
 
 // Design
 import '../../../stylesheets/modalMaxSizeImg.scss'
-import Modal from '@material-ui/core/Modal'
-import Input from '@material-ui/core/Input';
-import FormLabel from '@material-ui/core/FormLabel';
-import Button from '@material-ui/core/Button';
 
 // Actions
-import { seeLeftImage, seeRightImage } from '../../actions/projectActions'
+// import { seeLeftImage, seeRightImage } from '../../actions/projectActions'
 
 class ModalMaxSizeImg extends Component {
 
     render(props) {
-        console.log(this.props.state)
         var imageSRC = require('../../../images/' + this.props.imageSrc)
-        var selectedImageInProject = this.props.selectedImageInProject
-        var state = this.props.state
+        // var selectedImageInProject = this.props.selectedImageInProject
 
         return (
             <div className="maxSizeImage"
@@ -37,7 +31,9 @@ class ModalMaxSizeImg extends Component {
                       className="fa fa-chevron-circle-left fa-2x modalMaxArrow"
                       onClick={() => this.props.dispatch(seeLeftImage(selectedImageInProject))} /> */}
 
-                <img height="100%"
+                <img 
+                     alt="Max Size"
+                     height="100%"
                      src={imageSRC} />
 
                 {/* <span id="rightArrow"

@@ -2,7 +2,6 @@
  * Description: Retrieves all staff members                                 */
 
 import StaffActionTypes from '../actiontypes/staffActionTypes'
-import axios from 'axios'
 
 export function loadData() {
     return function action(dispatch) {

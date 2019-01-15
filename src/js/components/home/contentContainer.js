@@ -1,7 +1,7 @@
 /* File Name: contentContainer.js                                           *
  * Description: Container for the content on home page                      */
 
-import React, { Component, StartupActions } from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 
 // Design
@@ -10,11 +10,7 @@ import Button from '@material-ui/core/Button';
 import Hidden from '@material-ui/core/Hidden';
 
 class ContentContainer extends Component {
-  constructor(props) {
-    super(props)
-  }
 
-  // The question template
   render(props) { 
     var button = this.props.button || null
     var buttonView
@@ -49,7 +45,7 @@ class ContentContainer extends Component {
     var theImage = (
         <Hidden xsDown>
             <Grid item xs={12} sm={4}>
-                <img src={this.props.imageUrl} />
+                <img alt="House" src={this.props.imageUrl} />
             </Grid>
         </Hidden>
     )

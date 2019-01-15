@@ -2,7 +2,6 @@
  * Description: Footer displayed on the website                             */
 
 import React, { Component } from 'react'
-import { NavLink, Link } from 'react-router-dom';
 
 import '../../stylesheets/footer.scss'
 
@@ -76,7 +75,7 @@ class Footer extends Component {
           />
         </ul>
 
-        <img id="combinedLogos" src={require("../../images/combinedlogos.png")} />
+        <img id="combinedLogos" alt="Jabooda Sponsors" src={require("../../images/combinedlogos.png")} />
 
         <p>Jabooda Homes, Inc. {currentYear}</p>
       </div>

@@ -16,10 +16,6 @@ import { loadData, handleProjectUpdate, updateTab } from '../../actions/projectA
 
 class Projects extends Component {
 
-  componentWillMount() {
-    // this.props.dispatch(loadData())
-  }
-
   updateTab(tab) {
     this.setState({ selectedTab: tab })
   }
@@ -59,7 +55,7 @@ class Projects extends Component {
                   <div className="projectContainer" onClick={() => this.props.dispatch(handleProjectUpdate(projectDetail.id))}> 
                     <Grid container spacing={24}>
                       <Grid item>
-                        <img height="90" src={require('../../../images/' + projectDetail.images[0])} />
+                        <img alt="Home" height="90" src={require('../../../images/' + projectDetail.images[0])} />
                       </Grid>
                       <Grid item>
                         <h3>{ projectDetail.address }</h3>

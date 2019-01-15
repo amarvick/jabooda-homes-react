@@ -12,15 +12,9 @@ import PageBanner from '../pageBanner'
 import LoadingScreen from '../loadingScreen'
 import ErrorScreen from '../errorScreen'
 
-import { loadData } from '../../actions/careerActions'
+// import { loadData } from '../../actions/careerActions'
 
 class Careers extends Component {
-
-  componentDidMount() {
-    // this.props.dispatch(loadData())
-  }
-
-  // AM - Component will unmount?
 
   // Displaying all careers
   render(props) {
