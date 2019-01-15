@@ -1,7 +1,7 @@
 /* File Name: home.js                                                       *
  * Description: Jabooda home page                                           */
 
-import React, { Component, StartupActions } from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 
 // Design
@@ -22,7 +22,7 @@ class Home extends Component {
 
         <div id="slideshowContents">
             <div className="wrapper">
-                <img id="homeLogo" src={require("../../../images/largelogo2.png")} />
+                <img alt="Jabooda Logo" id="homeLogo" src={require("../../../images/largelogo2.png")} />
                 <hr/>
                 <p>
                     At Jabooda, we believe in a home for every family.

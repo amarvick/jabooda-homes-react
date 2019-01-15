@@ -1,13 +1,11 @@
 /* File Name: careerTemplate.js                                             *
  * Description: Template for a career on careers page                       */
 
-import React, { Component, StartupActions } from 'react'
+import React, { Component } from 'react'
 
 import '../../../stylesheets/careerTemplate.scss'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import AnimateHeight from 'react-animate-height';
 import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import Modal from '@material-ui/core/Modal'
@@ -52,7 +50,7 @@ class CareerTemplate extends Component {
   }
 
   toggleDescription() {
-    var newTag = (this.state.arrowFATag == 'fa fa-arrow-circle-down fa-2x' ? 'fa fa-arrow-circle-up fa-2x' : 'fa fa-arrow-circle-down fa-2x')
+    var newTag = (this.state.arrowFATag === 'fa fa-arrow-circle-down fa-2x' ? 'fa fa-arrow-circle-up fa-2x' : 'fa fa-arrow-circle-down fa-2x')
     var height = this.state.height;
  
     this.setState({
@@ -72,7 +70,6 @@ class CareerTemplate extends Component {
 
   render(props) {
     const { classes } = this.props;
-    var showDescription = this.state.showDescription
     var arrowFATag = this.state.arrowFATag
     var description = this.props.description
     var requirements = this.props.requirements

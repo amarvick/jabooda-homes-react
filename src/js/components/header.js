@@ -1,15 +1,11 @@
 /* File Name: header.js                                                     *
  * Description: Header displayed on the website. Includes nav menu          */
 
-import React, { Component, StartupActions } from 'react'
-import { NavLink, Link } from 'react-router-dom';
+import React, { Component } from 'react'
 
 // Design + React Material UI
 import '../../stylesheets/header.scss'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import Menu from '@material-ui/core/Menu'
-import MenuItem from '@material-ui/core/MenuItem'
-import Button from '@material-ui/core/Button'
 
 import MenuLink from './menuLink'
 

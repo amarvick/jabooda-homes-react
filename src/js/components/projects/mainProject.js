@@ -8,7 +8,6 @@ import { connect } from 'react-redux'
 import '../../../stylesheets/mainProject.scss'
 import { withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal'
-import Paper from '@material-ui/core/Paper'
 
 import ModalMaxSizeImg from './modalMaxSizeImg'
 
@@ -59,7 +58,7 @@ class MainProject extends Component {
   keyPressShiftImage(e, index, max) {
     if (e.keyCode === 37) {
       this.props.dispatch(seeLeftImage(index, 0))
-    } else if (e.keyCode == 39) {
+    } else if (e.keyCode === 39) {
       this.props.dispatch(seeRightImage(index, max))
     }
   }
@@ -80,7 +79,7 @@ class MainProject extends Component {
     return (
       <div tabIndex={0} onKeyDown={(e) => this.keyPressShiftImage(e, selectedImageInProject, selectedProject.images.length - 1)} className='projectsComponent'>
         <h2>{selectedProject.address}</h2>
-        <img id="mainImage" onClick={() => this.handleOpenModal()} width="100%" src={image} />
+        <img id="mainImage" alt="Main Display" onClick={() => this.handleOpenModal()} width="100%" src={image} />
 
         <div id="subImageContainer">
           <ul id="allSubImages">
@@ -88,6 +87,7 @@ class MainProject extends Component {
               return (
                 <li>
                   <img
+                    alt="Additional"
                     onClick={() => this.props.dispatch(updateImage(index))}
                     height="100"
                     width="100"

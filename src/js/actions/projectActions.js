@@ -2,7 +2,6 @@
  * Description: Redux actions for the projects                              */
 
 import ProjectActionTypes from '../actiontypes/projectActionTypes'
-import axios from 'axios'
 
 export function loadData() {
     return function action(dispatch) {

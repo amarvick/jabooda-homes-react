@@ -6,13 +6,7 @@ import { connect } from 'react-redux'
 
 import '../../../stylesheets/about.scss'
 
-import PageBanner from '../pageBanner'
-import LoadingScreen from '../loadingScreen'
-import ErrorScreen from '../errorScreen'
-
-import { loadData } from '../../actions/staffActions'
-
-import StaffData from '../../../data/staff.json'
+// import LoadingScreen from '../loadingScreen'
 
 class Admin extends Component {
   

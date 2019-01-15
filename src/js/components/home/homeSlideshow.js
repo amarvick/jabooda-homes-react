@@ -1,7 +1,7 @@
 /* File Name: homeSlideshow.js                                              *
  * Description: Slideshow on home page                                      */
 
-import React, { Component, StartupActions } from 'react'
+import React, { Component } from 'react'
 import { Fade } from 'react-slideshow-image'
 
 class HomeSlideshow extends Component {
@@ -25,13 +25,13 @@ class HomeSlideshow extends Component {
       <div className = 'homeSlideshowComponent'>
         <Fade {...properties}>
           <div className="each-slide">
-            <img src={slideImages[0]}/>
+            <img alt="Slideshow Home 1" src={slideImages[0]}/>
           </div>
           <div className="each-slide">
-            <img src={slideImages[1]}/>
+            <img alt="Slideshow Home 2" src={slideImages[1]}/>
           </div>
           <div className="each-slide">
-            <img src={slideImages[2]}/>
+            <img alt="Slideshow Home 3" src={slideImages[2]}/>
           </div>
         </Fade>
       </div>

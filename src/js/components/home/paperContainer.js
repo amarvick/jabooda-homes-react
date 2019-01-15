@@ -3,14 +3,13 @@
 
 import React, { Component, StartupActions } from 'react'
 import { connect } from 'react-redux'
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import '../../../stylesheets/paperContainer.scss'
-import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
-import { loadData, handleProjectUpdate, updateTab } from '../../actions/projectActions'
+import { updateTab } from '../../actions/projectActions'
 
 class PaperContainer extends Component {
     render(props) {    

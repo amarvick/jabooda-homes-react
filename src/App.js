@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Router, Route, Redirect, NavLink } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import './stylesheets/App.scss';
 
 import Header from './js/components/header'

@@ -22,7 +22,7 @@ class PageBanner extends Component {
             <h1>
                 { this.props.header }
             </h1>
-            <img src={require('../../images/' + this.props.image)} />
+            <img alt="Header" src={require('../../images/' + this.props.image)} />
         </div>
     )
   }

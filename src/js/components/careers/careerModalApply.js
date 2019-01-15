@@ -3,11 +3,9 @@
 
 import React, { Component, StartupActions } from 'react'
 import { connect } from 'react-redux';
-import axios from 'axios'
 
 // Design
 import '../../../stylesheets/careerModalApply.scss'
-import Modal from '@material-ui/core/Modal'
 import Input from '@material-ui/core/Input';
 import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
@@ -15,7 +13,7 @@ import Button from '@material-ui/core/Button';
 // Actions
 import { handleSubmit } from '../../actions/careerActions'
 
-import CareerData from '../../../data/careers.json'
+// import CareerData from '../../../data/careers.json'
 
 class CareerModalApply extends Component {
   constructor(props) {
