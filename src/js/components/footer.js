@@ -8,6 +8,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal'
 
 import MenuLink from './menuLink'
+import AdminLoginModal from './adminLoginModal'
 import SocialMediaLink from './socialMediaLink'
 
 function getModalStyle() {
@@ -41,12 +42,26 @@ class Footer extends Component {
       adminLoginModal: false
     }
 
-    this.displayAdminLoginOrNo = this.displayAdminLoginOrNo.bind(this)
+    this.openAdminSignupModal = this.openAdminSignupModal.bind(this)
+    this.closeAdminSignupModal = this.closeAdminSignupModal.bind(this)
+    this.openAdminLoginModal = this.openAdminLoginModal.bind(this)
+    this.closeAdminLoginModal = this.closeAdminLoginModal.bind(this)
   }
 
-  displayAdminLoginOrNo(adminLoginModalStatus) {
-    var newAdminLoginModalStatus = !adminLoginModalStatus
-    this.setState({ adminLoginModal: newAdminLoginModalStatus })
+  openAdminSignupModal() {
+    this.setState({ adminSignupModal: true })
+  }
+
+  closeAdminSignupModal() {
+    this.setState({ adminSignupModal: false })
+  }
+
+  openAdminLoginModal() {
+    this.setState({ adminLoginModal: true })
+  }
+
+  closeAdminLoginModal() {
+    this.setState({ adminLoginModal: false })
   }
 
   render(props) {
@@ -118,7 +133,7 @@ class Footer extends Component {
         <a 
           style={smallText} 
           id="adminLogin" 
-          onClick={() => this.displayAdminLoginOrNo(this.state.adminLoginModal)}>
+          onClick={this.openAdminLoginModal}>
             Admin Login
         </a>
 
@@ -126,12 +141,13 @@ class Footer extends Component {
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
           open={this.state.adminLoginModal}
-          onClose={!this.state.adminLoginModal}
+          onClose={this.closeAdminLoginModal}
           disableBackdropClick={true}
         >
-          <div>
-            eeeee
-          </div>
+          <AdminLoginModal
+            style={getModalStyle()}
+            closeAdminLoginModal={this.closeAdminLoginModal}
+          />
         </Modal>
       </div>
     )
