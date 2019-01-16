@@ -4,8 +4,6 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const keys = require('../../config/keys')
 const passport = require('passport')
-// const salt = await bcrypt.genSaltSync(10)
-// const password = await req.body.password
 
 // Load input validation
 const validateRegisterInput = require('../../validation/register')
