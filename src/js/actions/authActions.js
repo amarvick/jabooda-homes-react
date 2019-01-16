@@ -1,12 +1,8 @@
 import axios from 'axios'
-import setAuthToken from '../utils/setAuthToken'
+import setAuthToken from '../../utils/setAuthToken'
 import jwt_decode from 'jwt-decode'
 
-import {
-    GET_ERRORS,
-    SET_CURRENT_USER,
-    USER_LOADING
-} from '../actiontypes/authActionTypes'
+import AuthActionTypes from '../actiontypes/authActionTypes'
 
 // Register User
 export const registerUser = (userData, history) => dispatch => {
@@ -15,7 +11,7 @@ export const registerUser = (userData, history) => dispatch => {
         .then(res => history.push('/')) // AM - redirect to home on successful register... may make a page saying 'An email has been sent to the head admin, who will approve your request if you are an employee'
         .catch(err => 
             dispatch({
-                type: GET_ERRORS,
+                type: AuthActionTypes.GET_ERRORS,
                 payload: err.response.data
             })
         )
@@ -40,7 +36,7 @@ export const loginUser = userData => dispatch => {
 
         .catch(err => 
             dispatch({
-                type: GET_ERRORS,
+                type: AuthActionTypes.GET_ERRORS,
                 payload: err.response.data
             })
         )
@@ -49,7 +45,7 @@ export const loginUser = userData => dispatch => {
 // Set logged in user
 export const setCurrentUser = decoded => {
     return {
-        type: SET_CURRENT_USER,
+        type: AuthActionTypes.SET_CURRENT_USER,
         payload: decoded
     }
 }
