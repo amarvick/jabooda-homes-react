@@ -15,50 +15,67 @@ import Button from '@material-ui/core/Button';
 import { validateLogin } from '../actions/adminActions'
 
 class AdminLoginModal extends Component {
-  render() {
-    return (
-      <div className="adminLoginForm">
-        <form onsubmit={}>
-          <span onClick={this.props.closeAdminLoginModal}
-            id="exitModal" 
-            class="fa fa-times-circle fa-2x" /> 
+    constructor() {
+        super();
 
-          <FormLabel>
-            <span>Email*</span><br/>
-            <Input 
-              type="email" 
-              name="email" 
-              onChange={this.handleChange}
-              autoFocus="true" 
-              required />
-          </FormLabel>
+        this.state = {
+            email: '',
+            password: ''
+        };
 
-          <br/><br/>
+        this.handleChange = this.handleChange.bind(this);
+    }
 
-          <FormLabel>
-            <span>Password*</span><br/>
-            <Input 
-              type="password" 
-              name="password"
-              onChange={this.handleChange} 
-              required />
-          </FormLabel>
+    handleChange(e) {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    }
 
-          <br/><br/>
 
-          <Button type="submit">Login</Button>
-        </form>
-      </div>
-    )
-  }
+    render() {
+        return (
+            <div className="adminLoginForm">
+                <form onSubmit={(e) => this.props.dispatch(validateLogin(e, this.state))}>
+                    <span onClick={this.props.closeAdminLoginModal}
+                        id="exitModal"
+                        class="fa fa-times-circle fa-2x" />
+
+                    <FormLabel>
+                        <span>Email*</span><br />
+                        <Input
+                            type="email"
+                            name="email"
+                            onChange={this.handleChange}
+                            autoFocus="true"
+                            required />
+                    </FormLabel>
+
+                    <br /><br />
+
+                    <FormLabel>
+                        <span>Password*</span><br />
+                        <Input
+                            type="password"
+                            name="password"
+                            onChange={this.handleChange}
+                            required />
+                    </FormLabel>
+
+                    <br /><br />
+
+                    <Button type="submit">Login</Button>
+                </form>
+            </div>
+        )
+    }
 }
 
 // wraps dispatch to create nicer functions to call within our component
 // Mapping dispatch actions to the props
 const mapDispatchToProps = (dispatch) => ({
-  dispatch: dispatch,
-  startup: () => dispatch(StartupActions.startup())
+    dispatch: dispatch,
+    startup: () => dispatch(StartupActions.startup())
 })
-
 
 export default connect(mapDispatchToProps)(AdminLoginModal)
