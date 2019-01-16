@@ -2,26 +2,31 @@
  * Description: Redux actions for the projects                              */
 
 import AdminActionTypes from '../actiontypes/adminActionTypes'
+import axios from 'axios'
 
-export function validateLogin() {
-    return function action(dispatch) {
-        dispatch({ type: AdminActionTypes.FETCHING_ADMIN })
+export function validateLogin(e, state) {
+    return async function action(dispatch) {
+        e.preventDefault();
 
-        fetch("/api/users/login")
-            .then(data => data.json())
-            .then(function(response) {
-                dispatch({
-                    type: AdminActionTypes.FETCH_ADMIN_SUCCESS,
-                    payload: response.data
-                })
-            })
+        // Assign variables
+        const { 
+            email, 
+            password
+        } = state
     
-            .catch(function(error) {
-                dispatch({
-                    type: AdminActionTypes.FETCH_ADMIN_ERROR,
-                    payload: error
-                })
-            })
+        axios.post('/api/users/login', {
+            email,
+            password
+        })
 
+        .then(function(response) {
+            dispatch({ type: AdminActionTypes.FETCH_ADMIN_SUCCESS })
+        })
+
+        .catch(function(error) {
+            dispatch({ type:AdminActionTypes.FETCH_ADMIN_ERROR })  
+            console.log(error)
+        })
     }
 }
+
