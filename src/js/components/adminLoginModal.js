@@ -6,17 +6,23 @@ import { connect } from 'react-redux';
 import axios from 'axios'
 
 // Design
-import '../../../stylesheets/careerModalApply.scss'
+import '../../stylesheets/adminLoginModal.scss'
 import Modal from '@material-ui/core/Modal'
 import Input from '@material-ui/core/Input';
 import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
 
+import { validateLogin } from '../actions/adminActions'
+
 class AdminLoginModal extends Component {
   render() {
     return (
       <div className="adminLoginForm">
-        <form onSubmit = {alert('hi')}>
+        <form onsubmit={}>
+          <span onClick={this.props.closeAdminLoginModal}
+            id="exitModal" 
+            class="fa fa-times-circle fa-2x" /> 
+
           <FormLabel>
             <span>Email*</span><br/>
             <Input 
