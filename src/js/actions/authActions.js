@@ -26,20 +26,26 @@ export const loginUser = userData => dispatch => {
             // Set token to localStorage
             const { token } = res.data
             localStorage.setItem("jwtToken", token)
+
             // set Token to Auth header
             setAuthToken(token)
+            
             // Decode token to get user data
             const decoded = jwt_decode(token)
+            
             // Set current user
             dispatch(setCurrentUser(decoded))
+
+            window.location.reload()
         })
 
-        .catch(err => 
+        .catch(err => {
+            console.log(err)
             dispatch({
                 type: AuthActionTypes.GET_ERRORS,
                 payload: err.response.data
             })
-        )
+        })
 }
 
 // Set logged in user
@@ -49,6 +55,13 @@ export const setCurrentUser = decoded => {
         payload: decoded
     }
 }
+
+// User loading
+export const setUserLoading = () => {
+    return {
+      type: AuthActionTypes.USER_LOADING
+    };
+  };
 
 // Log user out
 export const logoutUser = () => dispatch => {

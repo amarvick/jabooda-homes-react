@@ -1,16 +1,14 @@
 /* File Name: adminLoginModal.js                                            *
  * Description: Application for Jabooda Career                              */
 
-import React, { Component, StartupActions } from 'react'
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
-import axios from 'axios'
 import PropTypes from "prop-types";
 import classnames from 'classnames'
 
 // Design
 import '../../stylesheets/adminLoginModal.scss'
-import Modal from '@material-ui/core/Modal'
 import Input from '@material-ui/core/Input';
 import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
@@ -30,13 +28,14 @@ class AdminLoginModal extends Component {
     componentDidMount() {
         // If logged in and user navigates to Login page, should redirect them to dashboard
         if (this.props.auth.isAuthenticated) {
-            this.props.history.push("/dashboard");
+            this.props.history.push("/admin");
         }
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.auth.isAuthenticated) {
-            this.props.history.push("/dashboard");
+            console.log(this.props)
+            this.props.history.push("/admin");
         }
 
         if (nextProps.errors) {
@@ -141,4 +140,4 @@ const mapStateToProps = state => ({
     errors: state.errors
 })
 
-export default connect(mapStateToProps, { loginUser })(AdminLoginModal)
+export default connect(mapStateToProps, { loginUser })(withRouter(AdminLoginModal))
