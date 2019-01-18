@@ -87,7 +87,7 @@ class Header extends Component {
       <div className='headerComponent'>
 
         <div id="buttonMenu">
-          <span href="#" onClick={this.toggleMenu} class="fa fa-bars fa-lg" />
+          <span href="#" onClick={this.toggleMenu} className="fa fa-bars fa-lg" />
           <ReactCSSTransitionGroup
             transitionName="menuDisplay"
             transitionEnterTimeout={200}

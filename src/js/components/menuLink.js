@@ -15,8 +15,8 @@ class MenuLink extends Component {
         return (
             <li style={style} className="active">
                 <Link to={this.props.link}>
-                    <span class={this.props.icon} />
-                    <span class={this.props.spanClass}>
+                    <span className={this.props.icon} />
+                    <span className={this.props.spanClass}>
                         {this.props.page}
                     </span>
                 </Link>

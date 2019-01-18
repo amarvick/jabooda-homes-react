@@ -9,6 +9,7 @@ import Modal from '@material-ui/core/Modal'
 
 import MenuLink from './menuLink'
 import AdminLoginModal from './adminLoginModal'
+import AdminRegisterModal from './adminRegisterModal'
 import SocialMediaLink from './socialMediaLink'
 
 function getModalStyle() {
@@ -38,22 +39,22 @@ class Footer extends Component {
 
     this.state = {
       isAdminLoggedIn: false,
-      adminSignupModal: false,
+      adminRegisterModal: false,
       adminLoginModal: false
     }
 
-    this.openAdminSignupModal = this.openAdminSignupModal.bind(this)
-    this.closeAdminSignupModal = this.closeAdminSignupModal.bind(this)
+    this.openAdminRegisterModal = this.openAdminRegisterModal.bind(this)
+    this.closeAdminRegisterModal = this.closeAdminRegisterModal.bind(this)
     this.openAdminLoginModal = this.openAdminLoginModal.bind(this)
     this.closeAdminLoginModal = this.closeAdminLoginModal.bind(this)
   }
 
-  openAdminSignupModal() {
-    this.setState({ adminSignupModal: true })
+  openAdminRegisterModal() {
+    this.setState({ adminRegisterModal: true })
   }
 
-  closeAdminSignupModal() {
-    this.setState({ adminSignupModal: false })
+  closeAdminRegisterModal() {
+    this.setState({ adminRegisterModal: false })
   }
 
   openAdminLoginModal() {
@@ -136,6 +137,15 @@ class Footer extends Component {
           onClick={this.openAdminLoginModal}>
             Admin Login
         </a>
+        
+        <span> | </span>
+
+        <a 
+          style={smallText} 
+          id="adminLogin" 
+          onClick={this.openAdminRegisterModal}>
+            Admin Registration
+        </a>
 
         <Modal
           aria-labelledby="simple-modal-title"
@@ -147,6 +157,22 @@ class Footer extends Component {
           <AdminLoginModal
             style={getModalStyle()}
             closeAdminLoginModal={this.closeAdminLoginModal}
+            openAdminRegisterModal={this.openAdminRegisterModal}
+          />
+        </Modal>
+
+
+        <Modal
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+          open={this.state.adminRegisterModal}
+          onClose={this.closeAdminRegisterModal}
+          disableBackdropClick={true}
+        >
+          <AdminRegisterModal
+            style={getModalStyle()}
+            openAdminLoginModal={this.openAdminLoginModal}
+            closeAdminRegisterModal={this.closeAdminRegisterModal}
           />
         </Modal>
       </div>

@@ -11,7 +11,7 @@ const validateLoginInput = require('../../validation/login')
 
 const User = require('../../models/usersdb')
 
-// Register
+// Register (permissions granted to CEO/high admin)
 router.post('/register', (req, res) => {
 
     // Form Validation
@@ -24,13 +24,14 @@ router.post('/register', (req, res) => {
     // Check if email already exists
     User.findOne({ email: req.body.email }).then(user => {
         if (user) {
-            return res.status(400).json({ email: "Email already exists"})
+            return res.status(400).json({ email: "Email already exists" })
         }
 
         const newUser = new User({
             name: req.body.name,
             email: req.body.email,
-            password: req.body.password
+            password: req.body.password,
+            pending: true
         })
 
         // Hash password before saving in database
@@ -47,9 +48,9 @@ router.post('/register', (req, res) => {
     })
 })
 
-// Login
-router.post('/login', (req, res) => {
-    
+// Register a user who is in pending status so they are now active
+router.post('/validate', (req, res) => {
+
     // Form validation
     const { errors, isValid } = validateLoginInput(req.body)
 
@@ -65,7 +66,47 @@ router.post('/login', (req, res) => {
         console.log('finding user')
         // Check if user exists
         if (!user) {
-            return res.status(404).json({ emailnotfound: "Email not found!"})
+            return res.status(404).json({ emailnotfound: "Email not found!" })
+        }
+
+        // If user has already been approved, no need to carry on
+        if (!user.pending) {
+            return res.status(404).json({ userpending: "User has already been approved." })
+        }
+
+        // AM - user is no longer pending. Will work on this later
+        user.pending = false
+    })
+
+    // Form Validation
+    const { errors, isValid } = validateRegisterInput(req.body)
+
+})
+
+// Login
+router.post('/login', (req, res) => {
+
+    // Form validation
+    const { errors, isValid } = validateLoginInput(req.body)
+
+    if (!isValid) {
+        return res.status(400).json(errors)
+    }
+
+    const email = req.body.email
+    const password = req.body.password
+
+    // Find user by email
+    User.findOne({ email }).then(user => {
+        console.log('finding user')
+        // Check if user exists
+        if (!user) {
+            return res.status(404).json({ emailnotfound: "Email not found!" })
+        }
+
+        // If user has not yet been approved, fail the request
+        if (user.pending) {
+            return res.status(404).json({ userpending: "We're sorry, you have not yet been approved by an administrator or your account has been deactivated. For more information, please email your administrator." })
         }
 
         // Check the password
@@ -94,8 +135,8 @@ router.post('/login', (req, res) => {
                 )
             } else {
                 return res
-                        .status(400)
-                        .json({ passwordincorrect: 'Password is Incorrect'})
+                    .status(400)
+                    .json({ passwordincorrect: 'Password is Incorrect' })
             }
         }).catch(err => {
             console.log(err)

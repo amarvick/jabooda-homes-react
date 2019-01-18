@@ -13,11 +13,11 @@ import Input from '@material-ui/core/Input';
 import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
 
-import { loginUser } from "../actions/authActions";
+import { registerUser } from "../actions/authActions";
 
-class AdminLoginModal extends Component {
-    constructor() {
-        super();
+class AdminRegisterModal extends Component {
+    constructor(props) {
+        super(props);
         this.state = {
             name: "",
             email: "",
@@ -25,6 +25,11 @@ class AdminLoginModal extends Component {
             passwordConfirm: "",
             errors: {}
         };
+    }
+
+    swapLoginModal(e) {
+        this.props.closeAdminRegisterModal()
+        this.props.openAdminLoginModal()
     }
 
     componentDidMount() {
@@ -55,20 +60,24 @@ class AdminLoginModal extends Component {
         e.preventDefault();
 
         const userData = {
+            name: this.state.email,
             email: this.state.email,
-            password: this.state.password
+            password: this.state.password,
+            passwordConfirm: this.state.passwordConfirm
         };
 
-        this.props.loginUser(userData);
+        console.log(userData)
+        this.props.registerUser(userData, this.props.history);
     };
 
-    render() {
+    render(props) {
+
         const { errors } = this.state;
 
         return (
             <div className="adminLoginForm">
                 <form noValidate onSubmit={this.onSubmit}>
-                    <span onClick={this.props.closeAdminLoginModal}
+                    <span onClick={this.props.closeAdminRegisterModal}
                         id="exitModal"
                         class="fa fa-times-circle fa-2x" />
 
@@ -87,11 +96,12 @@ class AdminLoginModal extends Component {
                             required />
                     </FormLabel>
 
-                    <label htmlFor="name">Name</label>
                     <span className="red-text">
                         {errors.name}
                         {errors.emailnotfound}
                     </span>
+
+                    <br/><br/>
 
                     <FormLabel>
                         <span>Email*</span><br />
@@ -107,13 +117,12 @@ class AdminLoginModal extends Component {
                             required />
                     </FormLabel>
 
-                    <label htmlFor="email">Email</label>
                     <span className="red-text">
                         {errors.email}
                         {errors.emailnotfound}
                     </span>
 
-                    <br /><br />
+                    <br/><br/>
 
                     <FormLabel>
                         <span>Password*</span><br />
@@ -129,7 +138,6 @@ class AdminLoginModal extends Component {
                             required />
                     </FormLabel>
 
-                    <label htmlFor="password">Password</label>
                     <span className="red-text">
                         {errors.password}
                         {errors.passwordincorrect}
@@ -151,29 +159,23 @@ class AdminLoginModal extends Component {
                             required />
                     </FormLabel>
 
-                    <label htmlFor="password">Confirm Password</label>
                     <span className="red-text">
                         {errors.password}
                         {errors.passwordincorrect}
                     </span>
 
 
-                    <Button type="submit">Login</Button>
+                    <Button type="submit">Register</Button>
+
+                    <p>Have an admin account? <span onClick={(e) => this.swapLoginModal(e)}>Log in</span></p>
                 </form>
             </div>
         )
     }
 }
 
-// // wraps dispatch to create nicer functions to call within our component
-// // Mapping dispatch actions to the props
-// const mapDispatchToProps = (dispatch) => ({
-//     dispatch: dispatch,
-//     startup: () => dispatch(StartupActions.startup())
-// })
-
-AdminLoginModal.propTypes = {
-    loginUser: PropTypes.func.isRequired,
+AdminRegisterModal.propTypes = {
+    registerUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired
 }
@@ -183,4 +185,4 @@ const mapStateToProps = state => ({
     errors: state.errors
 })
 
-export default connect(mapStateToProps, { loginUser })(withRouter(AdminLoginModal))
+export default connect(mapStateToProps, { registerUser })(withRouter(AdminRegisterModal))
