@@ -78,8 +78,6 @@ router.post('/validate', (req, res) => {
         user.pending = false
     })
 
-    // Form Validation
-    const { errors, isValid } = validateRegisterInput(req.body)
 
 })
 

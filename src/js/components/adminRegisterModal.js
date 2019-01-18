@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 import classnames from 'classnames'
 
 // Design
-import '../../stylesheets/adminLoginModal.scss'
+import '../../stylesheets/adminRegisterModal.scss'
 import Input from '@material-ui/core/Input';
 import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
@@ -40,11 +40,6 @@ class AdminRegisterModal extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.auth.isAuthenticated) {
-            console.log(this.props)
-            this.props.history.push("/admin");
-        }
-
         if (nextProps.errors) {
             this.setState({
                 errors: nextProps.errors
@@ -78,8 +73,8 @@ class AdminRegisterModal extends Component {
             <div className="adminLoginForm">
                 <form noValidate onSubmit={this.onSubmit}>
                     <span onClick={this.props.closeAdminRegisterModal}
-                        id="exitModal"
-                        class="fa fa-times-circle fa-2x" />
+                        id="exitRegisterModal"
+                        class="fa fa-times-circle fa-2x" /><br/>
 
                     <FormLabel>
                         <span>Name*</span><br />
@@ -168,6 +163,7 @@ class AdminRegisterModal extends Component {
                     <Button type="submit">Register</Button>
 
                     <p>Have an admin account? <span onClick={(e) => this.swapLoginModal(e)}>Log in</span></p>
+
                 </form>
             </div>
         )
