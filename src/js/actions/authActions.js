@@ -8,13 +8,27 @@ import AuthActionTypes from '../actiontypes/authActionTypes'
 export const registerUser = (userData, history) => dispatch => {
     axios
         .post('/api/users/register', userData)
-        .then(res => history.push('/')) // AM - redirect to home on successful register... may make a page saying 'An email has been sent to the head admin, who will approve your request if you are an employee'
-        .catch(err => 
+        .then(res => history.push('/admin')) // AM - return a success, email amarvick94@gmail.com, then credentials will be verified
+        .catch(err => {
+            console.log(err)
             dispatch({
                 type: AuthActionTypes.GET_ERRORS,
-                payload: err.response.data
+                payload: err.response.userData
             })
-        )
+        })
+}
+
+export const validateNewUser = (userData, history) => dispatch => {
+    axios
+        .post('/api/users/validate', userData)
+        .then(res => history.push('/admin')) // AM - return a success, email amarvick94@gmail.com, then credentials will be verified
+        .catch(err => {
+            console.log(err)
+            dispatch({
+                type: AuthActionTypes.GET_ERRORS,
+                payload: err.response.userData
+            })
+        })
 }
 
 // Login - Get User Token
@@ -29,14 +43,12 @@ export const loginUser = userData => dispatch => {
 
             // set Token to Auth header
             setAuthToken(token)
-            
+
             // Decode token to get user data
             const decoded = jwt_decode(token)
-            
+
             // Set current user
             dispatch(setCurrentUser(decoded))
-
-            window.location.reload()
         })
 
         .catch(err => {
@@ -59,16 +71,18 @@ export const setCurrentUser = decoded => {
 // User loading
 export const setUserLoading = () => {
     return {
-      type: AuthActionTypes.USER_LOADING
+        type: AuthActionTypes.USER_LOADING
     };
-  };
+};
 
 // Log user out
 export const logoutUser = () => dispatch => {
     // Remove token from local storage
     localStorage.removeItem('jwtToken');
+
     // Remove auth header for future requests
     setAuthToken(false)
+
     // Set current user to empty object {} which will set isAuthenticated to false
     dispatch(setCurrentUser({}))
 }

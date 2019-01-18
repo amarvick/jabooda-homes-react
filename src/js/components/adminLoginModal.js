@@ -25,6 +25,11 @@ class AdminLoginModal extends Component {
         };
     }
 
+    swapRegisterModal(e) {
+        this.props.closeAdminLoginModal()
+        this.props.openAdminRegisterModal()
+    }
+
     componentDidMount() {
         // If logged in and user navigates to Login page, should redirect them to dashboard
         if (this.props.auth.isAuthenticated) {
@@ -85,13 +90,12 @@ class AdminLoginModal extends Component {
                             required />
                     </FormLabel>
 
-                    <label htmlFor="email">Email</label>
                     <span className="red-text">
                         {errors.email}
                         {errors.emailnotfound}
                     </span>
 
-                    <br /><br />
+                    <br/><br/>
 
                     <FormLabel>
                         <span>Password*</span><br />
@@ -107,27 +111,21 @@ class AdminLoginModal extends Component {
                             required />
                     </FormLabel>
 
-                    <label htmlFor="password">Password</label>
                     <span className="red-text">
                         {errors.password}
                         {errors.passwordincorrect}
                     </span>
 
-                    <br /><br />
+                    <br/><br/>
 
                     <Button type="submit">Login</Button>
+                    <p>Not signed up as an admin? <span onClick={(e) => this.swapRegisterModal(e)}>Register</span></p>
+
                 </form>
             </div>
         )
     }
 }
-
-// // wraps dispatch to create nicer functions to call within our component
-// // Mapping dispatch actions to the props
-// const mapDispatchToProps = (dispatch) => ({
-//     dispatch: dispatch,
-//     startup: () => dispatch(StartupActions.startup())
-// })
 
 AdminLoginModal.propTypes = {
     loginUser: PropTypes.func.isRequired,
