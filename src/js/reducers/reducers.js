@@ -4,7 +4,6 @@
 
 import { combineReducers } from 'redux'
 
-import admin from './adminReducer'
 import auth from './authReducer'
 import career from './careerReducer'
 import contactUs from './contactUsReducer'
@@ -13,7 +12,6 @@ import project from './projectReducer'
 import staff from './staffReducer'
 
 export default combineReducers ({
-    admin,
     auth,
     career,
     contactUs,
