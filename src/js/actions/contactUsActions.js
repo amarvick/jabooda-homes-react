@@ -16,7 +16,7 @@ export function handleSubmit(e, state) {
             message 
         } = state
     
-        const form = await axios.post('/api/sendEmailform', {
+        const form = await axios.post('/emailApi/sendEmailform', {
             name, 
             email,
             subject,
@@ -24,6 +24,7 @@ export function handleSubmit(e, state) {
         })
 
         .then(function(response) {
+            console.log(response)
             dispatch({ type: ContactUsActionTypes.SEND_EMAIL_SUCCESS })
         })
 

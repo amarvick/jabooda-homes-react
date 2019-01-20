@@ -61,7 +61,6 @@ class AdminRegisterModal extends Component {
             passwordConfirm: this.state.passwordConfirm
         };
 
-        console.log(userData)
         this.props.registerUser(userData, this.props.history);
     };
 

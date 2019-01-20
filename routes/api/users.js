@@ -1,3 +1,4 @@
+const nodemailer = require('nodemailer')
 const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcryptjs')
@@ -8,6 +9,9 @@ const passport = require('passport')
 // Load input validation
 const validateRegisterInput = require('../../validation/register')
 const validateLoginInput = require('../../validation/login')
+
+// Email
+const newUserRegistration = require('../../email/actions/emailForwarding')
 
 const User = require('../../models/usersdb')
 
@@ -41,7 +45,9 @@ router.post('/register', (req, res) => {
                 newUser.password = hash
                 newUser
                     .save()
-                    .then(user => res.json(user))
+                    .then(user => {
+                        return newUserRegistration(newUser)
+                    })
                     .catch(err => console.log(err)) // AM - could make in to modal?
             })
         })
@@ -100,10 +106,12 @@ router.post('/login', (req, res) => {
         // Check if user exists
         if (!user) {
             return res.status(404).json({ emailnotfound: "Email not found!" })
+        } else {
+            console.log(user)
         }
 
         // If user has not yet been approved, fail the request
-        if (user.pending) {
+        if (user.pending === true) {
             return res.status(404).json({ userpending: "We're sorry, you have not yet been approved by an administrator or your account has been deactivated. For more information, please email your administrator." })
         }
 

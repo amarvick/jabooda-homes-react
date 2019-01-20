@@ -8,7 +8,9 @@ import AuthActionTypes from '../actiontypes/authActionTypes'
 export const registerUser = (userData, history) => dispatch => {
     axios
         .post('/api/users/register', userData)
-        .then(res => history.push('/admin')) // AM - return a success, email amarvick94@gmail.com, then credentials will be verified
+        .then(res => {
+            // AM - we want to display a modal here notifying the user that their registration request has been submitted.
+        }) 
         .catch(err => {
             console.log(err)
             dispatch({
@@ -21,7 +23,9 @@ export const registerUser = (userData, history) => dispatch => {
 export const validateNewUser = (userData, history) => dispatch => {
     axios
         .post('/api/users/validate', userData)
-        .then(res => history.push('/admin')) // AM - return a success, email amarvick94@gmail.com, then credentials will be verified
+        .then(res => {
+            console.log(res)
+        }) // AM - return a success, email amarvick94@gmail.com, then credentials will be verified
         .catch(err => {
             console.log(err)
             dispatch({
