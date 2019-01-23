@@ -11,7 +11,7 @@ const validateRegisterInput = require('../../validation/register')
 const validateLoginInput = require('../../validation/login')
 
 // Email
-const newUserRegistration = require('../../email/actions/emailForwarding')
+const newUserRegistration = require('../../email/actions/emailForwarding').newUserRegistration
 
 const User = require('../../models/usersdb')
 

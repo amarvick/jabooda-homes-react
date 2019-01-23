@@ -9,7 +9,9 @@ import classnames from 'classnames'
 
 import '../../../stylesheets/about.scss'
 
-// import LoadingScreen from '../loadingScreen'
+import AllData from './allData/allData'
+import UserRequests from './userRequests/userRequests'
+
 import { logoutUser } from "../../actions/authActions";
 
 class Admin extends Component {
@@ -23,7 +25,11 @@ class Admin extends Component {
   render() {    
     return (
       <div>
-        Admin Page
+        <h1>
+          Admin Page
+        </h1>
+        <UserRequests/>
+        <AllData/>
         <p onClick={this.logOut}>Log out</p>
       </div>
     )
@@ -35,13 +41,6 @@ Admin.propTypes = {
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 }
-
-// // wraps dispatch to create nicer functions to call within our component
-// // Mapping dispatch actions to the props
-// const mapDispatchToProps = (dispatch) => ({
-//   dispatch: dispatch,
-//   startup: () => dispatch(StartupActions.startup())
-// })
 
 // Maps the state in to props (for displaying on the front end)
 const mapStateToProps = (state) => ({
