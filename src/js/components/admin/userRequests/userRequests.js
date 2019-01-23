@@ -38,9 +38,13 @@ const styles = theme => ({
 
 class UserRequests extends Component {
     constructor() {
+        super()
         this.state = {
             displayPendingUsersModal: false
         }
+
+        this.showPendingUsers = this.showPendingUsers.bind(this)
+        this.closePendingUsers = this.closePendingUsers.bind(this)
     }
 
     componentWillMount() {
@@ -61,8 +65,9 @@ class UserRequests extends Component {
         var pendingRequestCount = 0
         var showPendingUsers
         var areOrIs, singularOrPlural
+        var userData = this.props.userData
 
-        for (var i = 0; i < this.props.userData.length; i++) {
+        for (var i = 0; i < userData.length; i++) {
             if (this.props.userData[i].pending === true) {
                 pendingRequestCount++
             }
@@ -100,7 +105,8 @@ class UserRequests extends Component {
                 >
                     <UserRequestsModal
                         style={getModalStyle()}
-                        className={classes.paper}
+                        // className={classes.paper}
+                        pendingUsers={userData}
                         jobTitle={this.props.header}
                         closePendingUsers={this.closePendingUsers} />
                 </Modal>

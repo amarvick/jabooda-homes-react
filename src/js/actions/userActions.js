@@ -38,7 +38,7 @@ export function approveUser() {
     }
 }
 
-export function disapproveUser() {
+export function rejectUser() {
     return function action(dispatch) {
 
     }
