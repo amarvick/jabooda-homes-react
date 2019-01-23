@@ -45,7 +45,7 @@ class UserRequestsModal extends Component {
                                     <option value="Low">Low</option>
                                 </select>
 
-                                    <Button onClick={}>
+                                    <Button onClick={this.props.approveUser()}>
                                         Approve User
                                     </Button>
 
