@@ -10,6 +10,7 @@ import contactUs from './contactUsReducer'
 import error from './errorReducer'
 import project from './projectReducer'
 import staff from './staffReducer'
+import user from './userReducer'
 
 export default combineReducers ({
     auth,
@@ -17,5 +18,6 @@ export default combineReducers ({
     contactUs,
     error,
     project,
-    staff
+    staff,
+    user
 })

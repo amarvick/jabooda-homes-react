@@ -104,7 +104,6 @@ const mapStateToProps = (state) => ({
   state: state,
   error: state.career.error,
   loading: state.career.loading,
-  careerData: state.career.careerData,
   loggedIn: state.auth.isAuthenticated
 })
 

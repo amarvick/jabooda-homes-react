@@ -49,9 +49,9 @@ const mapDispatchToProps = (dispatch) => ({
 // Maps the state in to props (for displaying on the front end)
 const mapStateToProps = (state) => ({
   state: state,
-  error: state.career.error,
-  loading: state.career.loading,
-  careerData: state.career.careerData
+  // error: state.career.error,
+  // loading: state.career.loading,
+  // careerData: state.career.careerData
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllData);

@@ -1,11 +1,11 @@
 /* File Name: userReducer.js                                                *
  * Description: Redux reducer for the users                                 */
 
-import UserActionTypes from '../actiontypes/careerActionTypes'
-import UserData from '../../data/careers.json'
+import UserActionTypes from '../actiontypes/userActionTypes'
+// import UserData from '../../data/careers.json'
 
 export default function reducer(state={
-    userData: UserData,
+    userData: [],
     loading: false,
     error: null
 }, action) {
