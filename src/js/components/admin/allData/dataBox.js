@@ -11,7 +11,7 @@ import Modal from '@material-ui/core/Modal'
 
 import LoadingScreen from '../../loadingScreen'
 import ErrorScreen from '../../errorScreen'
-import UserRequestsModal from './userRequestsModal'
+import DataEditModal from './dataEditModal'
 
 import { loadData } from '../../../actions/userActions'
 
@@ -36,16 +36,16 @@ const styles = theme => ({
     },
 });
 
-class UserRequests extends Component {
+class DataBox extends Component {
     constructor() {
         super()
 
         this.state = {
-            displayPendingUsersModal: false
+            displayDataEditModal: false
         }
 
-        this.showPendingUsers = this.showPendingUsers.bind(this)
-        this.closePendingUsers = this.closePendingUsers.bind(this)
+        this.showDataModal = this.showDataModal.bind(this)
+        this.closeDataModal = this.closeDataModal.bind(this)
     }
 
     componentWillMount() {
@@ -53,64 +53,36 @@ class UserRequests extends Component {
         this.props.dispatch(loadData())
     }
 
-    showPendingUsers() {
-        this.setState({ displayPendingUsersModal: true })
+    showDataModal() {
+        this.setState({ displayDataEditModal: true })
     }
 
-    closePendingUsers() {
-        this.setState({ displayPendingUsersModal: false })
+    closeDataModal() {
+        this.setState({ displayDataEditModal: false })
     }
 
     // Displaying all pending user requests
     render(props) {
-        console.log(this.state)
-        const { classes } = this.props;
-        var pendingRequestCount = 1
-        var showPendingUsers
-        var areOrIs, singularOrPlural
-        var userData = this.props.userData
-
-        for (var i = 0; i < userData.length; i++) {
-            if (this.props.userData[i].pending === true) {
-                pendingRequestCount++
-            }
-        }
-
-        if (pendingRequestCount === 1) {
-            areOrIs = 'is'
-            singularOrPlural = ''
-        } else {
-            areOrIs = 'are'
-            singularOrPlural = 's'
-        }
-
-        if (pendingRequestCount > 0) {
-            showPendingUsers = (
-                <Button onClick={this.showPendingUsers}>
-                    Show all pending users
-                </Button>
-            )
-        }
+        const { classes } = this.props
+        var theData = this.props.data
+        var dataType = this.props.dataType
 
         return (
             <div>
-                <p>
-                    There {areOrIs} {pendingRequestCount} new user request{singularOrPlural}. <br/>
-                    {showPendingUsers}
-                </p>
+                <p onClick={this.showDataModal}>Data for: {dataType}</p>
 
                 <Modal
                     aria-labelledby="simple-modal-title"
                     aria-describedby="simple-modal-description"
-                    open={this.state.displayPendingUsersModal}
-                    onClose={this.closePendingUsers}
+                    open={this.state.displayDataEditModal}
+                    onClose={this.closeDataModal}
                     disableBackdropClick={true}
                 >
-                    <UserRequestsModal
+                    <DataEditModal
                         style={getModalStyle()}
-                        pendingUsers={userData}
+                        data={theData}
                         jobTitle={this.props.header}
-                        closePendingUsers={this.closePendingUsers} />
+                        closeDataModal={this.closeDataModal} />
                 </Modal>
             </div>
         )
@@ -131,4 +103,4 @@ const mapStateToProps = (state) => ({
     userData: state.user.userData
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserRequests);
+export default connect(mapStateToProps, mapDispatchToProps)(DataBox);
