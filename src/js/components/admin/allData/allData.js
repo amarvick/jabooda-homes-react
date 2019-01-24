@@ -9,6 +9,7 @@ import Grid from '@material-ui/core/Grid';
 
 import LoadingScreen from '../../loadingScreen'
 import ErrorScreen from '../../errorScreen'
+import DataBox from './dataBox'
 
 // import { loadData } from '../../actions/careerActions'
 
@@ -18,14 +19,6 @@ class AllData extends Component {
   render(props) {
     // var pendingRequestCount = this.props.requestData.length || 0
     var areOrIs, singularOrPlural
-   
-    // if (requestData !== 1) {
-    //     areOrIs = 'is'
-    //     singularOrPlural = ''
-    // } else {
-    //     areOrIs = 'are'
-    //     singularOrPlural = 's'
-    // }
 
     return (
       <div>
@@ -35,6 +28,25 @@ class AllData extends Component {
         <h4>
             Click on any of the boxes to modify existing data
         </h4>
+        <DataBox 
+          className="staffData"
+          dataType="Staff"
+          data={this.props.staffData}/>
+        
+        <DataBox 
+          className="careerData"
+          dataType="Careers"
+          data={this.props.careerData}/>
+
+        <DataBox 
+          className="projectData"
+          dataType="Projects"
+          data={this.props.projectData}/>
+        
+        <DataBox 
+          className="userData"
+          dataType="Users"
+          data={this.props.userData}/>
       </div>
     )
   }
@@ -49,9 +61,12 @@ const mapDispatchToProps = (dispatch) => ({
 // Maps the state in to props (for displaying on the front end)
 const mapStateToProps = (state) => ({
   state: state,
-  // error: state.career.error,
-  // loading: state.career.loading,
-  // careerData: state.career.careerData
+  error: state.career.error,
+  loading: state.career.loading,
+  staffData: state.staff.staffData,
+  careerData: state.career.careerData,
+  projectData: state.staff.projectData,
+  userData: state.user.userData
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllData);
