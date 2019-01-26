@@ -15,17 +15,25 @@ import UserRequests from './userRequests/userRequests'
 import { logoutUser } from "../../actions/authActions";
 
 class Admin extends Component {
-  
+
   logOut = e => {
     e.preventDefault()
     this.props.logoutUser()
   }
 
-  render() {   
+  render() {
     var userData = [
       { "name": "Alex", "email": "anarvick95@eemail.com", "pending": false },
       { "name": "Michael", "email": "mmarvick@eemail.com", "pending": true }
     ]
+
+    var allPendingUsers = []
+
+    for (var i = 0; i < userData.length; i++) {
+      if (userData[i].pending === true) {
+        allPendingUsers.push(userData[i])
+      }
+    }
 
     return (
       <div>
@@ -33,9 +41,10 @@ class Admin extends Component {
           Admin Page
         </h1>
         <UserRequests
-          theUserData={userData}
+          theUserData={allPendingUsers}
+          userDataCount={allPendingUsers.length}
         />
-        <AllData/>
+        <AllData />
         <p onClick={this.logOut}>Log out</p>
       </div>
     )

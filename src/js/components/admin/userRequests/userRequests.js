@@ -66,13 +66,7 @@ class UserRequests extends Component {
         const { classes } = this.props
         var showPendingUsers, areOrIs, singularOrPlural
         var theUserData = this.props.theUserData
-        var pendingRequestCount = 0
-
-        for (var i = 0; i < theUserData.length; i++) {
-            if (this.props.theUserData[i].pending === true) {
-                pendingRequestCount++
-            }
-        }
+        var pendingRequestCount = this.props.userDataCount
 
         if (pendingRequestCount === 1) {
             areOrIs = 'is'
