@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import UserRequestEntry from './userRequestEntry'
 
 // Design
-import '../../../../stylesheets/userRequestsModal.scss'
+import '../../../../stylesheets/approveUserModal.scss'
 import Button from '@material-ui/core/Button'
 
 // Actions
@@ -20,7 +20,6 @@ class ApproveUserModal extends Component {
     }
 
     render(props) {
-        
         return (
             <div className="approveUserModal" style={this.props.style}>
                 <span onClick={this.props.closeUserApproveModal}
@@ -28,9 +27,20 @@ class ApproveUserModal extends Component {
                     className="fa fa-times-circle fa-2x" />
 
                 <p>
-                    You are approving {this.props.name}. An email will be sent to {this.props.email}. Please verify this information is correct.
+                    You are approving {this.props.name}. An email will be sent to {this.props.email}. Please verify this information is correct before approving.
                 </p>
-                        
+
+                <p>
+                    Are you sure you want to proceed? Note that you may remove this user at any time.
+                </p>
+
+                <Button onClick={this.props.approveUser}>
+                    Approve User
+                </Button><br />
+
+                <Button onClick={this.props.closeUserApproveModal}>
+                    Go Back
+                </Button>
             </div>
         )
     }

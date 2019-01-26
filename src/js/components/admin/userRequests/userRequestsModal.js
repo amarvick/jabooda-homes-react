@@ -31,7 +31,7 @@ class UserRequestsModal extends Component {
 
                 Here are all the pending users
 
-                <ul>
+                <ul id="userRequestEntries">
                     {pendingUsers.map(ud => {
                         return (
                             <UserRequestEntry

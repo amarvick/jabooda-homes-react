@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import UserRequestEntry from './userRequestEntry'
 
 // Design
-import '../../../../stylesheets/userRequestsModal.scss'
+import '../../../../stylesheets/rejectUserModal.scss'
 import Button from '@material-ui/core/Button'
 
 // Actions
@@ -28,9 +28,21 @@ class RejectUserModal extends Component {
                     className="fa fa-times-circle fa-2x" />
 
                 <p>
-                    You are rejecting {this.props.name}. An email will be sent to {this.props.email}. Please verify this information is correct.
+                    You are rejecting {this.props.name}. An email will be sent to {this.props.email} to notify. Please verify this information is correct.
                 </p>
-                        
+
+                <p>
+                    Are you sure you want to proceed?
+                </p>
+
+                <Button onClick={this.props.rejectUser}>
+                    Reject {this.props.name}
+                </Button><br />
+
+                <Button onClick={this.props.closeUserRejectModal}>
+                    Go Back
+                </Button>
+
             </div>
         )
     }

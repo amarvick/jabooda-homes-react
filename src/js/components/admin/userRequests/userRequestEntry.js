@@ -79,7 +79,6 @@ class UserRequestEntry extends Component {
     }
 
     render(props) {
-        console.log(this.state)
         return (
             <div>
                 <hr />
@@ -123,7 +122,7 @@ class UserRequestEntry extends Component {
                         <input
                             type="text"
                             name="title"
-                            onChange={this.handleChange}
+                            onChange={(e) => this.handleChange(e)}
                             required />
                     </FormLabel><br />
 
@@ -131,7 +130,7 @@ class UserRequestEntry extends Component {
                         Admin Type*<br />
                         <select
                             name="adminType"
-                            onChange={this.handleChange}
+                            onChange={(e) => this.handleChange(e)}
                             required>
                             <option value="High">High</option>
                             <option value="Medium">Medium</option>
@@ -159,7 +158,7 @@ class UserRequestEntry extends Component {
                     <ApproveUserModal
                         name={this.state.name}
                         email={this.state.email}
-                        closeDataModal={this.closeUserApproveModal} />
+                        closeUserApproveModal={this.closeUserApproveModal} />
                 </Modal>
 
                 
@@ -173,7 +172,7 @@ class UserRequestEntry extends Component {
                     <RejectUserModal
                         name={this.state.name}
                         email={this.state.email}
-                        closeDataModal={this.closeUserRejectModal} />
+                        closeUserRejectModal={this.closeUserRejectModal} />
                 </Modal>
             </div>
         )
