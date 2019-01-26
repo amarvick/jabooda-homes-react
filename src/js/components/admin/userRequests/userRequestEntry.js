@@ -4,11 +4,15 @@
 import React, { Component, StartupActions } from 'react'
 import { connect } from 'react-redux';
 
+import ApproveUserModal from './approveUserModal'
+import RejectUserModal from './rejectUserModal'
+
 // Design
 import '../../../../stylesheets/userRequestsModal.scss'
-import Input from '@material-ui/core/Input';
-import FormLabel from '@material-ui/core/FormLabel';
-import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input'
+import FormLabel from '@material-ui/core/FormLabel'
+import Button from '@material-ui/core/Button'
+import Modal from '@material-ui/core/Modal'
 
 // Actions
 import { approveUser, rejectUser } from '../../../actions/userActions'
@@ -23,10 +27,15 @@ class UserRequestEntry extends Component {
             title: '',
             adminType: '',
             editName: true,
-            editEmail: true
+            editEmail: true,
+            approveUserModalOpen: false,
+            rejectUserModalOpen: false
         }
 
-        this.handleChange = this.handleChange.bind(this);
+        this.openUserApproveModal = this.openUserApproveModal.bind(this);
+        this.closeUserApproveModal = this.closeUserApproveModal.bind(this);
+        this.openUserRejectModal = this.openUserRejectModal.bind(this);
+        this.closeUserRejectModal = this.closeUserRejectModal.bind(this);
     }
 
     handleChange(e) {
@@ -53,13 +62,26 @@ class UserRequestEntry extends Component {
         }
     }
 
-    onSubmit() {
-        
+    openUserApproveModal() {
+        this.setState({ approveUserModalOpen: true })
+    }
+
+    closeUserApproveModal() {
+        this.setState({ approveUserModalOpen: false })        
+    }
+
+    openUserRejectModal() {
+        this.setState({ rejectUserModalOpen: true })
+    }
+
+    closeUserRejectModal() {
+        this.setState({ rejectUserModalOpen: false })  
     }
 
     render(props) {
+        console.log(this.state)
         return (
-            <li>
+            <div>
                 <hr />
                 <form>
                     <FormLabel>
@@ -70,7 +92,7 @@ class UserRequestEntry extends Component {
                             name="name"
                             disabled={this.state.editName}
                             value={this.state.name}
-                            onChange={this.handleChange}
+                            onChange={(e) => this.handleChange(e)}
                             required
                         />
                     </FormLabel>
@@ -86,7 +108,7 @@ class UserRequestEntry extends Component {
                             id="emailField"
                             name="email"
                             disabled={this.state.editEmail}
-                            onChange={this.handleChange}
+                            onChange={(e) => this.handleChange(e)}
                             value={this.state.email}
                             required
                         />
@@ -105,7 +127,6 @@ class UserRequestEntry extends Component {
                             required />
                     </FormLabel><br />
 
-                    {/* AM - React Material UI needed here*/}
                     <FormLabel>
                         Admin Type*<br />
                         <select
@@ -118,15 +139,43 @@ class UserRequestEntry extends Component {
                         </select>
                     </FormLabel><br />
 
-                    <Button onClick={this.props.approveUser}>
+                    <Button onClick={this.openUserApproveModal}>
                         Approve User
                     </Button><br />
 
-                    <Button onClick={this.props.rejectUser}>
+                    <Button onClick={this.openUserRejectModal}>
                         Reject User
                     </Button>
                 </form>
-            </li>
+
+                
+                <Modal
+                    aria-labelledby="simple-modal-title"
+                    aria-describedby="simple-modal-description"
+                    open={this.state.approveUserModalOpen}
+                    onClose={this.closeUserApproveModal}
+                    disableBackdropClick={true}
+                >
+                    <ApproveUserModal
+                        name={this.state.name}
+                        email={this.state.email}
+                        closeDataModal={this.closeUserApproveModal} />
+                </Modal>
+
+                
+                <Modal
+                    aria-labelledby="simple-modal-title"
+                    aria-describedby="simple-modal-description"
+                    open={this.state.rejectUserModalOpen}
+                    onClose={this.closeUserRejectModal}
+                    disableBackdropClick={true}
+                >
+                    <RejectUserModal
+                        name={this.state.name}
+                        email={this.state.email}
+                        closeDataModal={this.closeUserRejectModal} />
+                </Modal>
+            </div>
         )
     }
 }

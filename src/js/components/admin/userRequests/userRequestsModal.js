@@ -2,15 +2,16 @@
  * Description: Modal showcasing all users                                  */
 
 import React, { Component, StartupActions } from 'react'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
 import UserRequestEntry from './userRequestEntry'
 
 // Design
 import '../../../../stylesheets/userRequestsModal.scss'
-import Input from '@material-ui/core/Input';
-import FormLabel from '@material-ui/core/FormLabel';
-import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input'
+import FormLabel from '@material-ui/core/FormLabel'
+import Button from '@material-ui/core/Button'
+import Modal from '@material-ui/core/Modal'
 
 // Actions
 import { approveUser, rejectUser } from '../../../actions/userActions'
@@ -18,7 +19,6 @@ import { approveUser, rejectUser } from '../../../actions/userActions'
 class UserRequestsModal extends Component {
     constructor(props) {
         super(props)
-
     }
 
     render(props) {
