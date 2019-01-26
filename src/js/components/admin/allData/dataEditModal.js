@@ -19,8 +19,6 @@ class DataEditModal extends Component {
     }
 
     render(props) {
-        var userData = [{"name":"Alex", "email": "anarvick95@eemail.com"}]
-
         return (
             <div className="allPendingUsers" style={this.props.style}>
                 <span onClick={this.props.closeDataModal}
