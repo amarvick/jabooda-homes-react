@@ -63,15 +63,13 @@ class UserRequests extends Component {
 
     // Displaying all pending user requests
     render(props) {
-        console.log(this.state)
-        const { classes } = this.props;
-        var pendingRequestCount = 1
-        var showPendingUsers
-        var areOrIs, singularOrPlural
-        var userData = this.props.userData
+        const { classes } = this.props
+        var showPendingUsers, areOrIs, singularOrPlural
+        var theUserData = this.props.theUserData
+        var pendingRequestCount = 0
 
-        for (var i = 0; i < userData.length; i++) {
-            if (this.props.userData[i].pending === true) {
+        for (var i = 0; i < theUserData.length; i++) {
+            if (this.props.theUserData[i].pending === true) {
                 pendingRequestCount++
             }
         }
@@ -95,7 +93,7 @@ class UserRequests extends Component {
         return (
             <div>
                 <p>
-                    There {areOrIs} {pendingRequestCount} new user request{singularOrPlural}. <br/>
+                    There {areOrIs} {pendingRequestCount} new user request{singularOrPlural}. <br />
                     {showPendingUsers}
                 </p>
 
@@ -108,7 +106,7 @@ class UserRequests extends Component {
                 >
                     <UserRequestsModal
                         style={getModalStyle()}
-                        pendingUsers={userData}
+                        pendingUsers={theUserData}
                         jobTitle={this.props.header}
                         closePendingUsers={this.closePendingUsers} />
                 </Modal>

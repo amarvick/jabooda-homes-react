@@ -19,16 +19,22 @@ class Admin extends Component {
   logOut = e => {
     e.preventDefault()
     this.props.logoutUser()
-
   }
 
-  render() {    
+  render() {   
+    var userData = [
+      { "name": "Alex", "email": "anarvick95@eemail.com", "pending": false },
+      { "name": "Michael", "email": "mmarvick@eemail.com", "pending": true }
+    ]
+
     return (
       <div>
         <h1>
           Admin Page
         </h1>
-        <UserRequests/>
+        <UserRequests
+          theUserData={userData}
+        />
         <AllData/>
         <p onClick={this.logOut}>Log out</p>
       </div>
