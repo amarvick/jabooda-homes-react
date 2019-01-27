@@ -9,7 +9,7 @@ export function loadStaffData() {
             type: StaffActionTypes.FETCHING_STAFF
         })
 
-        fetch("/api/getStaffData")
+        fetch("http://localhost:3001/api/getStaffData") // AM - shoul probably change later
             .then(data => data.json())
             .then(res => 
                 dispatch({

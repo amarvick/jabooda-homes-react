@@ -38,8 +38,8 @@ if (localStorage.jwtToken) {
     // Logout user
     store.dispatch(logoutUser());
 
-    // Redirect to login
-    window.location.href = "./login";
+    // // Redirect to login
+    // window.location.href = "./login";
   }
 }
 
@@ -58,11 +58,6 @@ class App extends Component {
     this.props.dispatch(loadStaffData())
     this.props.dispatch(loadUserData())
   }
-
-  // displayAdminLoginOrNo(adminLoginModalStatus) {
-  //   var newAdminLoginModalStatus = !adminLoginModalStatus
-  //   this.setState({ adminLoginModal: newAdminLoginModalStatus })
-  // }
 
   render() {
     var screenDisplay

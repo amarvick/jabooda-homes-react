@@ -7,7 +7,7 @@ export function loadProjectData() {
     return function action(dispatch) {
         dispatch({ type: ProjectActionTypes.FETCHING_PROJECTS })
 
-        fetch("/api/getProjectData")
+        fetch("http://localhost:3001/api/getProjectData") // AM - shoul probably change later
             .then(data => data.json())
             .then(function(response) {
                 dispatch({
