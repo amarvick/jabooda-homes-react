@@ -158,6 +158,8 @@ class UserRequestEntry extends Component {
                     <ApproveUserModal
                         name={this.state.name}
                         email={this.state.email}
+                        title={this.state.title}
+                        adminType={this.state.adminType}
                         closeUserApproveModal={this.closeUserApproveModal} />
                 </Modal>
 

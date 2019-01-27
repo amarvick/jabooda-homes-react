@@ -32,13 +32,29 @@ export function loadData() {
     }
 }
 
-export function approveUser() {
-    return function action(dispatch) {
+export function approveUser(theUser) {
+    return async function action(dispatch) {
+        console.log(theUser)
+        dispatch({
+            type: UserActionTypes.ADD_USER
+        })
 
+        const postNewUser = await axios.post('/api/createUserData', theUser)
+
+        .then(function(response) {
+            dispatch({
+                type: UserActionTypes.ADD_USER
+            })
+        })
+
+        .catch(function(error) {
+            alert('there was an error')
+            console.log(error)
+        })
     }
 }
 
-export function rejectUser() {
+export function rejectUser(theUser) {
     return function action(dispatch) {
 
     }
