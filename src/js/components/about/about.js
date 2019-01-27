@@ -10,8 +10,6 @@ import PageBanner from '../pageBanner'
 import LoadingScreen from '../loadingScreen'
 import ErrorScreen from '../errorScreen'
 
-// import StaffData from '../../../data/staff.json'
-
 class About extends Component {
 
   render() {    

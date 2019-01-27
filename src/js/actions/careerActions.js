@@ -4,7 +4,7 @@
 import CareerActionTypes from '../actiontypes/careerActionTypes'
 import axios from 'axios'
 
-export function loadData() {
+export function loadCareerData() {
     return function action(dispatch) {
         dispatch({
             type: CareerActionTypes.FETCHING_CAREERS

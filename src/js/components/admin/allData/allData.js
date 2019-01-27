@@ -11,13 +11,10 @@ import LoadingScreen from '../../loadingScreen'
 import ErrorScreen from '../../errorScreen'
 import DataBox from './dataBox'
 
-// import { loadData } from '../../actions/careerActions'
-
 class AllData extends Component {
 
-  // Displaying all pending user requests
+  // Displaying all editable data
   render(props) {
-    // var pendingRequestCount = this.props.requestData.length || 0
     var areOrIs, singularOrPlural
 
     return (

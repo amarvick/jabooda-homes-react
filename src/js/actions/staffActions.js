@@ -3,7 +3,7 @@
 
 import StaffActionTypes from '../actiontypes/staffActionTypes'
 
-export function loadData() {
+export function loadStaffData() {
     return function action(dispatch) {
         dispatch({
             type: StaffActionTypes.FETCHING_STAFF
