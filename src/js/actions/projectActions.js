@@ -3,7 +3,7 @@
 
 import ProjectActionTypes from '../actiontypes/projectActionTypes'
 
-export function loadData() {
+export function loadProjectData() {
     return function action(dispatch) {
         dispatch({ type: ProjectActionTypes.FETCHING_PROJECTS })
 

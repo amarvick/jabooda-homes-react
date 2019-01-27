@@ -13,7 +13,7 @@ import LoadingScreen from '../../loadingScreen'
 import ErrorScreen from '../../errorScreen'
 import DataEditModal from './dataEditModal'
 
-import { loadData } from '../../../actions/userActions'
+import { loadUserData } from '../../../actions/userActions'
 
 function getModalStyle() {
     // const top = 50
@@ -50,7 +50,7 @@ class DataBox extends Component {
 
     componentWillMount() {
         // AM - look in to this later. Getting that annoying error again
-        this.props.dispatch(loadData())
+        this.props.dispatch(loadUserData())
     }
 
     showDataModal() {
@@ -67,9 +67,11 @@ class DataBox extends Component {
         var theData = this.props.data
         var dataType = this.props.dataType
 
+        console.log(theData)
+
         return (
             <div>
-                <p onClick={this.showDataModal}>Data for: {dataType}</p>
+                <p onClick={this.showDataModal}>Data for: {dataType}</p> <br/>
 
                 <Modal
                     aria-labelledby="simple-modal-title"

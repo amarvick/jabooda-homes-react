@@ -12,7 +12,7 @@ import Grid from '@material-ui/core/Grid'
 import LoadingScreen from '../loadingScreen'
 import MainProject from './mainProject'
 
-import { loadData, handleProjectUpdate, updateTab } from '../../actions/projectActions'
+import { handleProjectUpdate, updateTab } from '../../actions/projectActions'
 
 class Projects extends Component {
 

@@ -20,6 +20,7 @@ class ApproveUserModal extends Component {
 
     render(props) {
         var userToBeApproved = {
+            id: this.props.id,
             name: this.props.name,
             email: this.props.email,
             title: this.props.title,

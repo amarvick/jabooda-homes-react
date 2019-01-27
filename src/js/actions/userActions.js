@@ -4,7 +4,7 @@
 import UserActionTypes from '../actiontypes/userActionTypes'
 import axios from 'axios'
 
-export function loadData() {
+export function loadUserData() {
     return function action(dispatch) {
         dispatch({
             type: UserActionTypes.FETCHING_USERS
@@ -34,28 +34,31 @@ export function loadData() {
 
 export function approveUser(theUser) {
     return async function action(dispatch) {
-        console.log(theUser)
-        dispatch({
-            type: UserActionTypes.ADD_USER
-        })
-
-        const postNewUser = await axios.post('/api/createUserData', theUser)
+        const updateNewUser = await axios.post('/api/updateUserData', theUser)
 
         .then(function(response) {
-            dispatch({
-                type: UserActionTypes.ADD_USER
-            })
+            console.log(response)
+            // Redirect user to home page notifying them that the user has been approved
         })
 
         .catch(function(error) {
-            alert('there was an error')
             console.log(error)
         })
     }
 }
 
 export function rejectUser(theUser) {
-    return function action(dispatch) {
+    return async function action(dispatch) {
 
+        const deleteNewUser = await axios.post('/api/deleteUserData', theUser)
+
+        .then(function(response) {
+            console.log(response)
+            // Redirect user to home page notifying them that the user has been deleted
+        })
+
+        .catch(function(error) {
+            console.log(error)
+        })
     }
 }

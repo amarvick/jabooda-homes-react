@@ -18,6 +18,11 @@ import Careers from './js/components/careers/careers'
 import Contactus from './js/components/contactus/contactus'
 import Admin from './js/components/admin/admin'
 
+import { loadCareerData } from './js/actions/careerActions'
+import { loadProjectData } from './js/actions/projectActions'
+import { loadStaffData } from './js/actions/staffActions'
+import { loadUserData } from './js/actions/userActions'
+
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
   // Set auth token header auth
@@ -45,6 +50,13 @@ class App extends Component {
     this.state = {
       isAdminLoggedIn: false
     }
+  }
+
+  componentDidMount() {
+    this.props.dispatch(loadCareerData())
+    this.props.dispatch(loadProjectData())
+    this.props.dispatch(loadStaffData())
+    this.props.dispatch(loadUserData())
   }
 
   // displayAdminLoginOrNo(adminLoginModalStatus) {

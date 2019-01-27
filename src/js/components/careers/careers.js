@@ -12,8 +12,6 @@ import PageBanner from '../pageBanner'
 import LoadingScreen from '../loadingScreen'
 import ErrorScreen from '../errorScreen'
 
-// import { loadData } from '../../actions/careerActions'
-
 class Careers extends Component {
 
   // Displaying all careers
