@@ -10,7 +10,7 @@ export function loadUserData() {
             type: UserActionTypes.FETCHING_USERS
         })
 
-        axios.get("/api/getUserData")
+        axios.get("http://localhost:3001/api/getUserData")  // AM - shoul probably change later
             .then(data => data.json())
             .then(res => {
                 console.log('fetching users was successful')

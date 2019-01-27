@@ -13,7 +13,6 @@ import LoadingScreen from '../../loadingScreen'
 import ErrorScreen from '../../errorScreen'
 import DataEditModal from './dataEditModal'
 
-import { loadUserData } from '../../../actions/userActions'
 
 function getModalStyle() {
     // const top = 50
@@ -46,11 +45,6 @@ class DataBox extends Component {
 
         this.showDataModal = this.showDataModal.bind(this)
         this.closeDataModal = this.closeDataModal.bind(this)
-    }
-
-    componentWillMount() {
-        // AM - look in to this later. Getting that annoying error again
-        this.props.dispatch(loadUserData())
     }
 
     showDataModal() {

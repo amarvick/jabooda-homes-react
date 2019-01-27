@@ -10,7 +10,7 @@ export function loadCareerData() {
             type: CareerActionTypes.FETCHING_CAREERS
         })
 
-        fetch("/api/getCareerData")
+        fetch("http://localhost:3001/api/getCareerData")  // AM - shoul probably change later
             .then(data => data.json())
             .then(res => 
                 dispatch({

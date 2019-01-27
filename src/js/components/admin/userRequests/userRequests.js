@@ -13,8 +13,6 @@ import LoadingScreen from '../../loadingScreen'
 import ErrorScreen from '../../errorScreen'
 import UserRequestsModal from './userRequestsModal'
 
-import { loadUserData } from '../../../actions/userActions'
-
 function getModalStyle() {
     // const top = 50
     // const left = 50
@@ -48,10 +46,6 @@ class UserRequests extends Component {
         this.closePendingUsers = this.closePendingUsers.bind(this)
     }
 
-    componentWillMount() {
-        // AM - look in to this later. Getting that annoying error again
-        this.props.dispatch(loadUserData())
-    }
 
     showPendingUsers() {
         this.setState({ displayPendingUsersModal: true })
