@@ -11,15 +11,21 @@ import '../../../../stylesheets/approveUserModal.scss'
 import Button from '@material-ui/core/Button'
 
 // Actions
-import { approveUser, rejectUser } from '../../../actions/userActions'
+import { approveUser } from '../../../actions/userActions'
 
 class ApproveUserModal extends Component {
     constructor(props) {
         super(props)
-
     }
 
     render(props) {
+        var userToBeApproved = {
+            name: this.props.name,
+            email: this.props.email,
+            title: this.props.title,
+            adminType: this.props.adminType
+        }
+
         return (
             <div className="approveUserModal" style={this.props.style}>
                 <span onClick={this.props.closeUserApproveModal}
@@ -34,7 +40,7 @@ class ApproveUserModal extends Component {
                     Are you sure you want to proceed? Note that you may remove this user at any time.
                 </p>
 
-                <Button onClick={this.props.approveUser}>
+                <Button onClick={() => this.props.dispatch(approveUser(userToBeApproved))}>
                     Approve User
                 </Button><br />
 

@@ -44,7 +44,8 @@ class Admin extends Component {
           theUserData={allPendingUsers}
           userDataCount={allPendingUsers.length}
         />
-        <AllData />
+        <AllData 
+          theUserData={userData}/>
         <p onClick={this.logOut}>Log out</p>
       </div>
     )
