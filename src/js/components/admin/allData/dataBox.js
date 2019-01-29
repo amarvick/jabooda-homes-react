@@ -58,10 +58,8 @@ class DataBox extends Component {
     // Displaying all pending user requests
     render(props) {
         const { classes } = this.props
-        var theData = this.props.data
+        var theData = JSON.stringify(this.props.data)
         var dataType = this.props.dataType
-
-        console.log(theData)
 
         return (
             <div>

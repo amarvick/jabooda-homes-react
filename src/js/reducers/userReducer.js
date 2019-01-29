@@ -2,7 +2,6 @@
  * Description: Redux reducer for the users                                 */
 
 import UserActionTypes from '../actiontypes/userActionTypes'
-// import UserData from '../../data/careers.json'
 
 export default function reducer(state={
     userData: [],

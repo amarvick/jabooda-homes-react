@@ -79,6 +79,7 @@ class UserRequestEntry extends Component {
     }
 
     render(props) {
+        console.log(this.props)
         return (
             <div>
                 <hr />
@@ -156,6 +157,7 @@ class UserRequestEntry extends Component {
                     disableBackdropClick={true}
                 >
                     <ApproveUserModal
+                        id={this.props.id}
                         name={this.state.name}
                         email={this.state.email}
                         title={this.state.title}
@@ -172,6 +174,7 @@ class UserRequestEntry extends Component {
                     disableBackdropClick={true}
                 >
                     <RejectUserModal
+                        id={this.props.id}
                         name={this.state.name}
                         email={this.state.email}
                         closeUserRejectModal={this.closeUserRejectModal} />

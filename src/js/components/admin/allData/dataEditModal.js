@@ -10,9 +10,6 @@ import Input from '@material-ui/core/Input'
 import FormLabel from '@material-ui/core/FormLabel'
 import Button from '@material-ui/core/Button'
 
-// Actions
-import { approveUser, rejectUser } from '../../../actions/userActions'
-
 class DataEditModal extends Component {
     constructor(props) {
         super(props)
@@ -25,7 +22,9 @@ class DataEditModal extends Component {
                     id="exitModal"
                     class="fa fa-times-circle fa-2x" />
 
-                Here is the data in the modal
+                Here is the data in the modal:
+
+                { this.props.data }
             </div>
         )
     }

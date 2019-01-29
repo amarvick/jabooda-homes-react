@@ -1,33 +1,49 @@
 /* File Name: about.js                                                      *
  * Description: About the team & company                                    */
 
-import React, { Component } from 'react'
+import React, { Component, StartupActions } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import PropTypes from "prop-types";
+import PropTypes from "prop-types"
 import classnames from 'classnames'
 
 import '../../../stylesheets/about.scss'
+import Modal from '@material-ui/core/Modal'
 
 import AllData from './allData/allData'
+import ChangePassModal from './changePassModal'
 import UserRequests from './userRequests/userRequests'
 
-import { logoutUser } from "../../actions/authActions";
+import { loadUserData } from '../../actions/userActions'
+import { logoutUser } from "../../actions/authActions"
 
 class Admin extends Component {
+
+  constructor() {
+    super()
+
+    this.state = {
+      displayChangePasswordModal: false
+    }
+
+    this.openChangePasswordModal = this.openChangePasswordModal.bind(this)
+    this.closeChangePasswordModal = this.closeChangePasswordModal.bind(this)
+  }
 
   logOut = e => {
     e.preventDefault()
     this.props.logoutUser()
   }
 
-  render() {
-    // var userData = [
-    //   { "name": "Alex", "email": "anarvick95@eemail.com", "pending": false },
-    //   { "name": "Michael", "email": "mmarvick@eemail.com", "pending": true }
-    // ]
-    console.log(this.props)
+  openChangePasswordModal() {
+    this.setState({ displayChangePasswordModal: true })
+  }
 
+  closeChangePasswordModal() {
+    this.setState({ displayChangePasswordModal: false })
+  }
+
+  render() {
     var userData = this.props.userData
     var careerData = this.props.careerData
     var projectData = this.props.projectData
@@ -35,7 +51,7 @@ class Admin extends Component {
 
     var allPendingUsers = []
     for (var i = 0; i < userData.length; i++) {
-      if (userData[i].pending === true) {
+      if (userData[i].pending === "true") {
         allPendingUsers.push(userData[i])
       }
     }
@@ -55,7 +71,19 @@ class Admin extends Component {
           projectData={projectData}
           staffData={staffData}
         />
+        <p onClick={this.openChangePasswordModal}>Change Password</p>
         <p onClick={this.logOut}>Log out</p>
+
+        <Modal
+            aria-labelledby="simple-modal-title"
+            aria-describedby="simple-modal-description"
+            open={this.state.displayChangePasswordModal}
+            onClose={this.closeUserRejectModal}
+            disableBackdropClick={true}
+        >
+            <ChangePassModal
+              closeChangePasswordModal={this.closeChangePasswordModal} />
+        </Modal>
       </div>
     )
   }
@@ -66,6 +94,13 @@ Admin.propTypes = {
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 }
+
+// wraps dispatch to create nicer functions to call within our component
+// Mapping dispatch actions to the props
+const mapDispatchToProps = (dispatch) => ({
+  dispatch: dispatch,
+  startup: () => dispatch(StartupActions.startup())
+})
 
 // Maps the state in to props (for displaying on the front end)
 const mapStateToProps = (state) => ({
