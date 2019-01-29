@@ -35,6 +35,7 @@ class UserRequestsModal extends Component {
                     {pendingUsers.map(ud => {
                         return (
                             <UserRequestEntry
+                                id={ud._id}
                                 name={ud.name}
                                 email={ud.email}
                             />

@@ -7,7 +7,7 @@ import AuthActionTypes from '../actiontypes/authActionTypes'
 // Register User
 export const registerUser = (userData, history) => dispatch => {
     axios
-        .post('/api/users/register', userData)
+        .post('http://localhost:3001/api/users/register', userData)
         .then(res => {
             console.log('yeah')
             // AM - we want to display a modal here notifying the user that their registration request has been submitted.
@@ -39,7 +39,7 @@ export const validateNewUser = (userData, history) => dispatch => {
 // Login - Get User Token
 export const loginUser = userData => dispatch => {
     axios
-        .post('/api/users/login', userData)
+        .post('http://localhost:3001/api/users/login', userData)
         .then(res => {
             // Save to localStorage
             // Set token to localStorage

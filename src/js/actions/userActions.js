@@ -10,7 +10,7 @@ export function loadUserData() {
             type: UserActionTypes.FETCHING_USERS
         })
 
-        axios.get("http://localhost:3001/api/getUserData")  // AM - shoul probably change later
+        fetch("http://localhost:3001/api/getUserData")  // AM - shoul probably change later
             .then(data => data.json())
             .then(res => {
                 console.log('fetching users was successful')
@@ -33,8 +33,9 @@ export function loadUserData() {
 }
 
 export function approveUser(theUser) {
+    console.log(theUser)
     return async function action(dispatch) {
-        const updateNewUser = await axios.post('/api/updateUserData', theUser)
+        const updateNewUser = await axios.post('http://localhost:3001/api/updateUserData', theUser)
 
         .then(function(response) {
             console.log(response)

@@ -24,7 +24,8 @@ class ApproveUserModal extends Component {
             name: this.props.name,
             email: this.props.email,
             title: this.props.title,
-            adminType: this.props.adminType
+            adminType: this.props.adminType,
+            pending: false
         }
 
         return (
