@@ -12,44 +12,66 @@ import FormLabel from '@material-ui/core/FormLabel'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 
+// Actions AM - will want to get edit data from users, staff, etc... hybrid actions?
+import { editUser, deleteUser } from '../../../actions/userActions'
+import { editCareer, deleteCareer } from '../../../actions/careerActions'
+import { editProject, deleteProject } from '../../../actions/projectActions'
+import { editStaff, deleteStaff } from '../../../actions/staffActions'
+
 class DataToEdit extends Component {
     constructor(props) {
         super(props)
 
-        this.state = {
-
-        }
+        this.state = this.props.data
     }
-
 
     handleChange(e) {
         this.setState({
             [e.target.name]: e.target.value
         });
-    }
-
-
-    setStateValues(stateVals, data) {
-        var newStateVariable
-        console.log(data)
-        for (var i = 0; i < stateVals.length; i++) {
-            newStateVariable = String(stateVals[i])
-            alert(newStateVariable)
-            console.log(data.newStateVariable)
-            this.state[newStateVariable] = data.newStateVariable
-        }
 
         console.log(this.state)
     }
 
+    handleSubmit(e, data, dataType) {
+        e.preventDefault()
+
+        if (dataType === 'User') {
+            this.props.dispatch(editUser(data))
+        } else if (dataType === 'Careers') {
+            this.props.dispatch(editCareer(data))
+        } else if (dataType === 'Projects') {
+            this.props.dispatch(editProject(data))
+        } else if (dataType === 'Staff') {
+            this.props.dispatch(editStaff(data))
+        } 
+    }
+
+    handleDelete(e, id, dataType) {
+        e.preventDefault()
+
+        if (dataType === 'User') {
+            this.props.dispatch(deleteUser(id))
+        } else if (dataType === 'Careers') {
+            this.props.dispatch(deleteCareer(id))
+        } else if (dataType === 'Projects') {
+            this.props.dispatch(deleteProject(id))
+        } else if (dataType === 'Staff') {
+            this.props.dispatch(deleteStaff(id))
+        } 
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.state = nextProps.data
+    }
+
     render(props) {
-        var data = this.props.data
-        var keys = this.props.keys
-        this.setStateValues(keys, data)
+        var data = this.state
+        console.log(data)
 
         return (
             <form>
-                {keys.map((k) => {
+                { Object.keys(data).map((k, index) => {
                     if (k !== '_id' && k !== 'id') {
                         return (
                             <FormLabel>
@@ -57,8 +79,8 @@ class DataToEdit extends Component {
                                 <Input
                                     type="text"
                                     name={k}
+                                    value={Object.values(data)[index]}
                                     onChange={(e) => this.handleChange(e)}
-                                    
                                 /><br/><br/>
                             </FormLabel>
                         )
@@ -77,6 +99,14 @@ class DataToEdit extends Component {
                         )
                     }
                 })}
+
+                <Button type="button" onClick = {(e) => this.handleSubmit(e, this.state, this.props.dataType)}>
+                    Update Data
+                </Button>
+
+                <Button type="button" onClick={(e) => this.handleDelete(e, this.props._id, this.props.dataType)}>
+                    Remove Data
+                </Button>
             </form>
         )
     }

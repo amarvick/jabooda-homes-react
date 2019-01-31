@@ -75,6 +75,7 @@ class DataBox extends Component {
                     <DataEditModal
                         style={getModalStyle()}
                         data={theData}
+                        dataType={this.props.dataType}
                         jobTitle={this.props.header}
                         closeDataModal={this.closeDataModal} />
                 </Modal>

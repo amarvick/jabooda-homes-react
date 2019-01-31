@@ -2,6 +2,7 @@
  * Description: Retrieves all staff members                                 */
 
 import StaffActionTypes from '../actiontypes/staffActionTypes'
+import axios from 'axios'
 
 export function loadStaffData() {
     return function action(dispatch) {
@@ -25,5 +26,34 @@ export function loadStaffData() {
                     payload: error
                 })
             })
+    }
+}
+
+// AM - Work this a little more
+export function editStaff(data) {
+    return async function action(dispatch) {
+        axios.post('http://localhost:3001/api/updateStaffData', data)
+        .then(function(response) {
+            console.log(response)
+            // Redirect user to home page notifying them that the user has been approved
+        })
+
+        .catch(function(error) {
+            console.log(error)
+        })
+    }
+}
+
+export function deleteStaff(id) {
+    return async function action(dispatch) {
+        axios.post('http://localhost:3001/api/deleteStaffData', id)
+        .then(function(response) {
+            console.log(response)
+            // Redirect user to home page notifying them that the user has been approved
+        })
+
+        .catch(function(error) {
+            console.log(error)
+        })
     }
 }

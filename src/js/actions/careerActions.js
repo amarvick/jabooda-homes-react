@@ -63,3 +63,32 @@ export function handleSubmit(e, state) {
         })
     }
 }
+
+// AM - Work this a little more
+export function editCareer(data) {
+    return async function action(dispatch) {
+        axios.post('http://localhost:3001/api/updateCareerData', data)
+        .then(function(response) {
+            console.log(response)
+            // Redirect user to home page notifying them that the user has been approved
+        })
+
+        .catch(function(error) {
+            console.log(error)
+        })
+    }
+}
+
+export function deleteCareer(id) {
+    return async function action(dispatch) {
+        axios.post('http://localhost:3001/api/deleteCareerData', id)
+        .then(function(response) {
+            console.log(response)
+            // Redirect user to home page notifying them that the user has been approved
+        })
+
+        .catch(function(error) {
+            console.log(error)
+        })
+    }
+}

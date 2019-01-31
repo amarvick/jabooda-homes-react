@@ -29,7 +29,7 @@ class DataEditModal extends Component {
 
     render(props) {
         var data = this.props.data
-        var allKeys = Object.keys(data[0]) // AM - buggy. Review this
+        var allKeys = Object.keys(data[0]) // AM - buggy. Review this      
 
         return (
             <Grid container spacing={24} className="allEditableData" style={this.props.style}>
@@ -68,8 +68,8 @@ class DataEditModal extends Component {
                 <Grid item xs={12} sm={9} id="mainProjectToEdit">
                     <h1> 
                         <DataToEdit 
-                            data={data[this.state.index]}
-                            keys={allKeys}
+                            data={ data[this.state.index] }
+                            dataType={this.props.dataType}
                         />
                     </h1>
                 </Grid>
