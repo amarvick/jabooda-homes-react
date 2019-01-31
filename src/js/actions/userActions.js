@@ -63,3 +63,19 @@ export function rejectUser(theUser) {
         })
     }
 }
+
+export function updatePassword(theUser) {
+    return async function action(dispatch) {
+
+        const updateUserPassword = await axios.post('/api/changeUserData', theUser)
+
+        .then(function(response) {
+            console.log(response)
+            // Redirect user to home page notifying them that the user has been deleted
+        })
+
+        .catch(function(error) {
+            console.log(error)
+        })
+    }
+}

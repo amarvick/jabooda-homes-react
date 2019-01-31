@@ -44,10 +44,12 @@ class Admin extends Component {
   }
 
   render() {
-    var userData = this.props.userData
-    var careerData = this.props.careerData
-    var projectData = this.props.projectData
-    var staffData = this.props.staffData
+    var userData = this.props.userData || []
+    var careerData = this.props.careerData || []
+    var projectData = this.props.projectData || []
+    var staffData = this.props.staffData || []
+
+    var loggedInUserId = this.props.auth.user.id
 
     var allPendingUsers = []
     for (var i = 0; i < userData.length; i++) {
@@ -82,6 +84,7 @@ class Admin extends Component {
             disableBackdropClick={true}
         >
             <ChangePassModal
+              id={loggedInUserId}
               closeChangePasswordModal={this.closeChangePasswordModal} />
         </Modal>
       </div>
