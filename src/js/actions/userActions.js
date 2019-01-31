@@ -64,6 +64,36 @@ export function rejectUser(theUser) {
     }
 }
 
+// AM - make in to joint function possibly?
+export function editUser(data) {
+    return async function action(dispatch) {
+        axios.post('http://localhost:3001/api/updateUserData', data)
+        .then(function(response) {
+            console.log(response)
+            // Redirect user to home page notifying them that the user has been approved
+        })
+
+        .catch(function(error) {
+            console.log(error)
+        })
+    }
+}
+
+// AM - make in to joint function possibly?
+export function deleteUser(id) {
+    return async function action(dispatch) {
+        axios.post('http://localhost:3001/api/deleteUserData', id)
+        .then(function(response) {
+            console.log(response)
+            // Redirect user to home page notifying them that the user has been approved
+        })
+
+        .catch(function(error) {
+            console.log(error)
+        })
+    }
+}
+
 export function updatePassword(theUser) {
     return async function action(dispatch) {
 

@@ -2,6 +2,7 @@
  * Description: Redux actions for the projects                              */
 
 import ProjectActionTypes from '../actiontypes/projectActionTypes'
+import axios from 'axios'
 
 export function loadProjectData() {
     return function action(dispatch) {
@@ -23,6 +24,35 @@ export function loadProjectData() {
                 })
             })
 
+    }
+}
+
+// AM - Work this a little more
+export function editProject(data) {
+    return async function action(dispatch) {
+        axios.post('http://localhost:3001/api/updateProjectData', data)
+        .then(function(response) {
+            console.log(response)
+            // Redirect user to home page notifying them that the user has been approved
+        })
+
+        .catch(function(error) {
+            console.log(error)
+        })
+    }
+}
+
+export function deleteProject(id) {
+    return async function action(dispatch) {
+        axios.post('http://localhost:3001/api/deleteUserData', id)
+        .then(function(response) {
+            console.log(response)
+            // Redirect user to home page notifying them that the user has been approved
+        })
+
+        .catch(function(error) {
+            console.log(error)
+        })
     }
 }
 
