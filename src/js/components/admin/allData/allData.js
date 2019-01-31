@@ -5,7 +5,6 @@ import React, { Component, StartupActions } from 'react'
 import { connect } from 'react-redux'
 
 import '../../../../stylesheets/allData.scss'
-import Grid from '@material-ui/core/Grid';
 
 import LoadingScreen from '../../loadingScreen'
 import ErrorScreen from '../../errorScreen'

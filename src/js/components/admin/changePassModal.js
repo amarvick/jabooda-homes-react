@@ -10,6 +10,8 @@ import Input from '@material-ui/core/Input'
 import FormLabel from '@material-ui/core/FormLabel'
 import Button from '@material-ui/core/Button'
 
+import { updatePassword } from '../../actions/userActions'
+
 class ChangePassModal extends Component {
     constructor(props) {
         super(props)
@@ -17,7 +19,26 @@ class ChangePassModal extends Component {
         this.state = {
             oldPassword: '',
             newPassword: '',
-            confirmPassword: ''
+            confirmPassword: '',
+            errors: ''
+        }
+    }
+
+    onSubmit = e => {
+        e.preventDefault();
+
+        if (this.state.newPassword === this.state.confirmPassword) {
+
+            const userData = {
+                id: this.props.id,
+                oldPassword: this.state.oldPassword,
+                newPassword: this.state.newPassword,
+                confirmPassword: this.state.confirmPassword
+            }
+
+            this.props.updatePassword(userData)
+        } else {
+            alert('New Passwords do not match')
         }
     }
 
@@ -69,9 +90,7 @@ class ChangePassModal extends Component {
 
                     <br/><br/>
 
-                    <Button type="submit">Login</Button>
-                    <p>Not signed up as an admin? <span onClick={(e) => this.swapRegisterModal(e)}>Register</span></p>
-
+                    <Button type="submit" onClick={this.updatePassword}>Update Password</Button>
                 </form>
             </div>
         )
