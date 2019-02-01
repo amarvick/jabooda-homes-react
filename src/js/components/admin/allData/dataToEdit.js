@@ -57,6 +57,7 @@ class DataToEdit extends Component {
         } else if (dataType === 'Projects') {
             this.props.dispatch(deleteProject(id))
         } else if (dataType === 'Staff') {
+            alert(id)
             this.props.dispatch(deleteStaff(id))
         } 
     }
@@ -104,7 +105,7 @@ class DataToEdit extends Component {
                     Update Data
                 </Button>
 
-                <Button type="button" onClick={(e) => this.handleDelete(e, this.props._id, this.props.dataType)}>
+                <Button type="button" onClick={(e) => this.handleDelete(e, this.props.data._id, this.props.dataType)}>
                     Remove Data
                 </Button>
             </form>
