@@ -9,13 +9,9 @@ import RejectUserModal from './rejectUserModal'
 
 // Design
 import '../../../../stylesheets/userRequestsModal.scss'
-import Input from '@material-ui/core/Input'
 import FormLabel from '@material-ui/core/FormLabel'
 import Button from '@material-ui/core/Button'
 import Modal from '@material-ui/core/Modal'
-
-// Actions
-import { approveUser, rejectUser } from '../../../actions/userActions'
 
 class UserRequestEntry extends Component {
     constructor(props) {

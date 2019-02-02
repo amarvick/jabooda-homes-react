@@ -4,8 +4,6 @@
 import React, { Component, StartupActions } from 'react'
 import { connect } from 'react-redux';
 
-import UserRequestEntry from './userRequestEntry'
-
 // Design
 import '../../../../stylesheets/approveUserModal.scss'
 import Button from '@material-ui/core/Button'
@@ -14,10 +12,6 @@ import Button from '@material-ui/core/Button'
 import { approveUser } from '../../../actions/userActions'
 
 class ApproveUserModal extends Component {
-    constructor(props) {
-        super(props)
-    }
-
     render(props) {
         var userToBeApproved = {
             id: this.props.id,

@@ -6,16 +6,12 @@ import { connect } from 'react-redux'
 
 import '../../../../stylesheets/allData.scss'
 
-import LoadingScreen from '../../loadingScreen'
-import ErrorScreen from '../../errorScreen'
 import DataBox from './dataBox'
 
 class AllData extends Component {
 
   // Displaying all editable data
   render(props) {
-    var areOrIs, singularOrPlural
-
     return (
       <div>
         <h2>

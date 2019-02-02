@@ -1,11 +1,10 @@
 /* File Name: about.js                                                      *
  * Description: About the team & company                                    */
 
-import React, { Component, StartupActions } from 'react'
+import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from "prop-types"
-import classnames from 'classnames'
 
 import '../../../stylesheets/about.scss'
 import Modal from '@material-ui/core/Modal'
@@ -14,7 +13,6 @@ import AllData from './allData/allData'
 import ChangePassModal from './changePassModal'
 import UserRequests from './userRequests/userRequests'
 
-import { loadUserData } from '../../actions/userActions'
 import { logoutUser } from "../../actions/authActions"
 
 class Admin extends Component {
@@ -97,13 +95,6 @@ Admin.propTypes = {
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 }
-
-// wraps dispatch to create nicer functions to call within our component
-// Mapping dispatch actions to the props
-const mapDispatchToProps = (dispatch) => ({
-  dispatch: dispatch,
-  startup: () => dispatch(StartupActions.startup())
-})
 
 // Maps the state in to props (for displaying on the front end)
 const mapStateToProps = (state) => ({

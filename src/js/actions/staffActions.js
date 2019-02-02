@@ -46,7 +46,7 @@ export function editStaff(data) {
 
 export function deleteStaff(id) {
     return async function action(dispatch) {
-        axios.post('http://localhost:3001/api/deleteStaffData', id)
+        axios.post('http://localhost:3001/api/deleteStaffData', id) // AM - id is passed in as a key-value pair. Maybe a better way of doing this
         .then(function(response) {
             console.log(response)
             // Redirect user to home page notifying them that the user has been approved

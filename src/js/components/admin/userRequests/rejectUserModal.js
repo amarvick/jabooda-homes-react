@@ -2,25 +2,17 @@
  * Description: Modal showcasing all users                                  */
 
 import React, { Component, StartupActions } from 'react'
-import { connect } from 'react-redux';
-
-import UserRequestEntry from './userRequestEntry'
+import { connect } from 'react-redux'
 
 // Design
 import '../../../../stylesheets/rejectUserModal.scss'
 import Button from '@material-ui/core/Button'
 
 // Actions
-import { approveUser, rejectUser } from '../../../actions/userActions'
+import { rejectUser } from '../../../actions/userActions'
 
 class RejectUserModal extends Component {
-    constructor(props) {
-        super(props)
-
-    }
-
-    render(props) {
-        
+    render(props) { 
         return (
             <div className="rejectUserModal" style={this.props.style}>
                 <span onClick={this.props.closeUserRejectModal}
@@ -35,7 +27,7 @@ class RejectUserModal extends Component {
                     Are you sure you want to proceed?
                 </p>
 
-                <Button onClick={this.props.rejectUser}>
+                <Button onClick={this.props.dispatch(rejectUser(this.props.id))}>
                     Reject {this.props.name}
                 </Button><br />
 
