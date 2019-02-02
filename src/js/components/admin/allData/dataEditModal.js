@@ -3,14 +3,11 @@
 
 import React, { Component, StartupActions } from 'react'
 import { connect } from 'react-redux';
-import DOMPurify from 'dompurify'
 
 // Design
 import '../../../../stylesheets/dataEditModal.scss'
-import Input from '@material-ui/core/Input'
-import FormLabel from '@material-ui/core/FormLabel'
-import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
+import Button from '@material-ui/core/Button'
 
 import DataToEdit from './dataToEdit'
 
@@ -29,6 +26,7 @@ class DataEditModal extends Component {
 
     render(props) {
         var data = this.props.data
+        console.log(data)
         var allKeys = Object.keys(data[0]) // AM - buggy. Review this      
 
         return (
@@ -41,7 +39,6 @@ class DataEditModal extends Component {
                     Here is the data in the modal: <br/>        
 
                     { data.map((d, index) => {
-                        var dataEntry
                         var allKeyValues = []
                         for (var i = 0; i < Object.keys(d).length; i++) {
                             allKeyValues.push(String(Object.keys(d)[i]) + ': ' + String(Object.values(d)[i]))
@@ -62,6 +59,10 @@ class DataEditModal extends Component {
                             </div>
                         )
                     }) }
+
+                    <Button>
+                        Add { this.props.dataType }
+                    </Button>
 
                 </Grid>
 

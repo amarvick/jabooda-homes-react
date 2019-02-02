@@ -4,7 +4,6 @@
 import React, { Component } from 'react'
 
 import '../../stylesheets/footer.scss'
-import { withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal'
 
 import MenuLink from './menuLink'
@@ -131,21 +130,21 @@ class Footer extends Component {
         <img id="combinedLogos" alt="Jabooda Sponsors" src={require("../../images/combinedlogos.png")} />
 
         <p>Jabooda Homes, Inc. {currentYear}</p>
-        <a 
+        <p 
           style={smallText} 
           id="adminLogin" 
           onClick={this.openAdminLoginModal}>
             Admin Login
-        </a>
+        </p>
         
         <span> | </span>
 
-        <a 
+        <p 
           style={smallText} 
           id="adminLogin" 
           onClick={this.openAdminRegisterModal}>
             Admin Registration
-        </a>
+        </p>
 
         <Modal
           aria-labelledby="simple-modal-title"

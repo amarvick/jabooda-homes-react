@@ -5,12 +5,9 @@ import React, { Component, StartupActions } from 'react'
 import { connect } from 'react-redux'
 
 import '../../../../stylesheets/userRequests.scss'
-import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button'
 import Modal from '@material-ui/core/Modal'
 
-import LoadingScreen from '../../loadingScreen'
-import ErrorScreen from '../../errorScreen'
 import UserRequestsModal from './userRequestsModal'
 
 function getModalStyle() {

@@ -3,14 +3,13 @@
 
 import React, { Component, StartupActions } from 'react'
 import { connect } from 'react-redux';
-import DOMPurify from 'dompurify'
+// import DOMPurify from 'dompurify' AM - remember to uninstall
 
 // Design
 import '../../../../stylesheets/dataEditModal.scss'
 import Input from '@material-ui/core/Input'
 import FormLabel from '@material-ui/core/FormLabel'
 import Button from '@material-ui/core/Button'
-import Grid from '@material-ui/core/Grid'
 
 // Actions AM - will want to get edit data from users, staff, etc... hybrid actions?
 import { editUser, deleteUser } from '../../../actions/userActions'
@@ -63,7 +62,7 @@ class DataToEdit extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.state = nextProps.data
+        this.state = nextProps.data // AM - do not mutate directly. Look up how to do this
     }
 
     render(props) {
