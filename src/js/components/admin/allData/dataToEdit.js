@@ -61,9 +61,11 @@ class DataToEdit extends Component {
         } 
     }
 
-    componentWillReceiveProps(nextProps) {
-        this.state = nextProps.data // AM - do not mutate directly. Look up how to do this
-    }
+    // componentWillReceiveProps(nextProps) {
+    //     this.setState({
+    //         state: this.props.data
+    //     })
+    // }
 
     render(props) {
         var data = this.state

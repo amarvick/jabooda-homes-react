@@ -130,21 +130,21 @@ class Footer extends Component {
         <img id="combinedLogos" alt="Jabooda Sponsors" src={require("../../images/combinedlogos.png")} />
 
         <p>Jabooda Homes, Inc. {currentYear}</p>
-        <p 
+        <a 
           style={smallText} 
           id="adminLogin" 
           onClick={this.openAdminLoginModal}>
             Admin Login
-        </p>
+        </a>
         
         <span> | </span>
 
-        <p 
+        <a 
           style={smallText} 
           id="adminLogin" 
           onClick={this.openAdminRegisterModal}>
             Admin Registration
-        </p>
+        </a>
 
         <Modal
           aria-labelledby="simple-modal-title"
