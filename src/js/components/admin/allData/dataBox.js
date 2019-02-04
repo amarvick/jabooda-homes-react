@@ -54,8 +54,9 @@ class DataBox extends Component {
     // Displaying all pending user requests
     render(props) {
         const { classes } = this.props
-        var theData = this.props.data
+        var theData =  this.props.data 
         var dataType = this.props.dataType
+        var allKeys = this.props.allKeys
 
         return (
             <div>
@@ -73,6 +74,7 @@ class DataBox extends Component {
                         data={theData}
                         dataType={this.props.dataType}
                         jobTitle={this.props.header}
+                        allKeys={allKeys}
                         closeDataModal={this.closeDataModal} />
                 </Modal>
             </div>

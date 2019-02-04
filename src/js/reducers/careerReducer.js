@@ -6,6 +6,11 @@ import CareerData from '../../data/careers.json'
 
 export default function reducer(state={
     careerData: CareerData,
+    careerDataKeys: [
+        'jobtitle',
+        'description',
+        'requirements'
+    ],
     loading: false,
     submitted: false,
     error: null

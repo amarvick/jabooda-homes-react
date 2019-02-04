@@ -7,6 +7,13 @@ export default function reducer(state={
     fetching: false,
     fetched: false,
     projectData: [],
+    projectDataKeys: [
+        'address',
+        'images',
+        'price',
+        'status',
+        'description'
+    ],
     projectsToDisplay: 'Sold',
     selectedProjectIndex: 0,
     selectedImageInProject: 0,

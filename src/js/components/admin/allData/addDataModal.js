@@ -6,22 +6,35 @@ import { connect } from 'react-redux';
 // import DOMPurify from 'dompurify' AM - remember to uninstall
 
 // Design
-import '../../../../stylesheets/dataEditModal.scss'
+import '../../../../stylesheets/addDataModal.scss'
 import Input from '@material-ui/core/Input'
 import FormLabel from '@material-ui/core/FormLabel'
 import Button from '@material-ui/core/Button'
 
 // Actions AM - will want to get edit data from users, staff, etc... hybrid actions?
 import { addUser } from '../../../actions/userActions'
-import { addCareer } from '../../../actions/careerActions'
-import { addProject } from '../../../actions/projectActions'
+// import { addCareer } from '../../../actions/careerActions'
+// import { addProject } from '../../../actions/projectActions'
 import { addStaff } from '../../../actions/staffActions'
 
 class AddDataModal extends Component {
     constructor(props) {
         super(props)
 
-        this.state = this.props.data
+        this.state = {}
+    }
+
+    // AM - better way of doing this? Not mutating state this way...
+    initializeState(stateVals) {
+        var stateVal
+        for (var i = 0; i < stateVals; i++) {
+            stateVal = stateVals[i]
+            this.setState({
+                stateVal: ''
+            })
+        }
+
+        console.log(this.state)
     }
 
     handleChange(e) {
@@ -34,39 +47,48 @@ class AddDataModal extends Component {
 
     handleSubmit(e, data, dataType) {
         e.preventDefault()
+        alert(dataType)
+        dataType = 'Staff'
 
         if (dataType === 'User') {
             this.props.dispatch(addUser(data))
         } else if (dataType === 'Careers') {
-            this.props.dispatch(addCareer(data))
+            // this.props.dispatch(addCareer(data))
         } else if (dataType === 'Projects') {
-            this.props.dispatch(addProject(data))
+            // this.props.dispatch(addProject(data))
         } else if (dataType === 'Staff') {
             this.props.dispatch(addStaff(data))
         } 
     }
 
     render(props) {
+        var allKeys = Object.values(this.props.keys)
+        this.initializeState(allKeys)
+
         return (
-            <form>
-                { Object.keys(data).map((k, index) => {
-                        return (
-                        <FormLabel>
-                            <span>{k}: </span>
-                            <Input
-                                type="text"
-                                name={k}
-                                value={Object.values(data)[index]}
-                                onChange={(e) => this.handleChange(e)}
-                            /><br/><br/>
-                        </FormLabel>
-                    )
-                })}
+            <div id="addDataForm">
+                <span onClick={this.props.closeDataModal}
+                    id="exitModal"
+                    class="fa fa-times-circle fa-2x" />
+                <form>
+                    { allKeys.map((k, index) => { // AM - look in to this as well.. thought this would pass an array
+                            return (
+                            <FormLabel>
+                                <span>{k}: </span>
+                                <Input
+                                    type="text"
+                                    name={k}
+                                    onChange={(e) => this.handleChange(e)}
+                                /><br/><br/>
+                            </FormLabel>
+                        )
+                    })}
 
                 <Button type="button" onClick = {(e) => this.handleSubmit(e, this.state, this.props.dataType)}>
                     Add
                 </Button>
             </form>
+            </div>
         )
     }
 }

@@ -9,7 +9,6 @@ import '../../../../stylesheets/allData.scss'
 import DataBox from './dataBox'
 
 class AllData extends Component {
-
   // Displaying all editable data
   render(props) {
     return (
@@ -20,25 +19,30 @@ class AllData extends Component {
         <h4>
             Click on any of the boxes to modify existing data
         </h4>
-        <DataBox 
+        {/* <DataBox 
           className="staffData"
           dataType="Staff"
-          data={this.props.staffData}/>
+          data={this.props.staffData}
+          allKeys={this.props.staffDataKeys}
+          /> */}
         
         <DataBox 
           className="careerData"
           dataType="Careers"
-          data={this.props.careerData}/>
+          data={this.props.careerData}
+          allKeys={this.props.careerDataKeys}/>
 
-        <DataBox 
+        {/* <DataBox 
           className="projectData"
           dataType="Projects"
-          data={this.props.projectData}/>
+          data={this.props.projectData}
+          allKeys={this.props.projectDataKeys}/>
         
         <DataBox 
           className="userData"
           dataType="Users"
-          data={this.props.userData}/>
+          data={this.props.userData}
+          allKeys={this.props.userDataKeys}/> */}
       </div>
     )
   }
@@ -56,9 +60,13 @@ const mapStateToProps = (state) => ({
   error: state.career.error,
   loading: state.career.loading,
   staffData: state.staff.staffData,
+  staffDataKeys: state.staff.staffDataKeys,
   careerData: state.career.careerData,
-  projectData: state.staff.projectData,
-  userData: state.user.userData
+  careerDataKeys: state.career.careerDataKeys,
+  projectData: state.project.projectData,
+  projectDataKeys: state.project.projectDataKeys,
+  userData: state.user.userData,
+  userDataKeys: state.user.userDataKeys
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllData);
