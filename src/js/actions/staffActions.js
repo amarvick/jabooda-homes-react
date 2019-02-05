@@ -17,7 +17,6 @@ export function loadStaffData() {
                         type: StaffActionTypes.FETCH_STAFF_SUCCESS,
                         payload: res.data
                     })
-                    alert('Staff data collected')
                     console.log(res.data)
                 }
             ) 

@@ -34,7 +34,6 @@ export function loadUserData() {
 
 // AM - just forward this to 'editUser' since that is what you are doing essentially? Make naming conventions good
 export function approveUser(theUser) {
-    console.log(theUser)
     return async function action(dispatch) {
         // const updateNewUser = await axios.post('http://localhost:3001/api/updateUserData', theUser)
 

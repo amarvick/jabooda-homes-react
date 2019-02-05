@@ -57,6 +57,7 @@ class DataBox extends Component {
         var theData =  this.props.data 
         var dataType = this.props.dataType
         var allKeys = this.props.allKeys
+        console.log(allKeys)
 
         return (
             <div>

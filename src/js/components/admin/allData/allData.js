@@ -19,20 +19,21 @@ class AllData extends Component {
         <h4>
             Click on any of the boxes to modify existing data
         </h4>
-        {/* <DataBox 
+        <DataBox 
           className="staffData"
           dataType="Staff"
           data={this.props.staffData}
           allKeys={this.props.staffDataKeys}
-          /> */}
+        />
         
         <DataBox 
           className="careerData"
           dataType="Careers"
           data={this.props.careerData}
-          allKeys={this.props.careerDataKeys}/>
+          allKeys={this.props.careerDataKeys}
+        />
 
-        {/* <DataBox 
+        <DataBox 
           className="projectData"
           dataType="Projects"
           data={this.props.projectData}
@@ -42,7 +43,7 @@ class AllData extends Component {
           className="userData"
           dataType="Users"
           data={this.props.userData}
-          allKeys={this.props.userDataKeys}/> */}
+          allKeys={this.props.userDataKeys}/> 
       </div>
     )
   }
