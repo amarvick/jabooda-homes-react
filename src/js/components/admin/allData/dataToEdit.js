@@ -56,36 +56,38 @@ class DataToEdit extends Component {
         } else if (dataType === 'Projects') {
             this.props.dispatch(deleteProject(id))
         } else if (dataType === 'Staff') {
-            alert(id)
             this.props.dispatch(deleteStaff(id))
         } 
+
     }
 
-    // componentWillReceiveProps(nextProps) {
-    //     this.setState({
-    //         state: this.props.data
-    //     })
-    // }
+    // AM - ask for help here. Is this an ideal way? Maybe Max can help
+    componentWillReceiveProps(nextProps) {
+        this.state = nextProps.data
+    }
 
     render(props) {
         var data = this.state
+        var allKeys = this.props.allKeys
         console.log(data)
 
         return (
             <form>
                 { Object.keys(data).map((k, index) => {
                     if (k !== '_id' && k !== 'id') {
-                        return (
-                            <FormLabel>
-                                <span>{k}: </span>
-                                <Input
-                                    type="text"
-                                    name={k}
-                                    value={Object.values(data)[index]}
-                                    onChange={(e) => this.handleChange(e)}
-                                /><br/><br/>
-                            </FormLabel>
-                        )
+                        if (allKeys.includes(Object.keys(data)[index])) { // AM - this can be improved...
+                            return (
+                                <FormLabel>
+                                    <span>{k}: </span>
+                                    <Input
+                                        type="text"
+                                        name={k}
+                                        value={Object.values(data)[index]}
+                                        onChange={(e) => this.handleChange(e)}
+                                    /><br/><br/>
+                                </FormLabel>
+                            )
+                        }
                     } else {
                         var idVal
                         if (k === '_id') {

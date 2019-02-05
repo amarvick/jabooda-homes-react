@@ -38,7 +38,6 @@ class DataEditModal extends Component {
     render(props) {
         var data = this.props.data
         var allKeys = this.props.allKeys
-        console.log(allKeys)
 
         return (
             <Grid container spacing={24} className="allEditableData" style={this.props.style}>
@@ -52,7 +51,6 @@ class DataEditModal extends Component {
                     { data.map((d, index) => {
                         var allKeyValues = []
                         for (var i = 0; i < Object.keys(d).length; i++) {
-                            console.log(Object.keys(d)[i])
                             if (allKeys.includes(Object.keys(d)[i])) {
                                 allKeyValues.push(Object.keys(d)[i] + ': ' + Object.values(d)[i])
                             }
@@ -64,7 +62,7 @@ class DataEditModal extends Component {
                                         allKeyValues.map((d) => {
                                             return (
                                                 <li>
-                                                    {d}<br/>
+                                                    {d}<br/><br/>
                                                 </li>
                                             )
                                         })
@@ -98,7 +96,8 @@ class DataEditModal extends Component {
                     <h1> 
                         <DataToEdit 
                             data={ data[this.state.index] }
-                            dataType={this.props.dataType}
+                            dataType={ this.props.dataType }
+                            allKeys={allKeys}
                         />
                     </h1>
                 </Grid>

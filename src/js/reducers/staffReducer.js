@@ -43,7 +43,28 @@ export default function reducer(state={
             }
         }
 
-        // case StaffActionTypes.FETCH_STAFF_ERROR: {
+        // case StaffActionTypes.EDIT_STAFF_SUCCESS: {
+        //     return {...state,
+        //         loading: false,
+        //         error: action.payload
+        //     }
+        // }
+
+        // case StaffActionTypes.EDIT_STAFF_ERROR: {
+        //     return {...state,
+        //         loading: false,
+        //         error: action.payload
+        //     }
+        // }
+
+        // case StaffActionTypes.DELETE_STAFF_SUCCESS: {
+        //     return {...state,
+        //         loading: false,
+        //         error: action.payload
+        //     }
+        // }
+
+        // case StaffActionTypes.DELETE_STAFF_ERROR: {
         //     return {...state,
         //         loading: false,
         //         error: action.payload
