@@ -57,7 +57,6 @@ class DataBox extends Component {
         var theData =  this.props.data 
         var dataType = this.props.dataType
         var allKeys = this.props.allKeys
-        console.log(allKeys)
 
         return (
             <div>
@@ -73,7 +72,7 @@ class DataBox extends Component {
                     <DataEditModal
                         style={getModalStyle()}
                         data={theData}
-                        dataType={this.props.dataType}
+                        dataType={dataType}
                         jobTitle={this.props.header}
                         allKeys={allKeys}
                         closeDataModal={this.closeDataModal} />

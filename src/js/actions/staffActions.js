@@ -38,11 +38,19 @@ export function editStaff(data) {
     return async function action(dispatch) {
         axios.post('http://localhost:3001/api/updateStaffData', data)
         .then(function(response) {
-            console.log(response)
+            console.log(response.data)
+            dispatch({
+                type: StaffActionTypes.EDIT_STAFF_SUCCESS,
+                payload: response.data.update
+            })
             // Redirect user to home page notifying them that the user has been approved
         })
 
         .catch(function(error) {
+            dispatch({
+                type: StaffActionTypes.EDIT_STAFF_ERROR,
+                payload: error
+            })
             console.log(error)
         })
     }
@@ -54,12 +62,15 @@ export function deleteStaff(id) {
         .then(function(response) {
             dispatch({
                 type: StaffActionTypes.DELETE_STAFF_SUCCESS,
-                payload: response.data
+                payload: response.data.id
             })
         })
 
         .catch(function(error) {
-            console.log(error)
+            dispatch({
+                type: StaffActionTypes.DELETE_STAFF_ERROR,
+                payload: error
+            })
         })
     }
 }
@@ -69,16 +80,17 @@ export function addStaff(data) {
     return async function action(dispatch) {
         axios.post('http://localhost:3001/api/createStaffData', data)
         .then(function(response) {
-            console.log(response)
-            console.log(response.data)
             dispatch({
                 type: StaffActionTypes.ADD_STAFF_SUCCESS,
-                payload: response.data
+                payload: response.data.newData
             })
         })
 
         .catch(function(error) {
-            console.log(error)
+            dispatch({
+                type: StaffActionTypes.ADD_STAFF_ERROR,
+                payload: error
+            })
         })
     }
 }

@@ -9,7 +9,6 @@ export const registerUser = (userData, history) => dispatch => {
     axios
         .post('http://localhost:3001/api/users/register', userData)
         .then(res => {
-            console.log('yeah')
             // AM - we want to display a modal here notifying the user that their registration request has been submitted.
         }) 
         .catch(err => {

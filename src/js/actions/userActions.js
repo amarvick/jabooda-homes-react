@@ -13,8 +13,6 @@ export function loadUserData() {
         fetch("http://localhost:3001/api/getUserData")  // AM - shoul probably change later
             .then(data => data.json())
             .then(res => {
-                console.log('fetching users was successful')
-
                 dispatch({
                     type: UserActionTypes.FETCH_USERS_SUCCESS,
                     payload: res.data
@@ -23,7 +21,6 @@ export function loadUserData() {
     
             // AM - make this in to an error screen?
             .catch(function(error) {
-                console.log('fetching users was NOT successful')
                 dispatch({
                     type: UserActionTypes.FETCH_USERS_ERROR,
                     payload: error

@@ -28,13 +28,10 @@ class DataToEdit extends Component {
         this.setState({
             [e.target.name]: e.target.value
         });
-
-        console.log(this.state)
     }
 
     handleSubmit(e, data, dataType) {
         e.preventDefault()
-
         if (dataType === 'User') {
             this.props.dispatch(editUser(data))
         } else if (dataType === 'Careers') {
@@ -58,7 +55,6 @@ class DataToEdit extends Component {
         } else if (dataType === 'Staff') {
             this.props.dispatch(deleteStaff(id))
         } 
-
     }
 
     // AM - ask for help here. Is this an ideal way? Maybe Max can help
@@ -67,15 +63,16 @@ class DataToEdit extends Component {
     }
 
     render(props) {
-        var data = this.state
+        var data = this.state || []
         var allKeys = this.props.allKeys
-        console.log(data)
 
         return (
             <form>
                 { Object.keys(data).map((k, index) => {
                     if (k !== '_id' && k !== 'id') {
                         if (allKeys.includes(Object.keys(data)[index])) { // AM - this can be improved...
+                            console.log(allKeys)
+                            console.log(Object.keys(data)[index])
                             return (
                                 <FormLabel>
                                     <span>{k}: </span>

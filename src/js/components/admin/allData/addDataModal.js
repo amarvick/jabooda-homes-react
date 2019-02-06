@@ -13,6 +13,7 @@ import Button from '@material-ui/core/Button'
 
 // Actions AM - will want to get edit data from users, staff, etc... hybrid actions?
 import { addUser } from '../../../actions/userActions'
+import { createData } from '../../../actions/crudActions'
 // import { addCareer } from '../../../actions/careerActions'
 // import { addProject } from '../../../actions/projectActions'
 import { addStaff } from '../../../actions/staffActions'
@@ -33,58 +34,44 @@ class AddDataModal extends Component {
                 stateVal: ''
             })
         }
-
-        console.log(this.state)
     }
 
     handleChange(e) {
         this.setState({
             [e.target.name]: e.target.value
         });
-
-        console.log(this.state)
     }
 
     handleSubmit(e, data, dataType) {
         e.preventDefault()
-        alert(dataType)
-        dataType = 'Staff'
-
-        if (dataType === 'User') {
-            this.props.dispatch(addUser(data))
-        } else if (dataType === 'Careers') {
-            // this.props.dispatch(addCareer(data))
-        } else if (dataType === 'Projects') {
-            // this.props.dispatch(addProject(data))
-        } else if (dataType === 'Staff') {
-            this.props.dispatch(addStaff(data))
-        } 
+        this.props.dispatch(createData(data, dataType))
     }
 
     render(props) {
         var allKeys = Object.values(this.props.keys)
-        this.initializeState(allKeys)
+        var dataType = this.props.dataType
 
         return (
             <div id="addDataForm">
-                <span onClick={this.props.closeDataModal}
+                <span onClick={this.props.closeAddDataModal}
                     id="exitModal"
                     class="fa fa-times-circle fa-2x" />
                 <form>
                     { allKeys.map((k, index) => { // AM - look in to this as well.. thought this would pass an array
                             return (
                             <FormLabel>
-                                <span>{k}: </span>
+                                <span>{k}*: </span>
                                 <Input
                                     type="text"
                                     name={k}
                                     onChange={(e) => this.handleChange(e)}
+                                    required
                                 /><br/><br/>
                             </FormLabel>
                         )
                     })}
 
-                <Button type="button" onClick = {(e) => this.handleSubmit(e, this.state, this.props.dataType)}>
+                <Button type="button" onClick = {(e) => this.handleSubmit(e, this.state, dataType)}>
                     Add
                 </Button>
             </form>
