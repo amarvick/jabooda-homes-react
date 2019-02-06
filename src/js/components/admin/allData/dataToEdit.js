@@ -12,10 +12,7 @@ import FormLabel from '@material-ui/core/FormLabel'
 import Button from '@material-ui/core/Button'
 
 // Actions AM - will want to get edit data from users, staff, etc... hybrid actions?
-import { editUser, deleteUser } from '../../../actions/userActions'
-import { editCareer, deleteCareer } from '../../../actions/careerActions'
-import { editProject, deleteProject } from '../../../actions/projectActions'
-import { editStaff, deleteStaff } from '../../../actions/staffActions'
+import { editData, deleteData } from '../../../actions/crudActions'
 
 class DataToEdit extends Component {
     constructor(props) {
@@ -32,29 +29,12 @@ class DataToEdit extends Component {
 
     handleSubmit(e, data, dataType) {
         e.preventDefault()
-        if (dataType === 'User') {
-            this.props.dispatch(editUser(data))
-        } else if (dataType === 'Careers') {
-            this.props.dispatch(editCareer(data))
-        } else if (dataType === 'Projects') {
-            this.props.dispatch(editProject(data))
-        } else if (dataType === 'Staff') {
-            this.props.dispatch(editStaff(data))
-        } 
+        this.props.dispatch(editData(data, dataType))
     }
 
     handleDelete(e, id, dataType) {
         e.preventDefault()
-
-        if (dataType === 'User') {
-            this.props.dispatch(deleteUser(id))
-        } else if (dataType === 'Careers') {
-            this.props.dispatch(deleteCareer(id))
-        } else if (dataType === 'Projects') {
-            this.props.dispatch(deleteProject(id))
-        } else if (dataType === 'Staff') {
-            this.props.dispatch(deleteStaff(id))
-        } 
+        this.props.dispatch(deleteData(id, dataType))
     }
 
     // AM - ask for help here. Is this an ideal way? Maybe Max can help
@@ -64,6 +44,7 @@ class DataToEdit extends Component {
 
     render(props) {
         var data = this.state || []
+        var dataType = this.props.dataType
         var allKeys = this.props.allKeys
 
         return (
@@ -101,11 +82,11 @@ class DataToEdit extends Component {
                     }
                 })}
 
-                <Button type="button" onClick = {(e) => this.handleSubmit(e, this.state, this.props.dataType)}>
+                <Button type="button" onClick = {(e) => this.handleSubmit(e, this.state, dataType)}>
                     Update Data
                 </Button>
 
-                <Button type="button" onClick={(e) => this.handleDelete(e, this.props.data._id, this.props.dataType)}>
+                <Button type="button" onClick={(e) => this.handleDelete(e, this.props.data._id, dataType)}>
                     Remove Data
                 </Button>
             </form>
