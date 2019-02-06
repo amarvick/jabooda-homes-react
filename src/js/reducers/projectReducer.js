@@ -46,6 +46,53 @@ export default function reducer(state={
             }
         }
 
+        case ProjectActionTypes.CREATE_PROJECT_SUCCESS: {
+            return {...state,
+                projectData:  [...state.projectData, action.payload],
+            }
+        }
+
+        case ProjectActionTypes.CREATE_PROJECT_ERROR: {
+            return {...state,
+                error: action.payload
+            }
+        }
+
+        case ProjectActionTypes.EDIT_PROJECT_SUCCESS: {
+            const id = action.payload._id
+            const oldProjectData = [...state.projectData]
+            const projectToUpdate = oldProjectData.findIndex(data => data._id === id)
+            oldProjectData[projectToUpdate] = action.payload;
+
+            return {
+                ...state,
+                projectData: oldProjectData,
+            }
+        }
+
+        case ProjectActionTypes.EDIT_PROJECT_ERROR: {
+            return {...state,
+                loading: false,
+                error: action.payload
+            }
+        }
+
+        case ProjectActionTypes.DELETE_PROJECT_SUCCESS: {
+            // AM - this doesn't work when there is only one piece of data... why???
+            const projectId = action.payload
+            return {
+                ...state,
+                projectData: state.projectData.filter(pd => pd._id !== projectId),
+            }
+        }
+
+        case ProjectActionTypes.DELETE_PROJECT_ERROR: {
+            return {...state,
+                loading: false,
+                error: action.payload
+            }
+        }
+
         // Clicking on a new project from right menu to display in the main section 
         case ProjectActionTypes.UPDATE_MAIN_PROJECT: {
             return {...state,

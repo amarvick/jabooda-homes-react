@@ -35,6 +35,52 @@ export default function reducer(state={
             }
         }
 
+        case UserActionTypes.CREATE_USER_SUCCESS: {
+            return {...state,
+                userData:  [...state.userData, action.payload],
+            }
+        }
+
+        case UserActionTypes.CREATE_USER_ERROR: {
+            return {...state,
+                error: action.payload
+            }
+        }
+
+        case UserActionTypes.EDIT_USER_SUCCESS: {
+            const id = action.payload._id
+            const oldUserData = [...state.userData]
+            const userToUpdate = oldUserData.findIndex(data => data._id === id)
+            oldUserData[userToUpdate] = action.payload;
+
+            return {
+                ...state,
+                userData: oldUserData,
+            }
+        }
+
+        case UserActionTypes.EDIT_USER_ERROR: {
+            return {...state,
+                loading: false,
+                error: action.payload
+            }
+        }
+
+        case UserActionTypes.DELETE_USER_SUCCESS: {
+            const userId = action.payload
+            return {
+                ...state,
+                userData: state.userData.filter(ud => ud._id !== userId),
+            }
+        }
+
+        case UserActionTypes.DELETE_USER_ERROR: {
+            return {...state,
+                loading: false,
+                error: action.payload
+            }
+        }
+
         default: {}
     }
     return state
