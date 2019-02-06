@@ -24,13 +24,14 @@ export default function reducer(state={
     switch(action.type) {
         // Currently fetching projects
         case ProjectActionTypes.FETCHING_PROJECTS: {
-                return {...state,
+            return {...state,
                 fetching: true
             }
         }
 
-        // If fetchinig projects from DB was a success
+        // If fetching projects from DB was a success
         case ProjectActionTypes.FETCH_PROJECTS_SUCCESS: {
+            // AM - mlab won't return price... why?
             return {...state,
                 fetching: false,
                 fetched: true,

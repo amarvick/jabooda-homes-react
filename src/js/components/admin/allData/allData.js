@@ -11,8 +11,8 @@ import DataBox from './dataBox'
 class AllData extends Component {
   // Displaying all editable data
   render(props) {
-    console.log(this.props.staffData)
-    console.log(this.props.staffDataKeys)
+    // console.log(this.props.projectData)
+    // console.log(this.props.projectDataKeys)
 
     return (
       <div>

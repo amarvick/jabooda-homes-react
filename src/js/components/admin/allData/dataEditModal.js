@@ -44,7 +44,6 @@ class DataEditModal extends Component {
         var noDataDisplayed
         var editOrRemoveDataButtons
 
-
         if (data === null || data === undefined || data.length === 0) {
             noDataDisplayed = (
                 <p>
@@ -79,7 +78,7 @@ class DataEditModal extends Component {
                         for (var i = 0; i < Object.keys(d).length; i++) {
                             if (allKeys.includes(Object.keys(d)[i])) {
                                 allKeyValues.push(Object.keys(d)[i] + ': ' + Object.values(d)[i])
-                            }
+                            } 
                         }    
                         return (
                             <div onClick={() => this.updateIndex(index)}  className="dataEntry">
