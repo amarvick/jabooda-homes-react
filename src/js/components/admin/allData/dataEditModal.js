@@ -21,6 +21,8 @@ class DataEditModal extends Component {
             index: 0,
             addDataModalOpened: false
         }
+
+        this.closeAddDataModal = this.closeAddDataModal.bind(this)
     }
 
     updateIndex(i) {
@@ -36,8 +38,30 @@ class DataEditModal extends Component {
     }
 
     render(props) {
-        var data = this.props.data
+        var data = this.props.data || []
         var allKeys = this.props.allKeys
+        var dataType = this.props.dataType
+        var noDataDisplayed
+        var editOrRemoveDataButtons
+
+
+        if (data === null || data === undefined || data.length === 0) {
+            noDataDisplayed = (
+                <p>
+                    No data displayed. Click on the 'Add Data' button to add data.
+                </p>
+            )
+        } else {
+            editOrRemoveDataButtons = (
+                <h1> 
+                    <DataToEdit 
+                        data={ data[this.state.index] }
+                        dataType={dataType}
+                        allKeys={allKeys}
+                    />
+                </h1>
+            )
+        }
 
         return (
             <Grid container spacing={24} className="allEditableData" style={this.props.style}>
@@ -46,7 +70,9 @@ class DataEditModal extends Component {
                     class="fa fa-times-circle fa-2x" />
 
                 <Grid item xs={12} sm={3} className="dataContainer">
-                    Here is the data in the modal: <br/>        
+                    Here is the data in the modal: <br/>   
+
+                    { noDataDisplayed }     
 
                     { data.map((d, index) => {
                         var allKeyValues = []
@@ -72,12 +98,11 @@ class DataEditModal extends Component {
                         )
                     }) }
 
+
                     <Button onClick={() => this.openAddDataModal()}>
-                        Add { this.props.dataType }
+                        Add { dataType }
                     </Button>
-
                 </Grid>
-
 
                 <Modal
                     aria-labelledby="simple-modal-title"
@@ -85,21 +110,16 @@ class DataEditModal extends Component {
                     open={this.state.addDataModalOpened}
                     onClose={this.closeAddDataModal}
                     disableBackdropClick={true}
-                    dataType={this.props.dataType}
                 >
                     <AddDataModal
                         closeAddDataModal={this.closeAddDataModal} 
-                        keys={allKeys}/>
+                        keys={allKeys}
+                        dataType={dataType}
+                    />
                 </Modal>
 
                 <Grid item xs={12} sm={9} id="mainProjectToEdit">
-                    <h1> 
-                        <DataToEdit 
-                            data={ data[this.state.index] }
-                            dataType={ this.props.dataType }
-                            allKeys={allKeys}
-                        />
-                    </h1>
+                    { editOrRemoveDataButtons }
                 </Grid>
             </Grid>
         )

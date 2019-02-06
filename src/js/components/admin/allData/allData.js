@@ -11,6 +11,9 @@ import DataBox from './dataBox'
 class AllData extends Component {
   // Displaying all editable data
   render(props) {
+    console.log(this.props.staffData)
+    console.log(this.props.staffDataKeys)
+
     return (
       <div>
         <h2>
@@ -28,20 +31,20 @@ class AllData extends Component {
         
         <DataBox 
           className="careerData"
-          dataType="Careers"
+          dataType="Career"
           data={this.props.careerData}
           allKeys={this.props.careerDataKeys}
         />
 
         <DataBox 
           className="projectData"
-          dataType="Projects"
+          dataType="Project"
           data={this.props.projectData}
           allKeys={this.props.projectDataKeys}/>
         
         <DataBox 
           className="userData"
-          dataType="Users"
+          dataType="User"
           data={this.props.userData}
           allKeys={this.props.userDataKeys}/> 
       </div>
