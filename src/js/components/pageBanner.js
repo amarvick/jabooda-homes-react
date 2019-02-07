@@ -3,7 +3,7 @@
 
 import React, { Component } from 'react'
 
-import '../../stylesheets/pageBanner.scss'
+import './pageBanner.scss'
 
 class PageBanner extends Component {
   constructor(props) {

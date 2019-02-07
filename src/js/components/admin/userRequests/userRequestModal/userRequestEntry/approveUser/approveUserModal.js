@@ -5,7 +5,7 @@ import React, { Component, StartupActions } from 'react'
 import { connect } from 'react-redux';
 
 // Design
-import '../../../../stylesheets/approveUserModal.scss'
+import './approveUserModal.scss'
 import Button from '@material-ui/core/Button'
 
 // Actions

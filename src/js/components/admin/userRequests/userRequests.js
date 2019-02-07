@@ -4,7 +4,7 @@
 import React, { Component, StartupActions } from 'react'
 import { connect } from 'react-redux'
 
-import '../../../../stylesheets/userRequests.scss'
+import './userRequests.scss'
 import Button from '@material-ui/core/Button'
 import Modal from '@material-ui/core/Modal'
 

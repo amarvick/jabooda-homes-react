@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from "prop-types"
 
-import '../../../stylesheets/about.scss'
+import './admin.scss'
 import Modal from '@material-ui/core/Modal'
 
 import AllData from './allData/allData'

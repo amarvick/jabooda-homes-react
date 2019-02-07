@@ -1,7 +1,7 @@
 import React, { Component, StartupActions } from 'react'
 import { connect } from 'react-redux' 
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
-import './stylesheets/App.scss'
+import './App.scss'
 import jwt_decode from "jwt-decode"
 import setAuthToken from "./utils/setAuthToken"
 import { setCurrentUser, logoutUser } from "./js/actions/authActions"

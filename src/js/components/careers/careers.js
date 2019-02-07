@@ -4,7 +4,7 @@
 import React, { Component, StartupActions } from 'react'
 import { connect } from 'react-redux'
 
-import '../../../stylesheets/careers.scss'
+import './careers.scss'
 import Grid from '@material-ui/core/Grid';
 
 import CareerTemplate from './careerTemplate'

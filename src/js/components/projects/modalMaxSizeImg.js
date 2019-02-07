@@ -5,7 +5,7 @@ import React, { Component, StartupActions } from 'react'
 import { connect } from 'react-redux';
 
 // Design
-import '../../../stylesheets/modalMaxSizeImg.scss'
+import './modalMaxSizeImg.scss'
 
 // Actions
 // import { seeLeftImage, seeRightImage } from '../../actions/projectActions'

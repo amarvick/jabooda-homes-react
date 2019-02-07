@@ -5,7 +5,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 
 // Design
-import '../../../stylesheets/home.scss'
+import './home.scss'
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 

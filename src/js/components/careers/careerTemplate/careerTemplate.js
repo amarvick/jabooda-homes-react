@@ -3,7 +3,7 @@
 
 import React, { Component } from 'react'
 
-import '../../../stylesheets/careerTemplate.scss'
+import './careerTemplate.scss'
 import AnimateHeight from 'react-animate-height';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid'

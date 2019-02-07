@@ -5,7 +5,7 @@ import React, { Component, StartupActions } from 'react'
 import { connect } from 'react-redux';
 
 // Design
-import '../../../stylesheets/careerModalApply.scss'
+import './careerModalApply.scss'
 import Input from '@material-ui/core/Input';
 import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';

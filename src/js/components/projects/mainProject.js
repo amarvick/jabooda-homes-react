@@ -5,7 +5,7 @@
 import React, { Component, StartupActions } from 'react'
 import { connect } from 'react-redux'
 
-import '../../../stylesheets/mainProject.scss'
+import './mainProject.scss'
 import { withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal'
 

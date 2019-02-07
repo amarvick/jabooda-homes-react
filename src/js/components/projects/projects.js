@@ -4,7 +4,7 @@
 import React, { Component, StartupActions } from 'react'
 import { connect } from 'react-redux'
 
-import '../../../stylesheets/projects.scss'
+import './projects.scss'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import Grid from '@material-ui/core/Grid'
