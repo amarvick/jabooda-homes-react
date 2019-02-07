@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 // import DOMPurify from 'dompurify' AM - remember to uninstall
 
 // Design
-import '../../../../stylesheets/dataEditModal.scss'
+import '../../../../stylesheets/dataToEdit.scss'
 import Input from '@material-ui/core/Input'
 import FormLabel from '@material-ui/core/FormLabel'
 import Button from '@material-ui/core/Button'
@@ -42,18 +42,94 @@ class DataToEdit extends Component {
         this.state = nextProps.data
     }
 
+    // AM - this works, but may not be the preferred solution. Look back later
+    addListElement(e, index, dataType) {
+        var newData = prompt("Enter a piece of data here for " + dataType)
+        if (newData !== '' && newData !== null && newData !== undefined) {
+            var stateKeys = Object.keys(this.state)
+            var stateValueToModify
+            var newValues
+
+            for (var i = 0; i < stateKeys.length; i++) {
+                if (dataType === String(stateKeys[i])) {
+                    newValues = Object.values(this.state)[i].push(newData)
+                    this.setState({
+                        [e.target.name]: newValues
+                    })
+                }
+            }
+        }
+    }
+    
+    // If an element is coming from a list, this will update
+    handleListElement(e, index, dataType, addEditOrDelete) {
+        var newData
+        var stateKeys = Object.keys(this.state)
+        var stateValueToModify
+        var newValues
+
+        // May be a better way to get the key value instead of looping through?
+        for (var i = 0; i < stateKeys.length; i++) {
+            if (dataType === String(stateKeys[i])) {
+                newValues = Object.values(this.state)[i]
+            }
+        }
+        
+        if (addEditOrDelete === 'ADD') {
+            newData = prompt("Enter a piece of data here for " + dataType)
+            newValues.push(newData)
+        } else if (addEditOrDelete === 'EDIT') {
+            newValues[index] = e.target.value // AM - this may be a lot of code to process all at once.
+        } else if (addEditOrDelete === 'DELETE') {
+            newValues.splice(index, 1)
+        }
+
+        this.setState({
+            [e.target.name]: newValues
+        })
+    }
+
     render(props) {
         var data = this.state || []
         var dataType = this.props.dataType
         var allKeys = this.props.allKeys
 
+        // AM - when clicking cancel, it proceeds anyway...
         return (
             <form>
                 { Object.keys(data).map((k, index) => {
-                    if (k !== '_id' && k !== 'id') {
-                        if (allKeys.includes(Object.keys(data)[index])) { // AM - this can be improved...
-                            console.log(allKeys)
-                            console.log(Object.keys(data)[index])
+                    if (allKeys.includes(Object.keys(data)[index])) { // AM - this can be improved...
+                        if (Array.isArray(Object.values(data)[index])) {
+                            return (
+                                <FormLabel>
+                                    <span>{k}: </span>
+                                    <ul 
+                                        name={k} 
+                                        className="dataListElementEdit">
+                                        { Object.values(data)[index].map((lv, i) => {
+                                            return (
+                                                <li>
+                                                    <span 
+                                                        id="removeListElement" 
+                                                        class="fa fa-times-circle fa-2x"
+                                                        onClick={(e) => this.handleListElement(e, i, k, 'DELETE')}/> 
+                                                    <Input
+                                                        type="text"
+                                                        value={ lv } 
+                                                        onChange={(e) => this.handleListElement(e, i, k, 'EDIT')}
+                                                    />
+                                                </li>
+                                            )
+                                        })}
+                                    </ul><br/>
+
+                                    <Button onClick={(e) => this.addListElement(e, null, k, 'ADD')}>
+                                        Add {k}
+                                    </Button>
+                                    <br/><br/>
+                                </FormLabel>
+                            )
+                        } else {
                             return (
                                 <FormLabel>
                                     <span>{k}: </span>
@@ -66,19 +142,6 @@ class DataToEdit extends Component {
                                 </FormLabel>
                             )
                         }
-                    } else {
-                        var idVal
-                        if (k === '_id') {
-                            idVal = data._id
-                        } else {
-                            idVal = data.id
-                        }
-                        return (
-                            <FormLabel>
-                                <span>{k}: {idVal}</span>
-                                <br/><br/>
-                            </FormLabel>
-                        )
                     }
                 })}
 
