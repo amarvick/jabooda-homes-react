@@ -3,7 +3,7 @@
 
 import React, { Component } from 'react'
 
-import '../../stylesheets/footer.scss'
+import './footer.scss'
 import Modal from '@material-ui/core/Modal'
 
 import MenuLink from './menuLink'

@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import UserRequestEntry from './userRequestEntry'
 
 // Design
-import '../../../../stylesheets/userRequestsModal.scss'
+import './userRequestsModal.scss'
 
 class UserRequestsModal extends Component {
     constructor(props) {

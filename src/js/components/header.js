@@ -4,7 +4,7 @@
 import React, { Component } from 'react'
 
 // Design + React Material UI
-import '../../stylesheets/header.scss'
+import './header.scss'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import MenuLink from './menuLink'

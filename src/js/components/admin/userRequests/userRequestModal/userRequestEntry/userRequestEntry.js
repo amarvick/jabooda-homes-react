@@ -8,7 +8,7 @@ import ApproveUserModal from './approveUserModal'
 import RejectUserModal from './rejectUserModal'
 
 // Design
-import '../../../../stylesheets/userRequestsModal.scss'
+import './userRequestEntry.scss'
 import FormLabel from '@material-ui/core/FormLabel'
 import Button from '@material-ui/core/Button'
 import Modal from '@material-ui/core/Modal'

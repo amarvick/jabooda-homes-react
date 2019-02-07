@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 import classnames from 'classnames'
 
 // Design
-import '../../stylesheets/adminRegisterModal.scss'
+import './adminRegisterModal.scss'
 import Input from '@material-ui/core/Input';
 import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';

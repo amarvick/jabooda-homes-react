@@ -5,7 +5,7 @@ import React, { Component, StartupActions } from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom';
 
-import '../../../stylesheets/paperContainer.scss'
+import './paperContainer.scss'
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
