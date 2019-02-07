@@ -4,7 +4,7 @@
 import React, { Component, StartupActions } from 'react'
 import { connect } from 'react-redux'
 
-import '../../../../stylesheets/allData.scss'
+import './allData.scss'
 
 import DataBox from './dataBox'
 

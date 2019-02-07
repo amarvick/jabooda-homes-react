@@ -4,7 +4,7 @@
 import React, { Component, StartupActions } from 'react'
 import { connect } from 'react-redux'
 
-import '../../../stylesheets/about.scss'
+import './about.scss'
 
 import PageBanner from '../pageBanner'
 import LoadingScreen from '../loadingScreen'
