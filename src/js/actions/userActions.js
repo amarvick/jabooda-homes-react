@@ -2,6 +2,7 @@
  * Description: Retrieves all users                                         */
 
 import UserActionTypes from '../actiontypes/userActionTypes'
+import { editData, deleteData } from './crudActions'
 import axios from 'axios'
 
 export function loadUserData() {
@@ -32,36 +33,15 @@ export function loadUserData() {
 // AM - just forward this to 'editUser' since that is what you are doing essentially? Make naming conventions good
 export function approveUser(theUser) {
     return async function action(dispatch) {
-        // const updateNewUser = await axios.post('http://localhost:3001/api/updateUserData', theUser)
-
-        // .then(function(response) {
-        //     console.log(response)
-        //     // Redirect user to home page notifying them that the user has been approved
-        // })
-
-        // .catch(function(error) {
-        //     console.log(error)
-        // })
-
-        // dispatch(editUser(theUser))
+        theUser.pending = 'False'
+        dispatch(editData(theUser, 'User'))
     }
 }
 
 // AM - forward this to deleteUser function. Keep this for naming convention sake
 export function rejectUser(theUser) {
     return async function action(dispatch) {
-        // const deleteNewUser = await axios.post('/api/deleteUserData', theUser)
-
-        // .then(function(response) {
-        //     console.log(response)
-        //     // Redirect user to home page notifying them that the user has been deleted
-        // })
-
-        // .catch(function(error) {
-        //     console.log(error)
-        // })
-
-        // dispatch(deleteUser(theUser._id)) // or 'id'. test this
+        dispatch(deleteData(theUser._id, 'User')) // or 'id'. test this
     }
 }
 
