@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 // import DOMPurify from 'dompurify' AM - remember to uninstall
 
 // Design
-import '../../../../stylesheets/dataToEdit.scss'
+import './dataToEdit.scss'
 import Input from '@material-ui/core/Input'
 import FormLabel from '@material-ui/core/FormLabel'
 import Button from '@material-ui/core/Button'

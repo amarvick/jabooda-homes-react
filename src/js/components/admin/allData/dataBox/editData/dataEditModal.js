@@ -5,7 +5,7 @@ import React, { Component, StartupActions } from 'react'
 import { connect } from 'react-redux';
 
 // Design
-import '../../../../stylesheets/dataEditModal.scss'
+import './dataEditModal.scss'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import Modal from '@material-ui/core/Modal'
