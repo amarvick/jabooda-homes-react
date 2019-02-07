@@ -61,7 +61,7 @@ class DataToEdit extends Component {
         }
     }
     
-    // If an element is coming from a list, this will update
+    // If an element is coming from a list, this will update. AM - this needs work. I don't think some of this code is needed, and it doesn't work for Project images.
     handleListElement(e, index, dataType, addEditOrDelete) {
         var newData
         var stateKeys = Object.keys(this.state)
@@ -75,6 +75,9 @@ class DataToEdit extends Component {
             }
         }
         
+        alert(dataType)
+        alert(newValues)
+
         if (addEditOrDelete === 'ADD') {
             newData = prompt("Enter a piece of data here for " + dataType)
             newValues.push(newData)
@@ -84,9 +87,14 @@ class DataToEdit extends Component {
             newValues.splice(index, 1)
         }
 
+        alert(newValues)
+        console.log(e)
+
         this.setState({
             [e.target.name]: newValues
         })
+
+        console.log(this.state)
     }
 
     render(props) {
@@ -100,36 +108,70 @@ class DataToEdit extends Component {
                 { Object.keys(data).map((k, index) => {
                     if (allKeys.includes(Object.keys(data)[index])) { // AM - this can be improved...
                         if (Array.isArray(Object.values(data)[index])) {
-                            return (
-                                <FormLabel>
-                                    <span>{k}: </span>
-                                    <ul 
-                                        name={k} 
-                                        className="dataListElementEdit">
-                                        { Object.values(data)[index].map((lv, i) => {
-                                            return (
-                                                <li>
-                                                    <span 
-                                                        id="removeListElement" 
-                                                        class="fa fa-times-circle fa-2x"
-                                                        onClick={(e) => this.handleListElement(e, i, k, 'DELETE')}/> 
-                                                    <Input
-                                                        type="text"
-                                                        value={ lv } 
-                                                        onChange={(e) => this.handleListElement(e, i, k, 'EDIT')}
-                                                    />
-                                                </li>
-                                            )
-                                        })}
-                                    </ul><br/>
+                            if (k.includes('image')) {
+                                return (
+                                    <FormLabel>
+                                        <span>{k}: </span>
+                                        <ul 
+                                            name={k} 
+                                            className="dataListElementEdit">
+                                            { Object.values(data)[index].map((lv, i) => {
+                                                return (
+                                                    <li>
+                                                        <span 
+                                                            className="removeListElement" 
+                                                            class="fa fa-times-circle fa-2x"
+                                                            onClick={(e) => this.handleListElement(e, i, k, 'DELETE')}/> 
+                                                        <Input
+                                                            type="text"
+                                                            value={ lv } 
+                                                            onChange={(e) => this.handleListElement(e, i, k, 'EDIT')}
+                                                        />
+                                                    </li>
+                                                )
+                                            })}
+                                        </ul><br/>
 
-                                    <Button onClick={(e) => this.addListElement(e, null, k, 'ADD')}>
-                                        Add {k}
-                                    </Button>
-                                    <br/><br/>
-                                </FormLabel>
-                            )
-                        } else {
+                                        <Button onClick={(e) => this.addListElement(e, null, k, 'ADD')}>
+                                            Add {k}
+                                        </Button>
+                                        <br/><br/>
+                                    </FormLabel>
+                                )
+                            } else {
+                                return (
+                                    <FormLabel>
+                                        <span>{k}: </span>
+                                        <ul 
+                                            name={k} 
+                                            className="dataListElementEdit">
+                                            { Object.values(data)[index].map((lv, i) => {
+                                                return (
+                                                    <li>
+                                                        <span 
+                                                            className="removeListElement" 
+                                                            class="fa fa-times-circle fa-2x"
+                                                            onClick={(e) => this.handleListElement(e, i, k, 'DELETE')}/> 
+                                                        <Input
+                                                            type="text"
+                                                            value={ lv } 
+                                                            onChange={(e) => this.handleListElement(e, i, k, 'EDIT')}
+                                                        />
+                                                    </li>
+                                                )
+                                            })}
+                                        </ul><br/>
+
+                                        <Button onClick={(e) => this.addListElement(e, null, k, 'ADD')}>
+                                            Add {k}
+                                        </Button>
+                                        <br/><br/>
+                                    </FormLabel>
+                                )
+                            }
+                        } 
+                        
+                        else {
                             return (
                                 <FormLabel>
                                     <span>{k}: </span>
