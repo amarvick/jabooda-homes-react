@@ -19,6 +19,7 @@ export function editData(data, db) {
                 type: linkDPTypes.dispatchTypeSuccess,
                 payload: response.data.update
             })
+            alert('Update successful')
         })
 
         .catch(function(error) {
@@ -26,6 +27,7 @@ export function editData(data, db) {
                 type: linkDPTypes.dispatchTypeError,
                 payload: error
             })
+            alert('Update failed')
         })
     }
 }
@@ -41,6 +43,7 @@ export function deleteData(id, db) {
                 type: linkDPTypes.dispatchTypeSuccess,
                 payload: response.data.id
             })
+            alert('Delete successful')
         })
 
         .catch(function(error) {
@@ -48,6 +51,7 @@ export function deleteData(id, db) {
                 type: linkDPTypes.dispatchTypeError,
                 payload: error
             })
+            alert('Delete Failed')
         })
     }
 }
