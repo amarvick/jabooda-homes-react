@@ -11,7 +11,7 @@ import FormLabel from '@material-ui/core/FormLabel'
 import Button from '@material-ui/core/Button'
 
 // Actions 
-import { createData } from '../../../actions/crudActions'
+import { createData } from '../../../../../actions/crudActions'
 
 class AddDataModal extends Component {
     constructor(props) {
@@ -48,8 +48,12 @@ class AddDataModal extends Component {
 
         return (
             <div id="addDataForm">
+                <h1>
+                    ADD NEW { dataType.toUpperCase() }
+                </h1>
+
                 <span onClick={this.props.closeAddDataModal}
-                    id="exitModal"
+                    id="exitAddDataModal"
                     class="fa fa-times-circle fa-2x" />
                 <form>
                     { allKeys.map((k, index) => { // AM - look in to this as well.. thought this would pass an array

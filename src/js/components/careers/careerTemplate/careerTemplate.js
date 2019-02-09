@@ -10,7 +10,7 @@ import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import Modal from '@material-ui/core/Modal'
 
-import CareerModalApply from './careerModalApply.js'
+import CareerModalApply from './careerModalApply/careerModalApply.js'
 
 function getModalStyle() {
   const top = 50

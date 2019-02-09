@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import './careers.scss'
 import Grid from '@material-ui/core/Grid';
 
-import CareerTemplate from './careerTemplate'
+import CareerTemplate from './careerTemplate/careerTemplate'
 import PageBanner from '../pageBanner'
 import LoadingScreen from '../loadingScreen'
 import ErrorScreen from '../errorScreen'
