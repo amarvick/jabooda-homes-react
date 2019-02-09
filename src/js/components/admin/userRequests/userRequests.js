@@ -8,7 +8,7 @@ import './userRequests.scss'
 import Button from '@material-ui/core/Button'
 import Modal from '@material-ui/core/Modal'
 
-import UserRequestsModal from './userRequestsModal'
+import UserRequestsModal from './userRequestModal/userRequestsModal'
 
 function getModalStyle() {
     // const top = 50

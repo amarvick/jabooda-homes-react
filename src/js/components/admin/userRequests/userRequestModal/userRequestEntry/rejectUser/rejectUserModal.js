@@ -9,7 +9,7 @@ import './rejectUserModal.scss'
 import Button from '@material-ui/core/Button'
 
 // Actions
-import { rejectUser } from '../../../actions/userActions'
+import { rejectUser } from '../../../../../../actions/userActions'
 
 class RejectUserModal extends Component {
     render(props) { 

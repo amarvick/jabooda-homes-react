@@ -1,3 +1,23 @@
-.dataListElementEdit li {
+$color-primary-gray: #515d2b;
+$color-jabooda-blue: #01427c;
+
+.dataListElementEdit {
+
+  li {
     display: block;
+ 
+    div {
+        width: 95%;
+        input {
+            width: 100%;
+        }
+    }
+  }
+}
+
+#addToListButton {
+    position: relative;
+    top: -50px;
+    background-color: $color-jabooda-blue;
+    color: white;
 }

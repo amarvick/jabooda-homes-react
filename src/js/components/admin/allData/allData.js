@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 
 import './allData.scss'
 
-import DataBox from './dataBox'
+import DataBox from './dataBox/dataBox'
 
 class AllData extends Component {
   // Displaying all editable data

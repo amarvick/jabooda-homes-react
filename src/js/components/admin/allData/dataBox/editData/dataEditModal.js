@@ -10,7 +10,7 @@ import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import Modal from '@material-ui/core/Modal'
 
-import AddDataModal from './addDataModal'
+import AddDataModal from '../addData/addDataModal'
 import DataToEdit from './dataToEdit'
 
 class DataEditModal extends Component {
@@ -64,11 +64,7 @@ class DataEditModal extends Component {
 
         return (
             <Grid container spacing={24} className="allEditableData" style={this.props.style}>
-                <span onClick={this.props.closeDataModal}
-                    id="exitModal"
-                    class="fa fa-times-circle fa-2x" />
-
-                <Grid item xs={12} sm={3} className="dataContainer">
+                <Grid item md={12} lg={3} className="dataContainer">
                     Here is the data in the modal: <br/>   
 
                     { noDataDisplayed }     
@@ -117,7 +113,10 @@ class DataEditModal extends Component {
                     />
                 </Modal>
 
-                <Grid item xs={12} sm={9} id="mainProjectToEdit">
+                <Grid item md={12} lg={9} className="dataContainer" id="mainProjectToEdit">
+                    <span onClick={this.props.closeDataModal}
+                        id="exitModal"
+                        class="fa fa-times-circle fa-2x" />
                     { editOrRemoveDataButtons }
                 </Grid>
             </Grid>

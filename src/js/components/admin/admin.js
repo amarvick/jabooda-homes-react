@@ -10,7 +10,7 @@ import './admin.scss'
 import Modal from '@material-ui/core/Modal'
 
 import AllData from './allData/allData'
-import ChangePassModal from './changePassModal'
+import ChangePassModal from './changePassword/changePassModal'
 import UserRequests from './userRequests/userRequests'
 
 import { logoutUser } from "../../actions/authActions"

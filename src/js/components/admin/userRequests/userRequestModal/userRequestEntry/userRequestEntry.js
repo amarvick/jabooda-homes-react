@@ -4,8 +4,8 @@
 import React, { Component, StartupActions } from 'react'
 import { connect } from 'react-redux';
 
-import ApproveUserModal from './approveUserModal'
-import RejectUserModal from './rejectUserModal'
+import ApproveUserModal from './approveUser/approveUserModal'
+import RejectUserModal from './rejectUser/rejectUserModal'
 
 // Design
 import './userRequestEntry.scss'

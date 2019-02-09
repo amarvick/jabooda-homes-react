@@ -4,7 +4,7 @@
 import React, { Component, StartupActions } from 'react'
 import { connect } from 'react-redux'
 
-import UserRequestEntry from './userRequestEntry'
+import UserRequestEntry from './userRequestEntry/userRequestEntry'
 
 // Design
 import './userRequestsModal.scss'

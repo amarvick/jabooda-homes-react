@@ -11,9 +11,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
 
 // Actions
-import { handleSubmit } from '../../actions/careerActions'
-
-// import CareerData from '../../../data/careers.json'
+import { handleSubmit } from '../../../../actions/careerActions'
 
 class CareerModalApply extends Component {
   constructor(props) {

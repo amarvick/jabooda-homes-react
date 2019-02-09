@@ -4,22 +4,11 @@
 import React, { Component, StartupActions } from 'react'
 import { connect } from 'react-redux'
 
-// import '../../../../stylesheets/userRequests.scss' AM - SCSS
+import './dataBox.scss'
 import Modal from '@material-ui/core/Modal'
 
-import DataEditModal from './dataEditModal'
+import DataEditModal from './editData/dataEditModal'
 
-
-function getModalStyle() {
-    // const top = 50
-    // const left = 50
-
-    // return {
-    //     top: `${top}%`,
-    //     left: `${left}%`,
-    //     transform: `translate(-${top}%, -${left}%)`,
-    // };
-}
 
 const styles = theme => ({
     paper: {
@@ -59,8 +48,10 @@ class DataBox extends Component {
         var allKeys = this.props.allKeys
 
         return (
-            <div>
-                <p onClick={this.showDataModal}>Data for: {dataType}</p> <br/>
+            <div className="dataBox"> 
+                <p onClick={this.showDataModal}>
+                    {dataType} Data
+                </p> <br/>
 
                 <Modal
                     aria-labelledby="simple-modal-title"
@@ -70,7 +61,7 @@ class DataBox extends Component {
                     disableBackdropClick={true}
                 >
                     <DataEditModal
-                        style={getModalStyle()}
+                        className="dataEditModal"
                         data={theData}
                         dataType={dataType}
                         jobTitle={this.props.header}

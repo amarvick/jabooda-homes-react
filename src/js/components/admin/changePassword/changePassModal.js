@@ -10,7 +10,7 @@ import Input from '@material-ui/core/Input'
 import FormLabel from '@material-ui/core/FormLabel'
 import Button from '@material-ui/core/Button'
 
-import { updatePassword } from '../../actions/userActions'
+import { updatePassword } from '../../../actions/userActions'
 
 class ChangePassModal extends Component {
     constructor(props) {

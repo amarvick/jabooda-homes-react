@@ -12,7 +12,7 @@ import FormLabel from '@material-ui/core/FormLabel'
 import Button from '@material-ui/core/Button'
 
 // Actions AM - will want to get edit data from users, staff, etc... hybrid actions?
-import { editData, deleteData } from '../../../actions/crudActions'
+import { editData, deleteData } from '../../../../../actions/crudActions'
 
 class DataToEdit extends Component {
     constructor(props) {
@@ -135,7 +135,7 @@ class DataToEdit extends Component {
                                         <Button onClick={(e) => this.addListElement(e, null, k, 'ADD')}>
                                             Add {k}
                                         </Button>
-                                        <br/><br/>
+                                        <br/>
                                     </FormLabel>
                                 )
                             } else {
@@ -148,24 +148,29 @@ class DataToEdit extends Component {
                                             { Object.values(data)[index].map((lv, i) => {
                                                 return (
                                                     <li>
-                                                        <span 
-                                                            className="removeListElement" 
-                                                            class="fa fa-times-circle fa-2x"
-                                                            onClick={(e) => this.handleListElement(e, i, k, 'DELETE')}/> 
-                                                        <Input
-                                                            type="text"
-                                                            value={ lv } 
-                                                            onChange={(e) => this.handleListElement(e, i, k, 'EDIT')}
-                                                        />
+    
+                                                        <div>
+                                                            <span 
+                                                                className="removeListElement" 
+                                                                class="fa fa-times-circle fa-2x"
+                                                                onClick={(e) => this.handleListElement(e, i, k, 'DELETE')}/> 
+                                                            <Input
+                                                                className="dataListElementInput"
+                                                                type="text"
+                                                                value={ lv } 
+                                                                onChange={(e) => this.handleListElement(e, i, k, 'EDIT')}
+                                                            />
+                                                        </div>
+
                                                     </li>
                                                 )
                                             })}
                                         </ul><br/>
 
-                                        <Button onClick={(e) => this.addListElement(e, null, k, 'ADD')}>
+                                        <Button id="addToListButton" onClick={(e) => this.addListElement(e, null, k, 'ADD')}>
                                             Add {k}
                                         </Button>
-                                        <br/><br/>
+                                        <br/>
                                     </FormLabel>
                                 )
                             }

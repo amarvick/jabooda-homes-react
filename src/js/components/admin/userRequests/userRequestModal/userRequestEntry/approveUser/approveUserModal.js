@@ -9,7 +9,7 @@ import './approveUserModal.scss'
 import Button from '@material-ui/core/Button'
 
 // Actions
-import { approveUser } from '../../../actions/userActions'
+import { approveUser } from '../../../../../../actions/userActions'
 
 class ApproveUserModal extends Component {
     render(props) {
