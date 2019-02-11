@@ -19,27 +19,39 @@ class ChangePassModal extends Component {
         this.state = {
             oldPassword: '',
             newPassword: '',
-            confirmPassword: '',
-            errors: ''
+            confirmPassword: ''
+            // errors: ''
         }
+    }
+
+    handleChange = e => {
+        this.setState({ 
+            [e.target.name]: e.target.value 
+        });
     }
 
     onSubmit = e => {
         e.preventDefault();
 
         if (this.state.newPassword === this.state.confirmPassword) {
-
             const userData = {
                 id: this.props.id,
-                oldPassword: this.state.oldPassword,
-                newPassword: this.state.newPassword,
-                confirmPassword: this.state.confirmPassword
+                password: this.state.newPassword
             }
 
-            this.props.updatePassword(userData)
+            this.props.dispatch(updatePassword(userData))
         } else {
             alert('New Passwords do not match')
         }
+    }
+
+    generateUserCredentialsForUpdate(state) {
+        var newUser = {
+            ...state,
+            _id: this.props.userId
+        }
+        console.log(newUser)
+        this.props.dispatch(updatePassword(newUser))
     }
 
     render(props) {
@@ -57,7 +69,7 @@ class ChangePassModal extends Component {
                             type="password"
                             name="oldPassword"
                             id="oldPassword"
-                            onChange={this.onChange}
+                            onChange={this.handleChange}
                             value={this.state.oldPassword}
                             autoFocus="true"
                             required />
@@ -71,7 +83,7 @@ class ChangePassModal extends Component {
                             type="password"
                             name="newPassword"
                             id="newPassword"
-                            onChange={this.onChange}
+                            onChange={this.handleChange}
                             value={this.state.newPassword}
                             required />
                     </FormLabel>
@@ -84,14 +96,14 @@ class ChangePassModal extends Component {
                             type="password"
                             name="confirmPassword"
                             id="confirmPassword"
-                            onChange={this.onChange}
+                            onChange={this.handleChange}
                             value={this.state.confirmPassword}
                             required />
                     </FormLabel>
 
                     <br/><br/>
 
-                    <Button type="submit" onClick={this.updatePassword}>Update Password</Button>
+                    <Button type="submit">Update Password</Button>
                 </form>
             </div>
         )
@@ -105,5 +117,14 @@ const mapDispatchToProps = (dispatch) => ({
     startup: () => dispatch(StartupActions.startup())
 })
 
+// Maps the state in to props (for displaying on the front end)
+const mapStateToProps = (state) => ({
+    state: state,
+    error: state.career.error,
+    loading: state.career.loading,
+    loggedIn: state.auth.isAuthenticated,
+    userId: state.auth.user.id
+  })
 
-export default connect(mapDispatchToProps)(ChangePassModal)
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChangePassModal)

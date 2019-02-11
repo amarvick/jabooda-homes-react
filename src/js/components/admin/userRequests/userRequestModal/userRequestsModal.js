@@ -22,7 +22,9 @@ class UserRequestsModal extends Component {
                     id="exitModal"
                     className="fa fa-times-circle fa-2x" />
 
-                Here are all the pending users
+                <h3>
+                    Here are all the pending users
+                </h3>
 
                 <ul id="userRequestEntries">
                     {pendingUsers.map(ud => {

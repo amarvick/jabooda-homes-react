@@ -77,7 +77,7 @@ class UserRequestEntry extends Component {
     render(props) {
         console.log(this.props)
         return (
-            <div>
+            <div id="userRequestForm">
                 <hr />
                 <form>
                     <FormLabel>

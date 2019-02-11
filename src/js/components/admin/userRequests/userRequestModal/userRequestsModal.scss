@@ -1,5 +1,15 @@
 .allPendingUsers {
     background-color: white;
+    background-color: white;
+    width: 75% !important;
+    height: 60%;
+    margin: auto !important;
+    padding: 30px !important;
+
+    position: relative;
+    top: 10%;
+
+    overflow-y: scroll;
 }
 
 .fa-pencil {

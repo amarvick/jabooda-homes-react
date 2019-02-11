@@ -47,16 +47,21 @@ export function rejectUser(theUser) {
 
 export function updatePassword(theUser) {
     return async function action(dispatch) {
-
-        const updateUserPassword = await axios.post('/api/changeUserData', theUser)
-
+        axios.post('http://localhost:3001/api/users/changePassword', theUser)
         .then(function(response) {
-            console.log(response)
-            // Redirect user to home page notifying them that the user has been deleted
+            dispatch({
+                type: UserActionTypes.EDIT_USER_SUCCESS,
+                payload: response.data.update
+            })
+            alert('Update successful')
         })
 
         .catch(function(error) {
-            console.log(error)
+            dispatch({
+                type: UserActionTypes.EDIT_USER_ERROR,
+                payload: error
+            })
+            alert('Update failed')
         })
     }
 }

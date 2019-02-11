@@ -12,7 +12,7 @@ import FormLabel from '@material-ui/core/FormLabel'
 import Button from '@material-ui/core/Button'
 
 // Actions AM - will want to get edit data from users, staff, etc... hybrid actions?
-import { editData, deleteData } from '../../../../../actions/crudActions'
+import { editData, deleteData } from '../../../../../../actions/crudActions'
 
 class DataToEdit extends Component {
     constructor(props) {
@@ -94,7 +94,6 @@ class DataToEdit extends Component {
         var dataType = this.props.dataType
         var allKeys = this.props.allKeys
 
-        // AM - when clicking cancel, it proceeds anyway...
         return (
             <form>
                 { Object.keys(data).map((k, index) => {
@@ -169,6 +168,20 @@ class DataToEdit extends Component {
                         } 
                         
                         else {
+                            if (k === 'pending') {
+                                return (
+                                    <FormLabel>
+                                        <span>{k}: </span>
+                                        <select
+                                            name={k}
+                                            value={Object.values(data)[index]}
+                                            onChange={(e) => this.handleChange(e)}>
+                                                <option name="true">true</option>
+                                                <option name="false">false</option>
+                                        </select><br/><br/>
+                                    </FormLabel>
+                                )
+                            }
                             return (
                                 <FormLabel>
                                     <span>{k}: </span>
