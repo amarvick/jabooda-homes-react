@@ -64,7 +64,7 @@ class DataEditModal extends Component {
 
         return (
             <Grid container spacing={24} className="allEditableData" style={this.props.style}>
-                <Grid item md={12} lg={3} className="dataContainer">
+                <Grid item xs={12} sm={3} className="dataContainer">
                     Here is the data in the modal: <br/>   
 
                     { noDataDisplayed }     
@@ -113,12 +113,13 @@ class DataEditModal extends Component {
                     />
                 </Modal>
 
-                <Grid item md={12} lg={9} className="dataContainer" id="mainProjectToEdit">
-                    <span onClick={this.props.closeDataModal}
-                        id="exitModal"
-                        class="fa fa-times-circle fa-2x" />
+                <Grid item xs={12} sm={9} className="dataContainer" id="mainProjectToEdit">
                     { editOrRemoveDataButtons }
                 </Grid>
+
+                <span onClick={this.props.closeDataModal}
+                    id="exitModal"
+                    className="fa fa-times-circle fa-2x" />
             </Grid>
         )
     }

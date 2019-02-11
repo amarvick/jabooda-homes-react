@@ -75,9 +75,6 @@ class DataToEdit extends Component {
             }
         }
         
-        alert(dataType)
-        alert(newValues)
-
         if (addEditOrDelete === 'ADD') {
             newData = prompt("Enter a piece of data here for " + dataType)
             newValues.push(newData)
@@ -87,14 +84,9 @@ class DataToEdit extends Component {
             newValues.splice(index, 1)
         }
 
-        alert(newValues)
-        console.log(e)
-
         this.setState({
             [e.target.name]: newValues
         })
-
-        console.log(this.state)
     }
 
     render(props) {
