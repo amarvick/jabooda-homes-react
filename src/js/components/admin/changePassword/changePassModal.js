@@ -44,11 +44,12 @@ class ChangePassModal extends Component {
 
     render(props) {
         return (
-            <div className="allPendingUsers" style={this.props.style}>
+            <div className="formOne" id="changePassModal" style={this.props.style}>
                 <form noValidate onSubmit={this.onSubmit}>
                     <span onClick={this.props.closeChangePasswordModal}
-                        id="exitModal"
+                        id="exitChangePassModal"
                         class="fa fa-times-circle fa-2x" />
+                    <br/>
 
                     <FormLabel>
                         <span>Old Password*</span><br />

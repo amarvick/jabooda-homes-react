@@ -1,6 +1,7 @@
 .allEditableData {
     background-color: white;
     width: 90% !important;
+    height: 80%;
     margin: auto !important;
 
     position: relative;
@@ -13,10 +14,14 @@
 
 .dataContainer {
     padding: 30px !important;
+    height: 100%;
 }
 
 #exitModal {
-    float: right;
+    position: relative;
+    right: -98%;
+    top: -100%;
+    height: 32.5px;
 }
 
 .dataEntry {

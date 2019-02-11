@@ -47,7 +47,7 @@ class AddDataModal extends Component {
         var dataType = this.props.dataType
 
         return (
-            <div id="addDataForm">
+            <div class="formOne" id="addDataForm">
                 <h1>
                     ADD NEW { dataType.toUpperCase() }
                 </h1>
