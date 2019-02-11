@@ -54,6 +54,59 @@ router.post('/register', (req, res) => {
     })
 })
 
+// Change Password
+router.post('/changePassword', (req, res) => {
+    var newPassword = req.body.password
+
+    // Form Validation
+    // const { errors, isValid } = validateRegisterInput(req.body)
+
+    // if (!isValid) {
+    //     return res.status(400).json(errors)
+    // }
+
+    console.log('Going to find user...')
+
+    // Check if email already exists
+    User.findByIdAndUpdate(req.body.id).then(user => {
+    
+
+        const updatedUser = new User({
+            ...user._doc,
+            // _id: user._doc._id,
+            // pending: user._doc.pending,
+            // email: user._doc.email,
+            password: newPassword
+        })
+
+        // user.password = newPassword
+        // console.log(user)
+
+        // Hash password before saving in database
+        bcrypt.genSalt(10, (err, salt) => {
+            bcrypt.hash(updatedUser.password, salt, (err, hash) => {
+                if (err) throw err
+                updatedUser.password = hash
+                console.log(updatedUser)
+                User
+                    .updateOne(updatedUser)
+                    .then(user => {
+                        console.log('*****************************')
+                        console.log(updatedUser)
+                        console.log('*****************************')
+                    })
+                    .catch(err => {
+                        console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+                        console.log(err)
+                        console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+                    })
+            })
+        })
+    }).catch(error => {
+        console.log(error)
+    })
+})
+
 // Register a user who is in pending status so they are now active
 router.post('/validate', (req, res) => {
 

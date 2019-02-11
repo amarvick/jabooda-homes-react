@@ -6,7 +6,6 @@ import UserActionTypes from '../actiontypes/userActionTypes'
 export default function reducer(state={
     userData: [],
     userDataKeys: [
-        'pending',
         'name',
         'email',
         'adminLevel'

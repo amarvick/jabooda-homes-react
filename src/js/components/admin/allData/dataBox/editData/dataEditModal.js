@@ -11,7 +11,7 @@ import Button from '@material-ui/core/Button'
 import Modal from '@material-ui/core/Modal'
 
 import AddDataModal from '../addData/addDataModal'
-import DataToEdit from './dataToEdit'
+import DataToEdit from './dataToEdit/dataToEdit'
 
 class DataEditModal extends Component {
     constructor(props) {
