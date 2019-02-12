@@ -36,7 +36,8 @@ class ChangePassModal extends Component {
         if (this.state.newPassword === this.state.confirmPassword) {
             const userData = {
                 id: this.props.id,
-                password: this.state.newPassword
+                oldPassword: this.state.oldPassword,
+                newPassword: this.state.newPassword
             }
 
             this.props.dispatch(updatePassword(userData))
