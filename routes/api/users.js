@@ -56,52 +56,46 @@ router.post('/register', (req, res) => {
 
 // Change Password
 router.post('/changePassword', (req, res) => {
-    var newPassword = req.body.password
-
-    // Form Validation
-    // const { errors, isValid } = validateRegisterInput(req.body)
-
-    // if (!isValid) {
-    //     return res.status(400).json(errors)
-    // }
-
-    console.log('Going to find user...')
-
-    // Check if email already exists
+    // Obtains user successfully
     User.findByIdAndUpdate(req.body.id).then(user => {
-    
+        var oldPassword = req.body.oldPassword
+        var newPassword = req.body.newPassword
 
-        const updatedUser = new User({
-            ...user._doc,
-            // _id: user._doc._id,
-            // pending: user._doc.pending,
-            // email: user._doc.email,
-            password: newPassword
+        // Check the password
+        bcrypt.compare(oldPassword, user.password).then(isMatch => {
+            if (isMatch) {
+                // Hash password before saving in database
+                bcrypt.genSalt(10, (err, salt) => {
+                    bcrypt.hash(newPassword, salt, (err, hash) => {
+                        if (err) throw err
+                        newPassword = hash
+                        
+                        User.updateOne(
+                            { "email" : user.email },
+                            { $set: { "password": newPassword }
+                        })
+                            .then(updatedUser => {
+                                console.log('*****************************')
+                                console.log(updatedUser)
+                                console.log('*****************************')
+                            })
+                            .catch(err => {
+                                console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+                                console.log(err)
+                                console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+                            })
+                    })
+                })
+            } else {
+                console.log('Incorrect password!!!!') // AM - need to have this displayed on front end
+                return res
+                    .status(400)
+                    .json({ passwordincorrect: 'Old password is incorrect' })
+            }
+        }).catch(err => {
+            console.log(err)
         })
 
-        // user.password = newPassword
-        // console.log(user)
-
-        // Hash password before saving in database
-        bcrypt.genSalt(10, (err, salt) => {
-            bcrypt.hash(updatedUser.password, salt, (err, hash) => {
-                if (err) throw err
-                updatedUser.password = hash
-                console.log(updatedUser)
-                User
-                    .updateOne(updatedUser)
-                    .then(user => {
-                        console.log('*****************************')
-                        console.log(updatedUser)
-                        console.log('*****************************')
-                    })
-                    .catch(err => {
-                        console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
-                        console.log(err)
-                        console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
-                    })
-            })
-        })
     }).catch(error => {
         console.log(error)
     })
