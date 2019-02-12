@@ -7,6 +7,7 @@ import { combineReducers } from 'redux'
 import auth from './authReducer'
 import career from './careerReducer'
 import contactUs from './contactUsReducer'
+import crud from './crudReducer'
 import error from './errorReducer'
 import project from './projectReducer'
 import staff from './staffReducer'
@@ -16,6 +17,7 @@ export default combineReducers ({
     auth,
     career,
     contactUs,
+    crud,
     error,
     project,
     staff,

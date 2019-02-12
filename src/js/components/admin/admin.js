@@ -12,6 +12,7 @@ import Modal from '@material-ui/core/Modal'
 import AllData from './allData/allData'
 import ChangePassModal from './changePassword/changePassModal'
 import UserRequests from './userRequests/userRequests'
+import LoadingScreen from '../loadingScreen'
 
 import { logoutUser } from "../../actions/authActions"
 
@@ -56,37 +57,43 @@ class Admin extends Component {
       }
     }
 
-    return (
-      <div>
-        <h1>
-          Admin Page
-        </h1>
-        <UserRequests
-          theUserData={allPendingUsers}
-          userDataCount={allPendingUsers.length}
-        />
-        <AllData 
-          userData={userData}
-          careerData={careerData}
-          projectData={projectData}
-          staffData={staffData}
-        />
-        <p onClick={this.openChangePasswordModal}>Change Password</p>
-        <p onClick={this.logOut}>Log out</p>
+    if (this.props.userLoading || this.props.careerLoading || this.props.projectLoading || this.props.staffLoading) {
+      return (
+        <LoadingScreen/>
+      )
+    } else {
+      return (
+        <div>
+          <h1>
+            Admin Page
+          </h1>
+          <UserRequests
+            theUserData={allPendingUsers}
+            userDataCount={allPendingUsers.length}
+          />
+          <AllData 
+            userData={userData}
+            careerData={careerData}
+            projectData={projectData}
+            staffData={staffData}
+          />
+          <p onClick={this.openChangePasswordModal}>Change Password</p>
+          <p onClick={this.logOut}>Log out</p>
 
-        <Modal
-            aria-labelledby="simple-modal-title"
-            aria-describedby="simple-modal-description"
-            open={this.state.displayChangePasswordModal}
-            onClose={this.closeUserRejectModal}
-            disableBackdropClick={true}
-        >
-            <ChangePassModal
-              id={loggedInUserId}
-              closeChangePasswordModal={this.closeChangePasswordModal} />
-        </Modal>
-      </div>
-    )
+          <Modal
+              aria-labelledby="simple-modal-title"
+              aria-describedby="simple-modal-description"
+              open={this.state.displayChangePasswordModal}
+              onClose={this.closeUserRejectModal}
+              disableBackdropClick={true}
+          >
+              <ChangePassModal
+                id={loggedInUserId}
+                closeChangePasswordModal={this.closeChangePasswordModal} />
+          </Modal>
+        </div>
+      )
+    }
   }
 }
 
@@ -100,9 +107,13 @@ Admin.propTypes = {
 const mapStateToProps = (state) => ({
   auth: state.auth,
   errors: state.errors,
+  userLoading: state.user.loading,
   userData: state.user.userData,
+  staffLoading: state.staff.loading,
   staffData: state.staff.staffData,
+  projectLoading: state.project.loading,
   projectData: state.project.projectData,
+  careerLoading: state.career.loading,
   careerData: state.career.careerData
 })
 

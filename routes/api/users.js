@@ -75,14 +75,10 @@ router.post('/changePassword', (req, res) => {
                             { $set: { "password": newPassword }
                         })
                             .then(updatedUser => {
-                                console.log('*****************************')
                                 console.log(updatedUser)
-                                console.log('*****************************')
                             })
                             .catch(err => {
-                                console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
                                 console.log(err)
-                                console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
                             })
                     })
                 })
