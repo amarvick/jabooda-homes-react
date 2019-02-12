@@ -4,8 +4,24 @@ import StaffActionTypes from '../actiontypes/staffActionTypes'
 import CareerActionTypes from '../actiontypes/careerActionTypes'
 import ProjectActionTypes from '../actiontypes/projectActionTypes'
 import UserActionTypes from '../actiontypes/userActionTypes'
+import CrudActionTypes from '../actiontypes/crudActionTypes'
+
+import { loadStaffData } from './staffActions'
+import { loadCareerData } from './careerActions'
+import { loadProjectData } from './projectActions'
+import { loadUserData } from './userActions'
 
 import axios from 'axios'
+
+export function loadAllData() {
+    return function action(dispatch) {
+        dispatch(loadStaffData())
+        dispatch(loadCareerData())
+        dispatch(loadProjectData())
+        dispatch(loadUserData())
+
+    }
+}
 
 export function editData(data, db) {
     return async function action(dispatch) {

@@ -17,20 +17,21 @@ import Careers from './js/components/careers/careers'
 import Contactus from './js/components/contactus/contactus'
 import Admin from './js/components/admin/admin'
 
-import { loadCareerData } from './js/actions/careerActions'
-import { loadProjectData } from './js/actions/projectActions'
-import { loadStaffData } from './js/actions/staffActions'
-import { loadUserData } from './js/actions/userActions'
+import { loadAllData } from './js/actions/crudActions'
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
+
   // Set auth token header auth
   const token = localStorage.jwtToken;
   setAuthToken(token);
+
   // Decode token and get user info and exp
   const decoded = jwt_decode(token);
+
   // Set user and isAuthenticated
   store.dispatch(setCurrentUser(decoded));
+  
   // Check for expired token
   const currentTime = Date.now() / 1000; // to get in milliseconds
   if (decoded.exp < currentTime) {
@@ -52,10 +53,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(loadCareerData())
-    this.props.dispatch(loadProjectData())
-    this.props.dispatch(loadStaffData())
-    this.props.dispatch(loadUserData())
+    this.props.dispatch(loadAllData())
   }
 
   render() {
