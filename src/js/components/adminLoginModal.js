@@ -14,6 +14,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
 
 import { loginUser } from "../actions/authActions";
+import { resetPassword } from '../actions/userActions'
 
 class AdminLoginModal extends Component {
     constructor() {
@@ -23,6 +24,13 @@ class AdminLoginModal extends Component {
             password: "",
             errors: {}
         };
+    }
+
+    resetPassword = e => {
+        e.preventDefault()
+
+        var email = prompt("Please enter your email")
+        this.props.resetPassword(email)
     }
 
     swapRegisterModal(e) {
@@ -118,7 +126,12 @@ class AdminLoginModal extends Component {
 
                     <br/><br/>
 
-                    <Button type="submit">Login</Button>
+                    <Button type="submit">
+                        Login
+                    </Button>
+                    <Button onClick={(e) => this.resetPassword(e)}>
+                        Forgot password?
+                    </Button>
                     <p>Not signed up as an admin? <span onClick={(e) => this.swapRegisterModal(e)}>Register</span></p>
 
                 </form>
@@ -138,4 +151,4 @@ const mapStateToProps = state => ({
     errors: state.errors
 })
 
-export default connect(mapStateToProps, { loginUser })(withRouter(AdminLoginModal))
+export default connect(mapStateToProps, { loginUser, resetPassword })(withRouter(AdminLoginModal))

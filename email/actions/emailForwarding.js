@@ -7,7 +7,6 @@ const createTransport = require('./createTransport')
 
 // New User Registration
 function newUserRegistration(newUser) {
-    console.log('new user')
     let transporter = createTransport()
 
     // Email parameters (AM - make in to separate file?)
@@ -17,8 +16,6 @@ function newUserRegistration(newUser) {
         subject: `Registration request from ${newUser.name}`,
         html: `${newUser.name} needs employee registration. Please click here to verify.`
     }
-
-    console.log(Message)
     
     transporter.sendMail(Message, (error, info) => {
         if (error) {
@@ -33,15 +30,14 @@ function newUserRegistration(newUser) {
 
 // Sending in email via contact form
 function sendEmailContactForm(letter) {
-    console.log('attempting...')
     let transporter = createTransport()
 
     // Email parameters 
     let Message = {
-        from: `${req.body.name} <${letter.email}>`,
+        from: `${letter.name} <${letter.email}>`,
         to: 'amarvick94@gmail.com',
         subject: `Inquiry from ${letter.name}: ${letter.subject}`,
-        html: `${req.body.message}`
+        html: `${letter.message}`
     }
     
     transporter.sendMail(Message, (error, info) => {
@@ -61,18 +57,18 @@ function sendEmailContactForm(letter) {
 
 function sendJobApplication(jobApp) {
     let transporter = createTransport()
-    console.log(req.body.resume)
+    console.log(jobApp.resume)
 
     // Email parameters 
     let Message = {
-        from: `${req.body.name} <${req.body.email}>`,
+        from: `${jobApp.name} <${jobApp.email}>`,
         to: 'amarvick94@gmail.com',
-        subject: `${req.body.jobTitle} Job Application - ${req.body.name}`,
-        html: `${req.body.summary} ${req.body.resume}`,
+        subject: `${jobApp.jobTitle} Job Application - ${jobApp.name}`,
+        html: `${jobApp.summary} ${jobApp.resume}`,
         attachments: [
             {
-                filename: req.body.resume,
-                content: fs.createReadStream(req.body.resume)
+                filename: jobApp.resume,
+                content: fs.createReadStream(jobApp.resume)
                 // path: fs.createReadStream(req.body.resume)
             }
         ]
@@ -88,7 +84,29 @@ function sendJobApplication(jobApp) {
     })
 }
 
+function newTemporaryPassword(email, tempPassword) {
+    let transporter = createTransport()
+
+    // Email parameters 
+    let Message = {
+        from: `PASSWORD UPDATE REQUEST <amarvick94@gmail.com>`,
+        to: 'amarvick94@gmail.com',
+        subject: `Password Update Request`,
+        html: `Hi, we see you've requested a password update. We've given you the temporary password: ${tempPassword}. Please log in to your account with this new password, click 'Change Password' and use it as your old password as you create a new one. If you have any further questions, please contact your advisor.`
+    }
+    
+    transporter.sendMail(Message, (error, info) => {
+        if (error) {
+            res.send(error)
+            throw error
+        }
+        res.send(info)
+        throw info
+    })
+}
+
 // Register (permissions granted to CEO/high admin)
-exports.newUserRegistration = newUserRegistration,
-exports.sendEmailContactForm = sendEmailContactForm,
+exports.newUserRegistration = newUserRegistration
+exports.sendEmailContactForm = sendEmailContactForm
 exports.sendJobApplication = sendJobApplication
+exports.newTemporaryPassword = newTemporaryPassword

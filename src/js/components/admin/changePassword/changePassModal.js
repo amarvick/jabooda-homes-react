@@ -10,7 +10,7 @@ import Input from '@material-ui/core/Input'
 import FormLabel from '@material-ui/core/FormLabel'
 import Button from '@material-ui/core/Button'
 
-import { updatePassword } from '../../../actions/userActions'
+import { updatePassword, resetPassword } from '../../../actions/userActions'
 
 class ChangePassModal extends Component {
     constructor(props) {
@@ -46,14 +46,10 @@ class ChangePassModal extends Component {
         }
     }
 
-    generateUserCredentialsForUpdate(state) {
-        var newUser = {
-            ...state,
-            _id: this.props.userId
-        }
-        console.log(newUser)
-        this.props.dispatch(updatePassword(newUser))
-    }
+    // resetPassword = e => {
+    //     e.preventDefault()
+    //     this.props.dispatch(resetPassword(this.props.id))
+    // }
 
     render(props) {
         return (
@@ -104,7 +100,12 @@ class ChangePassModal extends Component {
 
                     <br/><br/>
 
-                    <Button type="submit">Update Password</Button>
+                    <Button type="submit">
+                        Update Password
+                    </Button>
+                    {/* <Button onClick={(e) => this.resetPassword(e)}>
+                        Forgot password?
+                    </Button> */}
                 </form>
             </div>
         )
@@ -124,7 +125,7 @@ const mapStateToProps = (state) => ({
     error: state.career.error,
     loading: state.career.loading,
     loggedIn: state.auth.isAuthenticated,
-    userId: state.auth.user.id
+    email: state.auth.user.name
   })
 
 
