@@ -8,7 +8,7 @@ const app = express()
 const router = express.Router()
 const passport = require('passport')
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3001
 
 app.use(express.static(__dirname + '/public'))
 app.use(cors())
