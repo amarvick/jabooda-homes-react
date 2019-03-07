@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+$color-white-background: #f1f4f9;
+
+body {
+    background-color: $color-white-background;
+    overflow-x: hidden;
+    margin: 0;
+    font-family: 'Quicksand', Arial, Helvetica, sans-serif;
+}
+
+.pageContent {
+    margin: 0px auto;
+    width: 85%;
+}

@@ -1,28 +1,114 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, StartupActions } from 'react'
+import { connect } from 'react-redux' 
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
+import './App.scss'
+import jwt_decode from "jwt-decode"
+import setAuthToken from "./utils/setAuthToken"
+import { setCurrentUser, logoutUser } from "./js/actions/authActions"
+import store from "./js/store"
+
+import Header from './js/components/header'
+import Footer from './js/components/footer'
+
+import Home from './js/components/home/home'
+import About from './js/components/about/about'
+import Projects from './js/components/projects/projects'
+import Careers from './js/components/careers/careers'
+import Contactus from './js/components/contactus/contactus'
+import Admin from './js/components/admin/admin'
+
+import { loadAllData } from './js/actions/crudActions'
+
+// Check for token to keep user logged in
+if (localStorage.jwtToken) {
+
+  // Set auth token header auth
+  const token = localStorage.jwtToken;
+  setAuthToken(token);
+
+  // Decode token and get user info and exp
+  const decoded = jwt_decode(token);
+
+  // Set user and isAuthenticated
+  store.dispatch(setCurrentUser(decoded));
+  
+  // Check for expired token
+  const currentTime = Date.now() / 1000; // to get in milliseconds
+  if (decoded.exp < currentTime) {
+    // Logout user
+    store.dispatch(logoutUser());
+
+    // // Redirect to login
+    // window.location.href = "./login";
+  }
+}
 
 class App extends Component {
+  constructor() {
+    super()
+
+    this.state = {
+      isAdminLoggedIn: false
+    }
+  }
+
+  componentDidMount() {
+    this.props.dispatch(loadAllData())
+  }
+
   render() {
+    var screenDisplay
+    var loggedIn = this.props.loggedIn
+
+    if (!loggedIn) {
+      screenDisplay = (
+        <div className="App">
+          <header className="App-header">
+            <Header/>
+          </header>
+
+          <Switch>
+            <Route exact path='/' component={Home}/>
+            <Route path='/about' component={About}/>
+            <Route path='/projects' component={Projects}/>
+            <Route path='/careers' component={Careers}/>
+            <Route path='/contactus' component={Contactus}/>
+            <Redirect to="/"/>
+          </Switch>
+
+          <footer className="App-footer">
+            <Footer/>
+          </footer>
+        </div>
+      )
+    } else {
+      screenDisplay = (
+        <Admin/>
+      )
+    }
+
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <BrowserRouter>
+        { screenDisplay }
+      </BrowserRouter>
     );
   }
 }
 
-export default App;
+// wraps dispatch to create nicer functions to call within our component
+// Mapping dispatch actions to the props
+const mapDispatchToProps = (dispatch) => ({
+  dispatch: dispatch,
+  startup: () => dispatch(StartupActions.startup())
+})
+
+// Maps the state in to props (for displaying on the front end)
+const mapStateToProps = (state) => ({
+  state: state,
+  error: state.career.error,
+  loading: state.career.loading,
+  loggedIn: state.auth.isAuthenticated
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

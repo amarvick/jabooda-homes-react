@@ -1,0 +1,43 @@
+.allEditableData {
+    background-color: white;
+    width: 90% !important;
+    height: 80%;
+    margin: auto !important;
+
+    position: relative;
+    top: 10%;
+
+    overflow-y: scroll;
+
+
+}
+
+.dataContainer {
+    padding: 30px !important;
+    height: 100%;
+}
+
+#exitModal {
+    position: relative;
+    right: -98%;
+    top: -100%;
+    height: 32.5px;
+}
+
+.dataEntry {
+    display: block;
+    width: 90%;
+    border: 1px solid black;
+    padding: 5px;
+    margin: 10px;
+
+    word-wrap: break-word;
+}
+
+.dataEntryValue {
+    padding: 20px;
+
+    li {
+        display: inline;
+    }
+}

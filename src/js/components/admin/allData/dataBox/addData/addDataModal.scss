@@ -1,0 +1,72 @@
+$color-primary-gray: #515d2b;
+$color-jabooda-blue: #01427c;
+
+#addDataForm {
+    background-color: $color-jabooda-blue;
+
+    border-radius: 30px;
+
+    width: 50%;
+    margin: auto;
+
+    position: relative;
+    top: 20%;
+
+    padding: 20px;
+
+    h1 {
+        text-align: center;
+        margin: 0;
+    }
+    
+
+    padding: 30px !important;
+
+    background-color: white;
+    padding: 25px;
+    margin: auto;
+
+    // width: 500px;
+    height: auto;
+
+    position: relative;
+    top: 10%;
+}
+
+.allEditableData {
+    background-color: white;
+    width: 90% !important;
+    margin: auto !important;
+
+    position: relative;
+    top: 10%;
+
+    overflow-y: scroll;
+
+
+}
+
+#exitAddDataModal {
+    position: relative;
+    top: -30px;
+    float: right;
+
+}
+
+.dataEntry {
+    display: block;
+    width: 90%;
+    border: 1px solid black;
+    padding: 5px;
+    margin: 10px;
+
+    word-wrap: break-word;
+}
+
+.dataEntryValue {
+    padding: 20px;
+
+    li {
+        display: inline;
+    }
+}
