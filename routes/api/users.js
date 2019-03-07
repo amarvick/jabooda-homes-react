@@ -12,6 +12,7 @@ const validateLoginInput = require('../../validation/login')
 
 // Email
 const newUserRegistration = require('../../email/actions/emailForwarding').newUserRegistration
+const newTemporaryPassword = require('../../email/actions/emailForwarding').newTemporaryPassword
 
 const User = require('../../models/usersdb')
 
@@ -83,7 +84,7 @@ router.post('/changePassword', (req, res) => {
                     })
                 })
             } else {
-                console.log('Incorrect password!!!!') // AM - need to have this displayed on front end
+                console.log('Old password is incorrect')
                 return res
                     .status(400)
                     .json({ passwordincorrect: 'Old password is incorrect' })
@@ -94,6 +95,34 @@ router.post('/changePassword', (req, res) => {
 
     }).catch(error => {
         console.log(error)
+    })
+})
+
+// Change Password
+router.post('/resendPassword', (req, res) => {
+    // Obtains user successfully
+    var theEmail = req.body.email
+    var hashPassword = req.body.newPass // To hash
+
+    User.find({"email": theEmail}).then(user => {
+        bcrypt.genSalt(10, (err, salt) => {
+            bcrypt.hash(hashPassword, salt, (err, hash) => {
+                if (err) throw err
+                hashPassword = hash
+                
+                // AM - may be too much work? Already have the email!
+                User.updateOne(
+                    { "email" : theEmail }, // This line in particular
+                    { $set: { "password": hashPassword }
+                })
+                    .then(updatedUser => {
+                        return newTemporaryPassword(theEmail, req.body.newPass)
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+            })
+        })
     })
 })
 
@@ -154,7 +183,7 @@ router.post('/login', (req, res) => {
         }
 
         // If user has not yet been approved, fail the request
-        if (user.pending === true) {
+        if (user.pending.toLowerCase() === 'true') {
             return res.status(404).json({ userpending: "We're sorry, you have not yet been approved by an administrator or your account has been deactivated. For more information, please email your administrator." })
         }
 

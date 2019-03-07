@@ -45,6 +45,40 @@ export function rejectUser(theUser) {
     }
 }
 
+// Generate 10 character random password
+export function resetPassword(email) {
+    return async function action(dispatch) {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-=_+{}[];':,.<>/?";
+    
+        for (var i = 0; i < 10; i++) {
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        }
+
+        var theUser = {
+            email: email,
+            newPass: text
+        }
+
+        axios.post('http://localhost:3001/api/users/resendPassword', theUser)
+        .then(function(response) {
+            dispatch({
+                type: UserActionTypes.EDIT_USER_SUCCESS,
+                payload: response.data.update
+            })
+            alert('Update successful')
+        })
+
+        .catch(function(error) {
+            dispatch({
+                type: UserActionTypes.EDIT_USER_ERROR,
+                payload: error
+            })
+            alert('Update failed')
+        })
+    }
+}
+
 export function updatePassword(theUser) {
     return async function action(dispatch) {
         axios.post('http://localhost:3001/api/users/changePassword', theUser)
