@@ -8,10 +8,12 @@ const app = express()
 const router = express.Router()
 const passport = require('passport')
 
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 3000
 
 app.use(express.static(__dirname + '/public'))
-app.use(cors())
+app.use(cors({
+    'Access-Control-Allow-Headers': 'Content-Type'
+}))
 
 app.listen(PORT, () => {
     console.log(`Server listening on Port: ${PORT}`)
