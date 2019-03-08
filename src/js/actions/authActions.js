@@ -4,10 +4,12 @@ import jwt_decode from 'jwt-decode'
 
 import AuthActionTypes from '../actiontypes/authActionTypes'
 
+var link = 'http://jabooda-homes-backend.herokuapp.com/api/users/'
+
 // Register User
 export const registerUser = (userData, history) => dispatch => {
     axios
-        .post('http://localhost:3001/api/users/register', userData)
+        .post(link + 'register', userData)
         .then(res => {
             // AM - we want to display a modal here notifying the user that their registration request has been submitted.
         }) 
@@ -22,7 +24,7 @@ export const registerUser = (userData, history) => dispatch => {
 
 export const validateNewUser = (userData, history) => dispatch => {
     axios
-        .post('/api/users/validate', userData)
+        .post(link + 'validate', userData)
         .then(res => {
             console.log(res)
         }) // AM - return a success, email amarvick94@gmail.com, then credentials will be verified
@@ -38,7 +40,7 @@ export const validateNewUser = (userData, history) => dispatch => {
 // Login - Get User Token
 export const loginUser = userData => dispatch => {
     axios
-        .post('http://localhost:3001/api/users/login', userData)
+        .post(link + 'login', userData)
         .then(res => {
             // Save to localStorage
             // Set token to localStorage
