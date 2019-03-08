@@ -12,7 +12,7 @@ export function loadCareerData() {
             type: CareerActionTypes.FETCHING_CAREERS
         })
 
-        fetch("http://jabooda-homes-backend.herokuapp.com/api/getCareerData")  // AM - shoul probably change later
+        fetch("https://jabooda-homes-backend.herokuapp.com/api/getCareerData")  // AM - shoul probably change later
             .then(data => data.json())
             .then(res => 
                 dispatch({
@@ -45,7 +45,7 @@ export function handleSubmit(e, state) {
           } = state
       
     
-        const form = await axios.post('http://jabooda-homes-backend.herokuapp.com/api/submitApplication', {
+        const form = await axios.post('https://jabooda-homes-backend.herokuapp.com/api/submitApplication', {
             name, 
             email, 
             jobTitle,
@@ -69,7 +69,7 @@ export function handleSubmit(e, state) {
 // AM - Work this a little more
 export function editCareer(data) {
     return async function action(dispatch) {
-        axios.post('http://jabooda-homes-backend.herokuapp.com/api/updateCareerData', data)
+        axios.post('https://jabooda-homes-backend.herokuapp.com/api/updateCareerData', data)
         .then(function(response) {
             console.log(response)
             // Redirect user to home page notifying them that the user has been approved
@@ -83,7 +83,7 @@ export function editCareer(data) {
 
 export function deleteCareer(id) {
     return async function action(dispatch) {
-        axios.post('http://jabooda-homes-backend.herokuapp.com/api/deleteCareerData', id)
+        axios.post('https://jabooda-homes-backend.herokuapp.com/api/deleteCareerData', id)
         .then(function(response) {
             console.log(response)
             // Redirect user to home page notifying them that the user has been approved
