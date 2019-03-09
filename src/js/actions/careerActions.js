@@ -23,6 +23,7 @@ export function loadCareerData() {
     
             // AM - make this in to an error screen?
             .catch(function(error) {
+                console.log(error)
                 dispatch({
                     type: CareerActionTypes.FETCH_CAREERS_ERROR,
                     payload: error
