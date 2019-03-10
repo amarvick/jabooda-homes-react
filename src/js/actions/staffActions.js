@@ -4,13 +4,15 @@
 import StaffActionTypes from '../actiontypes/staffActionTypes'
 import axios from 'axios'
 
+var link = 'http://jabooda-homes-backend.herokuapp.com/api/'
+
 export function loadStaffData() {
     return function action(dispatch) {
         dispatch({
             type: StaffActionTypes.FETCHING_STAFF
         })
 
-        fetch("http://localhost:3001/api/getStaffData") // AM - shoul probably change later
+        fetch(link + "getStaffData") // AM - shoul probably change later
             .then(data => data.json())
             .then(res => {
                     dispatch({
@@ -27,7 +29,6 @@ export function loadStaffData() {
                     type: StaffActionTypes.FETCH_STAFF_ERROR,
                     payload: error
                 })
-                alert('Staff data NOT collected')
                 console.log(error)
             })
     }
@@ -36,7 +37,7 @@ export function loadStaffData() {
 // AM - Work this a little more
 export function editStaff(data) {
     return async function action(dispatch) {
-        axios.post('http://localhost:3001/api/updateStaffData', data)
+        axios.post(link + "updateStaffData", data)
         .then(function(response) {
             console.log(response.data)
             dispatch({
@@ -58,7 +59,7 @@ export function editStaff(data) {
 
 export function deleteStaff(id) {
     return async function action(dispatch) {
-        axios.post('http://localhost:3001/api/deleteStaffData', id) // AM - id is passed in as a key-value pair. Maybe a better way of doing this
+        axios.post(link + "deleteStaffData", id) // AM - id is passed in as a key-value pair. Maybe a better way of doing this
         .then(function(response) {
             dispatch({
                 type: StaffActionTypes.DELETE_STAFF_SUCCESS,
@@ -78,7 +79,7 @@ export function deleteStaff(id) {
 // AM - make in to joint function possibly?
 export function addStaff(data) {
     return async function action(dispatch) {
-        axios.post('http://localhost:3001/api/createStaffData', data)
+        axios.post(link + "createStaffData", data)
         .then(function(response) {
             dispatch({
                 type: StaffActionTypes.ADD_STAFF_SUCCESS,

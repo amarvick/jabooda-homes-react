@@ -4,11 +4,13 @@
 import ProjectActionTypes from '../actiontypes/projectActionTypes'
 import axios from 'axios'
 
+var link = 'http://jabooda-homes-backend.herokuapp.com/api/'
+
 export function loadProjectData() {
     return function action(dispatch) {
         dispatch({ type: ProjectActionTypes.FETCHING_PROJECTS })
 
-        fetch("http://localhost:3001/api/getProjectData") // AM - shoul probably change later
+        fetch(link + "getProjectData")
             .then(data => data.json())
             .then(function(response) {
                 dispatch({
@@ -30,7 +32,7 @@ export function loadProjectData() {
 // AM - Work this a little more
 export function editProject(data) {
     return async function action(dispatch) {
-        axios.post('http://localhost:3001/api/updateProjectData', data)
+        axios.post(link + "/updateProjectData", data)
         .then(function(response) {
             console.log(response)
             // Redirect user to home page notifying them that the user has been approved
@@ -44,7 +46,7 @@ export function editProject(data) {
 
 export function deleteProject(id) {
     return async function action(dispatch) {
-        axios.post('http://localhost:3001/api/deleteUserData', id)
+        axios.post(link + "deleteUserData", id)
         .then(function(response) {
             console.log(response)
             // Redirect user to home page notifying them that the user has been approved

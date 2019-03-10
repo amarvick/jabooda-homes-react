@@ -12,8 +12,12 @@ const PORT = process.env.PORT || 3000
 
 app.use(express.static(__dirname + '/public'))
 app.use(cors({
-    'Access-Control-Allow-Headers': 'Content-Type'
-}))
+    'allowedHeaders': ['sessionId', 'Content-Type'],
+    'exposedHeaders': ['sessionId'],
+    'origin': '*',
+    'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    'preflightContinue': false
+  }));
 
 app.listen(PORT, () => {
     console.log(`Server listening on Port: ${PORT}`)

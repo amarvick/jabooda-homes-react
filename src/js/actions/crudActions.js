@@ -13,13 +13,14 @@ import { loadUserData } from './userActions'
 
 import axios from 'axios'
 
+var link = 'http://jabooda-homes-backend.herokuapp.com/api/'
+
 export function loadAllData() {
     return function action(dispatch) {
         dispatch(loadStaffData())
         dispatch(loadCareerData())
         dispatch(loadProjectData())
         dispatch(loadUserData())
-
     }
 }
 
@@ -29,7 +30,7 @@ export function editData(data, db) {
         var linkDPTypes = {} 
         linkDPTypes = createLinkAndDispatchTypes(db, "update")
 
-        axios.post('http://localhost:3001/api/' + linkDPTypes.apiLink, data)
+        axios.post(link + linkDPTypes.apiLink, data)
         .then(function(response) {
             dispatch({
                 type: linkDPTypes.dispatchTypeSuccess,
@@ -53,7 +54,7 @@ export function deleteData(id, db) {
         var linkDPTypes = {} 
         linkDPTypes = createLinkAndDispatchTypes(db, "delete")
 
-        axios.post('http://localhost:3001/api/' + linkDPTypes.apiLink, id) // AM - id is passed in as a key-value pair. Maybe a better way of doing this
+        axios.post(link + linkDPTypes.apiLink, id) // AM - id is passed in as a key-value pair. Maybe a better way of doing this
         .then(function(response) {
             dispatch({
                 type: linkDPTypes.dispatchTypeSuccess,
@@ -77,7 +78,7 @@ export function createData(data, db) {
         var linkDPTypes = {} 
         linkDPTypes = createLinkAndDispatchTypes(db, "create")
 
-        axios.post('http://localhost:3001/api/' + linkDPTypes.apiLink, data)
+        axios.post(link + linkDPTypes.apiLink, data)
         .then(function(response) {
             dispatch({
                 type: linkDPTypes.dispatchTypeSuccess,
@@ -94,7 +95,7 @@ export function createData(data, db) {
     }
 }
 
-// Will generate which link to make a POST request to as well as the appropriate action types
+// Will generate which link to make a POST request to as well as the appropriate action types. AM - get rid of this... It's organized, but not efficient to loop through keys each time.
 export function createLinkAndDispatchTypes(db, theAction) {
     var linkAndDispatchTypes = {
         apiLink: '',

@@ -4,6 +4,8 @@
 import ContactUsActionTypes from '../actiontypes/contactUsActionTypes'
 import axios from 'axios'
 
+var link = 'http://jabooda-homes-backend.herokuapp.com/api/'
+
 export function handleSubmit(e, state) {
     return async function action(dispatch) {
         e.preventDefault();
