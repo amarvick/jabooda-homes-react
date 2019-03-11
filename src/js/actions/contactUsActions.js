@@ -4,7 +4,7 @@
 import ContactUsActionTypes from '../actiontypes/contactUsActionTypes'
 import axios from 'axios'
 
-var link = 'http://jabooda-homes-backend.herokuapp.com/api/'
+var link = "http://jabooda-homes-backend.herokuapp.com/api/"
 
 export function handleSubmit(e, state) {
     return async function action(dispatch) {
@@ -18,7 +18,7 @@ export function handleSubmit(e, state) {
             message 
         } = state
     
-        const form = await axios.post('/api/sendEmailform', {
+        const form = await axios.post(link + "sendEmailform", {
             name, 
             email,
             subject,

@@ -12,7 +12,7 @@ export function loadStaffData() {
             type: StaffActionTypes.FETCHING_STAFF
         })
 
-        fetch(link + "getStaffData") // AM - shoul probably change later
+        fetch(link + "getStaffData")
             .then(data => data.json())
             .then(res => {
                     dispatch({

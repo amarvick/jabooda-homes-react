@@ -5,7 +5,7 @@ import UserActionTypes from '../actiontypes/userActionTypes'
 import { editData, deleteData } from './crudActions'
 import axios from 'axios'
 
-var link = 'http://jabooda-homes-backend.herokuapp.com/'
+var link = "http://jabooda-homes-backend.herokuapp.com/"
 
 export function loadUserData() {
     return function action(dispatch) {
