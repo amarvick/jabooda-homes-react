@@ -12,7 +12,7 @@ export function loadCareerData() {
             type: CareerActionTypes.FETCHING_CAREERS
         })
 
-        fetch(link + "/getCareerData") 
+        fetch(link + "getCareerData") 
             .then(data => data.json())
             .then(res => 
                 dispatch({
@@ -46,7 +46,7 @@ export function handleSubmit(e, state) {
           } = state
       
     
-        const form = await axios.post(link + '/submitApplication', {
+        const form = await axios.post(link + 'submitApplication', {
             name, 
             email, 
             jobTitle,
