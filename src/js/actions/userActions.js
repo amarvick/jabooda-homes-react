@@ -5,13 +5,15 @@ import UserActionTypes from '../actiontypes/userActionTypes'
 import { editData, deleteData } from './crudActions'
 import axios from 'axios'
 
+var link = 'http://jabooda-homes-backend.herokuapp.com/api/'
+
 export function loadUserData() {
     return function action(dispatch) {
         dispatch({
             type: UserActionTypes.FETCHING_USERS
         })
 
-        fetch("http://localhost:3001/api/getUserData")  // AM - shoul probably change later
+        fetch(link + "getUserData")  // AM - shoul probably change later
             .then(data => data.json())
             .then(res => {
                 dispatch({
@@ -60,7 +62,7 @@ export function resetPassword(email) {
             newPass: text
         }
 
-        axios.post('http://localhost:3001/api/users/resendPassword', theUser)
+        axios.post(link + "resendPassword", theUser)
         .then(function(response) {
             dispatch({
                 type: UserActionTypes.EDIT_USER_SUCCESS,
@@ -81,7 +83,7 @@ export function resetPassword(email) {
 
 export function updatePassword(theUser) {
     return async function action(dispatch) {
-        axios.post('http://localhost:3001/api/users/changePassword', theUser)
+        axios.post(link + "users/changePassword", theUser)
         .then(function(response) {
             dispatch({
                 type: UserActionTypes.EDIT_USER_SUCCESS,
